@@ -2,10 +2,8 @@ import { useEffect, useRef, useCallback } from 'react';
 import { io } from 'socket.io-client';
 import { useAuth } from '../context/AuthContext';
 
-// --- FIX: Dynamically strip "/api" from VITE_API_URL to target the backend root ---
-// This ensures compatibility in both local development and production domains!
-const rawUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
-const SOCKET_URL = rawUrl.replace('/api', '');
+// Use VITE_API_URL directly as socket base — it already points to backend root
+const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
 
 export const useChatSocket = ({ onThinking, onToken, onResult, onError }) => {
   const { user } = useAuth();
