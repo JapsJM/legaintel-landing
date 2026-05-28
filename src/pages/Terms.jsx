@@ -1,0 +1,603 @@
+/*
+ * PLACEHOLDER - Review with qualified Indian legal counsel before production deployment.
+ * AI-generated document. Not a substitute for professional legal advice.
+ *
+ * LegAIntel — Terms of Service
+ * Route: /terms
+ * Public access — no authentication required
+ */
+
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Scale, ArrowLeft, AlertTriangle } from 'lucide-react';
+
+const LAST_UPDATED = "27 May 2026";
+
+const Section = ({ title, children }) => (
+  <section className="mb-12">
+    <h2 className="text-lg font-bold text-[#c5a059] uppercase tracking-[0.2em] mb-4 pb-3 border-b border-white/10">
+      {title}
+    </h2>
+    <div className="text-slate-300 leading-relaxed space-y-4 text-sm md:text-base">
+      {children}
+    </div>
+  </section>
+);
+
+const Sub = ({ title, children }) => (
+  <div className="mt-4">
+    <h3 className="text-white font-semibold mb-2">{title}</h3>
+    <div className="text-slate-400 leading-relaxed">{children}</div>
+  </div>
+);
+
+export default function Terms() {
+  useEffect(() => {
+    document.title = 'Terms of Service — LegAIntel';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', "Read LegAIntel's Terms of Service governing access to the LegAIntel platform — an AI-assisted legal research tool for advocates, law firms, and enterprises in India.");
+  }, []);
+
+  return (
+    <>
+      <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#c5a059] selection:text-black">
+
+        {/* Navigation */}
+        <nav className="border-b border-white/5 bg-[#0a0c10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-5">
+          <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <Link to="/" className="flex items-baseline select-none">
+              <span className="text-2xl md:text-3xl font-bold font-serif tracking-tight text-white">leg</span>
+              <span className="text-3xl md:text-4xl font-black text-[#c5a059] mx-[1px] leading-none">AI</span>
+              <span className="text-2xl md:text-3xl font-bold font-serif tracking-tight text-white">ntel</span>
+            </Link>
+            <Link to="/" className="flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors">
+              <ArrowLeft size={14} />
+              Back to Home
+            </Link>
+          </div>
+        </nav>
+
+        {/* Hero */}
+        <div className="border-b border-white/5 bg-[#08090d] py-16 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center gap-3 mb-6">
+              <Scale size={18} className="text-[#c5a059]" />
+              <span className="text-[#c5a059] text-xs tracking-[0.25em] font-bold uppercase">Legal Document</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold font-serif mb-4">Terms of Service</h1>
+            <p className="text-slate-400 text-sm">
+              Last Updated: <span className="text-slate-200 font-medium">{LAST_UPDATED}</span>
+            </p>
+            <p className="text-slate-400 mt-4 text-sm md:text-base max-w-2xl leading-relaxed">
+              These Terms of Service constitute a legally binding agreement between you and LegAIntel
+              governing your access to and use of the LegAIntel platform. Please read carefully before proceeding.
+            </p>
+          </div>
+        </div>
+
+        {/* Placeholder Warning */}
+        <div className="bg-[#c5a059]/10 border-b border-[#c5a059]/20 px-6 py-4">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-[#c5a059] text-xs tracking-wide font-semibold uppercase">
+              ⚠ Placeholder Document — Must be reviewed and approved by qualified Indian legal counsel before production deployment
+            </p>
+          </div>
+        </div>
+
+        {/* CRITICAL AI DISCLAIMER BOX */}
+        <div className="bg-red-950/30 border-b-2 border-red-800/50 px-6 py-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-start gap-4">
+              <AlertTriangle size={22} className="text-red-400 shrink-0 mt-1" />
+              <div>
+                <h2 className="text-red-400 font-bold uppercase tracking-widest text-sm mb-3">
+                  Critical Notice — AI Limitations & No Legal Advice
+                </h2>
+                <p className="text-red-200 text-sm leading-relaxed mb-2">
+                  <strong>LegAIntel is an AI-assisted research tool. It is NOT a law firm and does NOT provide legal advice.</strong> No attorney-client relationship is created by your use of this Platform under any circumstance.
+                </p>
+                <p className="text-red-200 text-sm leading-relaxed mb-2">
+                  AI systems, including those powering LegAIntel, <strong>can and do make errors</strong> — including factual inaccuracies, incorrect citations, misstatements of law, outdated statutory references, and analytical errors. All outputs generated by LegAIntel must be independently verified by a qualified legal professional before being relied upon in any legal proceeding, advisory, filing, opinion, or professional context.
+                </p>
+                <p className="text-red-200 text-sm leading-relaxed">
+                  <strong>By using LegAIntel, you expressly acknowledge that you bear full and sole responsibility for verifying all AI-generated outputs before acting upon them.</strong> LegAIntel, its founders, directors, officers, employees, and agents accept no liability whatsoever for any consequence arising from reliance on unverified AI outputs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="max-w-4xl mx-auto px-6 py-16">
+
+          <Section title="1. Acceptance of Terms">
+            <p>
+              By accessing or using the LegAIntel platform ("Platform"), website, APIs, or any associated
+              services (collectively, "Services"), you acknowledge that you have read, understood, and agree
+              to be bound by these Terms of Service ("Terms") and our Privacy Policy, incorporated herein
+              by reference.
+            </p>
+            <p>
+              If you are accepting these Terms on behalf of a law firm, company, or other legal entity, you
+              represent that you have the authority to bind that entity. If you do not have such authority,
+              or if you do not agree to these Terms, you must not access or use the Services.
+            </p>
+            <p>
+              LegAIntel reserves the right to modify these Terms at any time. Continued use of the Services
+              after any modification constitutes your acceptance of the updated Terms. LegAIntel may,
+              using commercially reasonable efforts, notify registered users of material changes via
+              email or in-platform notice, but no guarantee of such notification is made. Where a material
+              change affects the processing of your personal data, LegAIntel will use commercially
+              reasonable efforts to provide at least 30 days' advance notice before such change takes
+              effect, consistent with the Privacy Policy, but accepts no liability for failure to do so
+              where such failure results from technical, operational, or other constraints.
+            </p>
+            <p>
+              Your acceptance of these Terms is recorded electronically at the time of account registration
+              or first use of the Services, including a timestamp and associated technical identifiers.
+              This electronic record constitutes valid and binding evidence of your acceptance under the
+              Information Technology Act, 2000 and the Indian Evidence Act, 1872. You waive any right to
+              challenge the validity or enforceability of these Terms on the basis that they were accepted
+              electronically or that you did not separately sign a physical document.
+            </p>
+          </Section>
+
+          <Section title="2. Nature of Service — AI Tool, Not Legal Advice">
+            <p>
+              LegAIntel is an Indian legal intelligence platform powered by artificial intelligence. The
+              Services provide AI-assisted tools for legal research, document analysis, case briefing,
+              precedent discovery, statutory interpretation, and litigation intelligence.
+            </p>
+            <p className="font-semibold text-white">
+              LegAIntel is not a law firm. It does not practice law. It does not provide legal advice.
+              No attorney-client relationship, solicitor-client relationship, or any other professional
+              legal relationship is created between LegAIntel and any user at any time, under any
+              circumstance.
+            </p>
+            <p>
+              All AI-generated content — including case summaries, legal analysis, precedent identification,
+              statutory interpretation, document review outputs, and any other outputs — are provided
+              exclusively for informational and research assistance purposes. They do not constitute legal
+              opinions, legal advice, or professional guidance of any kind.
+            </p>
+            <Sub title="2.1 AI Accuracy Disclaimer">
+              LegAIntel's AI systems may produce outputs that are inaccurate, incomplete, outdated,
+              contextually incorrect, or legally erroneous. Specifically, AI outputs may contain: incorrect
+              citations or case references; misstatements or misinterpretations of law; references to
+              overruled, distinguished, or superseded authorities; incorrect procedural or jurisdictional
+              information; and analytical conclusions that are factually or legally wrong. You must
+              independently verify every AI output with primary sources and qualified legal counsel before
+              relying upon it in any professional, advisory, or litigation context.
+            </Sub>
+            <Sub title="2.2 User Responsibility">
+              You are solely and exclusively responsible for all decisions made, actions taken, or advice
+              given based on LegAIntel outputs. LegAIntel expressly disclaims any and all liability for
+              any consequence — professional, financial, legal, reputational, or otherwise — arising from
+              your reliance on AI-generated content without independent verification.
+            </Sub>
+            <Sub title="2.3 Not a Substitute for Professional Judgment">
+              Nothing on this Platform replaces the professional judgment, independent research, and
+              expertise of a qualified advocate or legal professional. LegAIntel is designed to assist
+              legal professionals — not to replace them.
+            </Sub>
+            <Sub title="2.4 Professional Compliance Responsibility">
+              The User is solely and exclusively responsible for ensuring that any use of AI-generated
+              outputs complies with all applicable Bar Council of India Rules, court rules, tribunal rules,
+              filing standards and formats, citation accuracy requirements, and all professional obligations
+              governing the User's conduct as a legal professional. LegAIntel makes no representation and
+              provides no assurance that its outputs conform to any court's evidentiary requirements,
+              procedural standards, or professional conduct rules. The User must independently review and
+              validate all outputs against applicable professional and judicial standards before submitting,
+              filing, or relying upon them in any professional or judicial context. Any misuse of AI outputs
+              in court or advisory proceedings is the sole and exclusive responsibility of the User.
+            </Sub>
+            <Sub title="2.5 Beta and Experimental AI Features">
+              The Platform incorporates artificial intelligence features that may be experimental, in beta,
+              or under active development. You expressly acknowledge and agree that: (a) AI features and
+              outputs may change, degrade, or be modified at any time without prior notice; (b) specific
+              features may be discontinued, restricted, or removed entirely at LegAIntel's sole discretion;
+              (c) AI-generated outputs may vary materially across sessions, user inputs, model updates, or
+              platform versions — identical queries may produce different results; (d) LegAIntel does not
+              guarantee output consistency, reproducibility, or stability across any time period; and
+              (e) the presence of a feature in the Platform does not constitute a representation that
+              such feature will remain available. LegAIntel accepts no liability for any loss arising
+              from reliance on the continued availability, consistency, or behaviour of any AI feature.
+            </Sub>
+            <Sub title="2.6 Right to Modify or Replace AI Models">
+              LegAIntel expressly reserves the right, at its sole and absolute discretion and without
+              prior notice or liability, to modify, upgrade, downgrade, retrain, fine-tune, replace, or
+              entirely substitute any underlying artificial intelligence model, algorithm, inference
+              engine, or third-party AI provider powering the Platform at any time. Such changes may
+              alter the nature, quality, style, or content of AI Outputs. LegAIntel's exercise of this
+              right shall not constitute a breach of these Terms or give rise to any right of refund,
+              compensation, or termination on the part of the User. Your continued use of the Platform
+              following any such change constitutes acceptance of the modified AI infrastructure.
+            </Sub>
+          </Section>
+
+          <Section title="3. Description of Platform">
+            <p>
+              LegAIntel operates as a Software-as-a-Service (SaaS) platform. Access is provided on a
+              subscription basis through tiered plans. Features, storage limits, and capabilities vary
+              by subscription tier as described on the Pricing page. The Platform connects to Indian court
+              databases, statutory repositories, and legal knowledge sources to assist legal professionals.
+            </p>
+            <p>
+              LegAIntel does not guarantee the completeness, currency, or accuracy of any third-party
+              database, court record, statutory repository, or external source ingested into or referenced
+              by the Platform. LegAIntel is not responsible for errors, omissions, or outdated information
+              originating from external sources.
+            </p>
+          </Section>
+
+          <Section title="4. User Eligibility">
+            <p>
+              The Services are intended for use by legal professionals including enrolled Advocates and
+              Senior Advocates under the Advocates Act, 1961; law firms and chambers registered in India;
+              corporate legal departments and in-house counsel; legal academia and research institutions;
+              and enterprise organisations with legitimate legal intelligence requirements.
+            </p>
+            <p>
+              You must be at least 18 years of age to create an account. By registering, you represent
+              that you meet all eligibility criteria applicable to your subscription tier.
+            </p>
+          </Section>
+
+          <Section title="5. Account Responsibilities">
+            <Sub title="5.1 Account Registration">
+              You must provide accurate, complete, and current information when registering. You are
+              responsible for maintaining the confidentiality of your credentials and for all activity
+              under your account. Notify us immediately at{' '}
+              <a href="mailto:info.legaintel@gmail.com" className="text-[#c5a059] hover:underline">
+                info.legaintel@gmail.com
+              </a>{' '}
+              if you suspect unauthorised access.
+            </Sub>
+            <Sub title="5.2 Prohibited Conduct">
+              You agree not to: (a) share account credentials with third parties; (b) use the Platform
+              to provide legal advice to third parties in violation of applicable Bar Council of India
+              Rules; (c) attempt to reverse engineer, extract, or replicate proprietary AI models or
+              algorithms; (d) upload content that infringes third-party intellectual property rights;
+              (e) use automated bots, scrapers, or crawlers against the Platform; (f) use the Services
+              for any unlawful purpose under Indian law; or (g) circumvent any technical limitation,
+              access control, or security measure on the Platform.
+            </Sub>
+            <Sub title="5.3 Account Suspension and Termination">
+              LegAIntel reserves the right to suspend or terminate accounts that violate these Terms,
+              without prior notice, at its sole discretion. Disputed suspensions may be appealed by
+              contacting info.legaintel@gmail.com. Upon termination, your right to access the Services
+              ceases immediately.
+            </Sub>
+          </Section>
+
+          <Section title="6. Subscription, Payment and Refund Terms">
+            <Sub title="6.1 Subscription Plans">
+              Access to the Services requires a valid subscription. Plans are billed monthly or annually
+              as selected at checkout. Subscription fees are stated in Indian Rupees (INR).
+            </Sub>
+            <Sub title="6.2 Taxes">
+              All fees are exclusive of applicable Goods and Services Tax (GST) unless expressly stated
+              otherwise. GST will be charged at the applicable rate. LegAIntel's GST registration number
+              will be displayed on invoices issued to subscribers.
+            </Sub>
+            <Sub title="6.3 Refund Policy">
+              All subscription fees are non-refundable except: (a) where required by the Consumer
+              Protection Act, 2019 or other applicable mandatory Indian law; (b) where LegAIntel
+              determines at its sole discretion that a refund is warranted due to a documented service
+              failure directly attributable to LegAIntel. Refund requests must be submitted within 7
+              days of the charge to info.legaintel@gmail.com with subject "Refund Request."
+            </Sub>
+            <Sub title="6.4 Renewal and Cancellation">
+              Subscriptions auto-renew unless cancelled at least 48 hours before the renewal date via
+              account settings. Cancellation takes effect at the end of the current billing period.
+            </Sub>
+            <Sub title="6.5 Price Changes">
+              LegAIntel reserves the right to modify pricing with 30 days' prior written notice to
+              existing subscribers. Continued use after a price change constitutes acceptance of the
+              new pricing.
+            </Sub>
+          </Section>
+
+          <Section title="7. Intellectual Property Ownership">
+            <Sub title="7.1 Platform Ownership">
+              The LegAIntel platform, including its AI models, algorithms, software, design, trade marks,
+              logos, and all associated intellectual property, is owned exclusively by LegAIntel and its
+              licensors and is protected under the Copyright Act, 1957, the Trade Marks Act, 1999, the
+              Information Technology Act, 2000, and all other applicable Indian intellectual property laws.
+              Nothing in these Terms transfers any ownership rights to you.
+            </Sub>
+            <Sub title="7.2 Your Content">
+              You retain full ownership of all documents, case files, and data you upload to the Platform
+              ("User Content"). By uploading User Content, you grant LegAIntel a limited, non-exclusive,
+              royalty-free licence to: (a) process and analyse that content solely for the purpose of
+              providing the Services to you; and (b) use anonymised, aggregated, non-attributable
+              derivatives of such content for improving AI model quality and Platform performance,
+              provided such use cannot identify you or any individual. LegAIntel does not claim
+              ownership of your legal documents.
+            </Sub>
+            <Sub title="7.3 AI Outputs">
+              Outputs generated by the Platform's AI systems ("AI Outputs") are provided to you for your
+              use subject to these Terms. LegAIntel makes no representation that AI Outputs are free from
+              third-party intellectual property claims. You are responsible for independently verifying
+              AI Outputs before relying upon them. All limitations, disclaimers, and restrictions applicable
+              to AI Outputs under these Terms apply equally to any AI Output that has been exported,
+              downloaded, printed, copied, or transmitted in any format outside the Platform. The act of
+              exporting or reproducing an AI Output does not alter its nature as an unverified research
+              tool output, does not remove any disclaimer applicable to it, and does not create any
+              additional warranty, representation, or liability on the part of LegAIntel.
+            </Sub>
+            <Sub title="7.4 Feedback">
+              Any feedback, suggestions, or ideas you provide to LegAIntel regarding the Services may be
+              used by LegAIntel without restriction or compensation to you.
+            </Sub>
+          </Section>
+
+          <Section title="8. Data Usage, Confidentiality and Upload Restrictions">
+            <p>
+              LegAIntel treats all User Content as confidential and does not sell, rent, or share your
+              legal documents or case data with third parties for commercial purposes. Data handling is
+              governed in detail by our{' '}
+              <Link to="/privacy" className="text-[#c5a059] hover:underline">Privacy Policy</Link>.
+            </p>
+            <p>
+              LegAIntel may use anonymised, aggregated, non-identifiable usage data to improve Platform
+              performance and enhance the Services. This data cannot be used to identify individual users
+              or their clients.
+            </p>
+            <p>
+              You acknowledge that the Platform is not a certified repository for privileged attorney-client
+              communications. You are solely responsible for ensuring your use of the Platform complies with
+              applicable professional privilege and confidentiality obligations under the Bar Council of
+              India Rules and applicable law.
+            </p>
+            <Sub title="8.1 Prohibited Uploads">
+              You agree not to upload, transmit, or process through the Platform any content that: (a) is
+              subject to attorney-client privilege or litigation privilege where upload to a third-party
+              platform may constitute waiver of such privilege under applicable law; (b) constitutes
+              confidential client material that the User is not authorised to process through external
+              digital platforms; (c) relates to matters that are subject to court-ordered sealing,
+              confidentiality orders, or non-disclosure orders; (d) contains information classified under
+              national security laws, including the Official Secrets Act, 1923, or any other applicable
+              statute governing sensitive government or defence information; (e) is unlawful to upload,
+              transmit, or possess under any applicable Indian or international law; or (f) infringes the
+              intellectual property rights, privacy rights, or other legal rights of any third party.
+              You upload all content at your own risk. LegAIntel accepts no liability for any consequence
+              arising from the upload of prohibited, privileged, sensitive, or unlawful material.
+            </Sub>
+            <Sub title="8.2 Third-Party AI Processing and DPDPA Compliance">
+              You acknowledge and agree that the Platform may utilise third-party artificial intelligence
+              APIs, cloud computing infrastructure, and external model providers to process User Content
+              and generate AI Outputs. Where such processing occurs, your data may be transmitted to and
+              processed by third-party service providers outside LegAIntel's direct infrastructure.
+              LegAIntel takes reasonable steps to ensure that such providers maintain appropriate data
+              protection standards; however, LegAIntel cannot guarantee that third-party processing will
+              meet every jurisdiction-specific or client-specific confidentiality requirement. Where you
+              upload documents containing personal data of your clients or third parties, you act as the
+              Data Fiduciary for that client data under the Digital Personal Data Protection Act, 2023
+              ("DPDPA"), and LegAIntel processes it solely as your Data Processor. All DPDPA compliance
+              obligations in respect of such client data — including obtaining valid consent from data
+              principals — rest entirely with you. LegAIntel is the Data Fiduciary only in respect of
+              personal data you provide directly to LegAIntel for account, billing, and platform purposes.
+            </Sub>
+          </Section>
+
+          <Section title="9. Disclaimer of Warranties">
+            <p>
+              TO THE FULLEST EXTENT PERMITTED UNDER APPLICABLE INDIAN LAW, THE SERVICES ARE PROVIDED
+              "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+              INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+              PURPOSE, ACCURACY, COMPLETENESS, OR NON-INFRINGEMENT.
+            </p>
+            <p>
+              LEGAINTEL DOES NOT WARRANT THAT: (A) THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE,
+              SECURE, OR FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS; (B) AI OUTPUTS WILL BE ACCURATE,
+              COMPLETE, CURRENT, OR LEGALLY RELIABLE; (C) THE PLATFORM WILL MEET YOUR SPECIFIC
+              REQUIREMENTS; OR (D) DEFECTS WILL BE CORRECTED WITHIN ANY SPECIFIC TIMEFRAME.
+            </p>
+            <p>
+              NO ORAL OR WRITTEN INFORMATION OR ADVICE GIVEN BY LEGAINTEL OR ITS REPRESENTATIVES SHALL
+              CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THESE TERMS.
+            </p>
+            <p>
+              NO WARRANTY OF COURT ADMISSIBILITY OR EVIDENTIARY COMPLIANCE: LEGAINTEL EXPRESSLY
+              DISCLAIMS ANY WARRANTY THAT AI-GENERATED OUTPUTS WILL SATISFY THE EVIDENTIARY STANDARDS,
+              ADMISSIBILITY REQUIREMENTS, OR PROCEDURAL RULES OF ANY COURT, TRIBUNAL, ARBITRAL BODY,
+              OR REGULATORY AUTHORITY IN INDIA OR ANY OTHER JURISDICTION. OUTPUTS GENERATED BY THE
+              PLATFORM ARE NOT GUARANTEED TO BE ACCEPTABLE IN JUDICIAL OR QUASI-JUDICIAL PROCEEDINGS.
+              THE USER IS SOLELY RESPONSIBLE FOR DETERMINING WHETHER ANY AI OUTPUT MEETS THE APPLICABLE
+              EVIDENTIARY AND PROCEDURAL STANDARDS BEFORE SUBMITTING OR RELYING UPON SUCH OUTPUT IN ANY
+              LEGAL PROCEEDING.
+            </p>
+          </Section>
+
+          <Section title="10. Limitation of Liability">
+            <p>
+              TO THE FULLEST EXTENT PERMITTED UNDER APPLICABLE INDIAN LAW, LEGAINTEL AND ITS DIRECTORS,
+              OFFICERS, EMPLOYEES, AGENTS, PARTNERS, AND LICENSORS SHALL NOT BE LIABLE FOR ANY INDIRECT,
+              INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES — INCLUDING LOSS OF
+              PROFITS, DATA, GOODWILL, BUSINESS OPPORTUNITY, OR PROFESSIONAL REPUTATION — ARISING FROM
+              OR RELATING TO YOUR USE OF OR INABILITY TO USE THE SERVICES, EVEN IF LEGAINTEL HAS BEEN
+              ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+            </p>
+            <p>
+              IN NO EVENT SHALL LEGAINTEL'S TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING
+              FROM OR RELATING TO THE SERVICES EXCEED THE GREATER OF: (A) THE AMOUNT ACTUALLY PAID BY
+              YOU TO LEGAINTEL IN THE THREE (3) CALENDAR MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING
+              RISE TO THE CLAIM; OR (B) INR FIVE HUNDRED (₹500). FOR THE AVOIDANCE OF DOUBT, THIS CAP
+              APPLIES REGARDLESS OF WHETHER YOU ARE ON A FREE TRIAL, FREE TIER, OR PAID SUBSCRIPTION.
+            </p>
+            <p>
+              LEGAINTEL EXPRESSLY EXCLUDES ALL LIABILITY ARISING FROM: (A) YOUR RELIANCE ON ANY
+              AI-GENERATED OUTPUT WITHOUT INDEPENDENT PROFESSIONAL VERIFICATION; (B) ERRORS, OMISSIONS,
+              OR INACCURACIES IN THIRD-PARTY DATABASES OR EXTERNAL SOURCES; (C) ACTIONS OR DECISIONS
+              TAKEN BY YOU OR YOUR CLIENTS BASED ON AI OUTPUTS; (D) ANY PROFESSIONAL NEGLIGENCE CLAIM
+              ARISING FROM YOUR USE OF THE PLATFORM IN YOUR LEGAL PRACTICE.
+            </p>
+            <p>
+              Nothing in these Terms excludes or limits liability for death or personal injury caused by
+              negligence, fraud or fraudulent misrepresentation, or any other liability that cannot be
+              excluded under applicable mandatory Indian law.
+            </p>
+          </Section>
+
+          <Section title="11. Indemnification">
+            <p>
+              You agree to indemnify, defend, and hold harmless LegAIntel and its directors, officers,
+              employees, agents, and licensors from and against any and all claims, damages, losses,
+              liabilities, costs, and expenses (including reasonable legal fees) arising from or relating
+              to: (a) your use of the Services in violation of these Terms; (b) your User Content;
+              (c) your violation of any applicable law or regulation; (d) your reliance on any AI Output
+              without independent verification; or (e) any claim by a third party arising from your
+              professional conduct in connection with the use of the Services. Notwithstanding the
+              foregoing, this indemnification obligation shall not apply to the extent that any claim
+              arises directly and solely from LegAIntel's own gross negligence or wilful misconduct,
+              as finally determined by a court or arbitral tribunal of competent jurisdiction. For the
+              avoidance of doubt, claims arising from the inherent limitations of AI technology, output
+              inaccuracies, or model behaviour shall not constitute gross negligence or wilful misconduct
+              on the part of LegAIntel.
+            </p>
+          </Section>
+
+          <Section title="12. Force Majeure">
+            <p>
+              LegAIntel shall not be liable for any failure or delay in performance of its obligations
+              under these Terms where such failure or delay results from any cause beyond LegAIntel's
+              reasonable control, including but not limited to: acts of God, natural disasters, pandemic,
+              epidemic, war, civil unrest, government action, regulatory change, cyberattack, internet
+              or telecommunications infrastructure failure, or failure of third-party service providers.
+              In such circumstances, LegAIntel's obligations shall be suspended for the duration of the
+              force majeure event.
+            </p>
+          </Section>
+
+          <Section title="13. Service Availability and Uptime">
+            <p>
+              LegAIntel does not guarantee uninterrupted or error-free access to the Services. The
+              Platform may be subject to downtime for maintenance, upgrades, security patching, or
+              reasons beyond LegAIntel's control. LegAIntel makes no service level agreement (SLA)
+              commitments and shall not be liable for any loss arising from Platform unavailability.
+            </p>
+          </Section>
+
+          <Section title="13A. Security Limitations and Internet Transmission Risk">
+            <p>
+              NOTWITHSTANDING ANY OTHER PROVISION OF THESE TERMS OR THE PRIVACY POLICY, LEGAINTEL
+              DOES NOT GUARANTEE AND EXPRESSLY DISCLAIMS ANY WARRANTY THAT THE PLATFORM, ITS
+              INFRASTRUCTURE, OR ANY DATA TRANSMITTED TO OR FROM THE PLATFORM IS IMMUNE FROM:
+              (A) CYBERATTACKS, HACKING, OR MALICIOUS INTRUSION; (B) UNAUTHORISED ACCESS TO OR
+              DISCLOSURE OF USER DATA BY THIRD PARTIES; (C) SECURITY VULNERABILITIES IN THIRD-PARTY
+              CLOUD PROVIDERS, AI API PROVIDERS, OR OTHER SUB-PROCESSORS; (D) INTERCEPTION OF DATA
+              DURING INTERNET TRANSMISSION; OR (E) ANY OTHER SECURITY INCIDENT BEYOND LEGAINTEL'S
+              REASONABLE CONTROL.
+            </p>
+            <p>
+              YOU EXPRESSLY ACKNOWLEDGE AND ACCEPT THAT: (A) THE TRANSMISSION OF DATA OVER THE
+              INTERNET IS INHERENTLY INSECURE AND LEGAINTEL CANNOT GUARANTEE THE SECURITY OF DATA
+              TRANSMITTED TO OR FROM THE PLATFORM; (B) NO TECHNICAL OR ORGANISATIONAL SECURITY
+              MEASURE PROVIDES ABSOLUTE PROTECTION AGAINST ALL POSSIBLE THREATS; (C) CLOUD-BASED
+              INFRASTRUCTURE AND THIRD-PARTY AI PROVIDERS OPERATE UNDER THEIR OWN SECURITY REGIMES
+              WHICH ARE OUTSIDE LEGAINTEL'S DIRECT CONTROL; AND (D) YOU ASSUME ALL RISK ASSOCIATED
+              WITH YOUR DECISION TO TRANSMIT DATA — INCLUDING CONFIDENTIAL LEGAL DOCUMENTS — OVER
+              THE INTERNET TO THE PLATFORM.
+            </p>
+            <p>
+              LEGAINTEL SHALL NOT BE LIABLE FOR ANY LOSS, DAMAGE, OR CLAIM ARISING FROM ANY
+              SECURITY BREACH, CYBERATTACK, UNAUTHORISED ACCESS, OR INTERNET TRANSMISSION RISK,
+              WHETHER OR NOT LEGAINTEL WAS NEGLIGENT IN ITS SECURITY PRACTICES, EXCEPT TO THE
+              EXTENT THAT SUCH LIABILITY CANNOT BE EXCLUDED UNDER MANDATORY APPLICABLE INDIAN LAW.
+            </p>
+          </Section>
+
+          <Section title="14. Governing Law and Dispute Resolution">
+            <p>
+              These Terms shall be governed by and construed in accordance with the laws of India,
+              including the Information Technology Act, 2000; the Digital Personal Data Protection
+              Act, 2023; the Indian Contract Act, 1872; and all other applicable Indian statutes,
+              without regard to conflict of law principles.
+            </p>
+            <p>
+              In the event of any dispute, difference, or claim arising out of or in connection with
+              these Terms or the Services, the parties shall first attempt amicable resolution by
+              written notice, with a 30-day resolution period commencing from the date of such notice.
+            </p>
+            <p>
+              If unresolved within 30 days, all disputes shall be finally settled by binding arbitration
+              under the Arbitration and Conciliation Act, 1996 (as amended). The seat and venue of
+              arbitration shall be <strong>New Delhi, India</strong>. Proceedings shall be conducted
+              in English. The arbitral award shall be final and binding on both parties.
+            </p>
+            <p>
+              Subject to the arbitration clause above, the courts of <strong>New Delhi, India</strong>{' '}
+              shall have exclusive jurisdiction over any matter not subject to arbitration under these Terms.
+            </p>
+            <p>
+              NO COLLECTIVE OR REPRESENTATIVE CLAIMS: ALL DISPUTES MUST BE BROUGHT ON AN INDIVIDUAL
+              BASIS ONLY. YOU EXPRESSLY WAIVE ANY RIGHT TO BRING OR PARTICIPATE IN ANY CONSOLIDATED,
+              COLLECTIVE, REPRESENTATIVE, OR MULTI-PARTY ARBITRATION OR LEGAL PROCEEDING ARISING FROM
+              OR RELATING TO THESE TERMS OR THE SERVICES. NO ARBITRATOR OR COURT SHALL HAVE AUTHORITY
+              TO CONSOLIDATE CLAIMS OF MULTIPLE USERS OR TO OTHERWISE PRESIDE OVER ANY FORM OF
+              REPRESENTATIVE OR CLASS PROCEEDING. THIS WAIVER IS A MATERIAL CONDITION OF YOUR ACCESS
+              TO THE SERVICES.
+            </p>
+          </Section>
+
+          <Section title="15. Miscellaneous">
+            <Sub title="15.1 Entire Agreement">
+              These Terms, together with the Privacy Policy, constitute the entire agreement between
+              you and LegAIntel with respect to the Services and supersede all prior agreements,
+              representations, and understandings.
+            </Sub>
+            <Sub title="15.2 Severability">
+              If any provision of these Terms is found to be invalid, illegal, or unenforceable by a
+              court of competent jurisdiction, the remaining provisions shall continue in full force
+              and effect.
+            </Sub>
+            <Sub title="15.3 Waiver">
+              LegAIntel's failure to enforce any right or provision of these Terms shall not constitute
+              a waiver of such right or provision.
+            </Sub>
+            <Sub title="15.4 Assignment">
+              You may not assign or transfer your rights or obligations under these Terms without
+              LegAIntel's prior written consent. LegAIntel may assign these Terms freely, including
+              in connection with a merger, acquisition, or sale of assets, provided that where such
+              assignment involves the transfer of your personal data, LegAIntel will provide reasonable
+              advance notice where legally permissible, consistent with the Privacy Policy.
+            </Sub>
+          </Section>
+
+          <Section title="16. Contact for Legal Queries">
+            <p>
+              For questions regarding these Terms, legal notices, or compliance matters, please contact:
+            </p>
+            <div className="mt-4 p-6 border border-white/10 bg-[#0a0c10] rounded-sm space-y-2">
+              <p className="text-white font-semibold">LegAIntel Legal Team</p>
+              <p className="text-slate-400">Email:{' '}
+                <a href="mailto:info.legaintel@gmail.com" className="text-[#c5a059] hover:underline">
+                  info.legaintel@gmail.com
+                </a>
+              </p>
+              <p className="text-slate-400">Subject Line: <span className="text-slate-300">Legal Query — Terms of Service</span></p>
+              <p className="text-slate-500 text-xs mt-3">LegAIntel will use commercially reasonable efforts to respond to legal queries. No specific response timeframe is guaranteed.</p>
+            </div>
+          </Section>
+
+        </div>
+
+        {/* Footer */}
+        <footer className="border-t border-white/5 bg-[#08090d] px-6 py-10">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <p>© {new Date().getFullYear()} LegAIntel. All professional rights reserved.</p>
+            <div className="flex gap-5">
+              <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
+              <span className="text-slate-800">•</span>
+              <Link to="/terms" className="text-[#c5a059]">Terms of Service</Link>
+              <span className="text-slate-800">•</span>
+              <Link to="/contact" className="hover:text-white transition">Contact</Link>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+    </>
+  );
+}
