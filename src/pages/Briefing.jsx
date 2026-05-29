@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getBriefing, triggerBriefing, getBriefingSettings, updateBriefingSettings } from '../services/briefing'
-import { FileText, HelpCircle, Zap, ShieldAlert, Calendar, Loader2, Scale, AlertTriangle, CheckCircle, MinusCircle, ListChecks, Gavel } from 'lucide-react'
+import { FileText, HelpCircle, Zap, ShieldAlert, Calendar, Loader2, AlertTriangle, CheckCircle, MinusCircle, ListChecks } from 'lucide-react'
 
 const cardCls = "bg-[#0a0c10] border border-white/5 rounded-sm p-8 shadow-[0_4px_25px_rgba(0,0,0,0.35)]"
 
@@ -230,8 +230,7 @@ const Briefing = () => {
             {/* Judgment Watch — NEW */}
             {judgmentWatch.length > 0 && (
               <div className={cardCls}>
-                <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-1 font-sans flex items-center gap-2">
-                  <Gavel className="w-4 h-4 text-[#c5a059]" /> Judgment Watch
+                <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-1 font-sans flex items-center gap-2"> Judgment Watch
                 </h2>
                 <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-5">New Supreme Court judgments cross-referenced against your active matters</p>
                 <div className="space-y-5">
@@ -291,8 +290,7 @@ const Briefing = () => {
             {/* IRAC Agenda */}
             {briefing.irac_agenda?.length > 0 && (
               <div className={cardCls}>
-                <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4 font-sans flex items-center gap-2 pb-2 border-b border-white/5">
-                  <Scale className="w-4 h-4 text-[#c5a059]" /> IRAC Tactical Agenda
+                <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4 font-sans flex items-center gap-2 pb-2 border-b border-white/5"> IRAC Tactical Agenda
                 </h2>
                 {briefing.irac_agenda.map((item, idx) => (
                   <div key={idx} className="space-y-3">

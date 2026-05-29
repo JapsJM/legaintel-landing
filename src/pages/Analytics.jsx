@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Scale, BookOpen, AlertCircle, BarChart3, FileText, ChevronRight, ArrowLeft } from 'lucide-react';
+import { Search, BookOpen, AlertCircle, BarChart3, FileText, ChevronRight, ArrowLeft } from 'lucide-react';
 import { getJudgeAnalytics } from '../services/analyticsService';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -85,7 +85,6 @@ const Analytics = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-[#0a0c10] border border-white/5 p-6 rounded-sm">
               <div className="flex items-center gap-3 text-slate-400 mb-2">
-                <Scale size={18} className="text-[#c5a059]" />
                 <h3 className="text-xs font-bold uppercase tracking-widest">Primary Entity</h3>
               </div>
               <p className="text-xl font-serif font-bold text-white truncate mt-2">{data.judge_name}</p>

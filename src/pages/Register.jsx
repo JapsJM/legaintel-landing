@@ -116,7 +116,6 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-[#050505] flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="text-[#c5a059] text-5xl mb-4">⚖️</div>
         <h2 className="text-4xl font-bold text-white font-serif tracking-tight">
           {step === 'form' ? 'Create Account' : 'Verify Your Email'}
         </h2>

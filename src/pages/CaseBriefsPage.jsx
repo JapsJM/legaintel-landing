@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { 
-  Sparkles, FileText, Loader2, ArrowLeft, Search, Printer, 
-  Scale, Info, ShieldAlert, Calendar, Filter, Landmark, Copy, PlusCircle, CheckCircle,
+  Sparkles, FileText, Loader2, ArrowLeft, Search, Printer, Info, ShieldAlert, Calendar, Filter, Copy, PlusCircle, CheckCircle,
   ChevronLeft, ChevronRight, Play
 } from 'lucide-react';
 

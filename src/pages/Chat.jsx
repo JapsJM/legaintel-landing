@@ -6,8 +6,7 @@ import MessageThread from '../components/MessageThread';
 import ChatInput from '../components/ChatInput';
 import { useChatSocket } from '../hooks/useChatSocket';
 import { listConversations, getConversation, deleteConversation } from '../services/chat';
-import { 
-  Landmark, Archive, Tag, Eye, EyeOff, Sparkles, X, Loader2, Play,
+import {Archive, Tag, Eye, EyeOff, Sparkles, X, Loader2, Play,
   ArrowLeftRight, Search, ChevronDown
 } from 'lucide-react';
 
@@ -325,7 +324,6 @@ export default function Chat() {
             )}
 
             <div className="flex items-center gap-2 pl-3 border-l border-white/5">
-              <Landmark className="w-3.5 h-3.5 text-[#c5a059] opacity-70" />
               <select
                 value={activeCourtId}
                 onChange={(e) => setActiveCourtId(e.target.value)}

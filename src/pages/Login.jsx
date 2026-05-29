@@ -49,7 +49,6 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-[#050505] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="text-[#c5a059] text-5xl mb-4">⚖️</div>
         <h2 className="text-4xl font-bold text-white font-serif tracking-tight">LegAIntel Login</h2>
         <p className="mt-3 text-xs uppercase tracking-widest text-slate-500 font-bold">Secure Intelligence Portal</p>
       </div>

@@ -6,8 +6,7 @@ import { getBriefing } from '../services/briefing'
 import { getJurisdictionPulse, getActiveMatters } from '../services/dashboard'
 import {
   FileText, MessageSquare, Zap, PlusCircle,
-  AlertTriangle, CheckCircle, Clock, ArrowUpRight,
-  Gavel, ListChecks, Scale
+  AlertTriangle, CheckCircle, Clock, ArrowUpRight, ListChecks
 } from 'lucide-react'
 
 // ─── helpers ────────────────────────────────────────────────────────────────
@@ -133,7 +132,7 @@ export default function Dashboard() {
   if (!noMatters && !briefingStale) {
     quickActions.push({ icon: MessageSquare, label: 'New Research Query',     desc: 'Ask a legal question grounded in your case documents.', path: '/chat' })
   }
-  quickActions.push({ icon: Scale,          label: 'Browse Precedents',      desc: 'Search Supreme Court and High Court judgments.', path: '/precedents' })
+  quickActions.push({ icon: FileText,          label: 'Browse Precedents',      desc: 'Search Supreme Court and High Court judgments.', path: '/precedents' })
   quickActions.push({ icon: FileText,       label: 'Case Brief Generator',   desc: 'Generate a structured brief from any uploaded judgment.', path: '/case-briefs' })
 
   return (
@@ -242,8 +241,7 @@ export default function Dashboard() {
           {priorities.length === 0 && (
             <div className="bg-[#0a0c10] border border-white/5 rounded-sm overflow-hidden">
               <div className="px-6 py-4 border-b border-white/5 flex items-center justify-between">
-                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] font-sans flex items-center gap-2">
-                  <Gavel className="w-3.5 h-3.5" /> Counsel's Digest
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] font-sans flex items-center gap-2"> Counsel's Digest
                 </h3>
                 <button onClick={() => navigate('/briefing')}
                   className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-slate-200 flex items-center gap-1.5 font-sans transition">
@@ -296,8 +294,7 @@ export default function Dashboard() {
           {/* Jurisdiction Pulse */}
           <div className="bg-[#0a0c10] border border-white/5 rounded-sm overflow-hidden">
             <div className="px-5 py-4 border-b border-white/5">
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] font-sans flex items-center gap-2">
-                <Scale className="w-3.5 h-3.5" /> Jurisdiction Pulse
+              <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] font-sans flex items-center gap-2"> Jurisdiction Pulse
               </h3>
               <p className="text-[9px] text-slate-600 font-sans mt-0.5 uppercase tracking-widest">
                 Judgments ingested · last 24 hrs

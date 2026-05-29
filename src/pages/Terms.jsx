@@ -9,7 +9,7 @@
 
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Scale, ArrowLeft, AlertTriangle } from 'lucide-react';
+import {ArrowLeft, AlertTriangle } from 'lucide-react';
 
 const LAST_UPDATED = "27 May 2026";
 
@@ -61,7 +61,6 @@ export default function Terms() {
         <div className="border-b border-white/5 bg-[#08090d] py-16 px-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
-              <Scale size={18} className="text-[#c5a059]" />
               <span className="text-[#c5a059] text-xs tracking-[0.25em] font-bold uppercase">Legal Document</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold font-serif mb-4">Terms of Service</h1>

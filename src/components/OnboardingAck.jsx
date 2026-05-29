@@ -30,7 +30,7 @@
  */
 
 import { useState } from 'react';
-import { Scale, AlertTriangle, CheckSquare, Square, ShieldAlert } from 'lucide-react';
+import {AlertTriangle, CheckSquare, Square, ShieldAlert } from 'lucide-react';
 import api from '../services/api';
 
 const ACK_STORAGE_KEY = 'legaintel_ack_v1';
@@ -113,7 +113,6 @@ export default function OnboardingAck({ onComplete }) {
         {/* Header */}
         <div className="px-8 pt-8 pb-6 border-b border-white/5">
           <div className="flex items-center gap-3 mb-4">
-            <Scale size={20} className="text-[#c5a059]" />
             <span className="text-[#c5a059] text-xs tracking-[0.25em] font-bold uppercase">
               LegAIntel — AI Disclaimer & Acknowledgement
             </span>

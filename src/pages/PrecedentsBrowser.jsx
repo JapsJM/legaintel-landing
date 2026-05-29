@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import api from '../services/api';
 import { 
   Search, Calendar, Filter, Copy, PlusCircle, CheckCircle, 
-  ChevronLeft, ChevronRight, Loader2, Scale, Info, Landmark 
+  ChevronLeft, ChevronRight, Loader2, Info 
 } from 'lucide-react';
 
 // Dynamic API Host Resolver
@@ -135,7 +135,6 @@ export default function PrecedentsBrowser() {
           <div className="space-y-1">
             <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Jurisdiction</label>
             <div className="relative">
-              <Landmark className="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-500" />
               <select
                 value={courtFilter}
                 onChange={(e) => { setCourtFilter(e.target.value); setPage(1); }}
@@ -200,7 +199,6 @@ export default function PrecedentsBrowser() {
             </div>
           ) : precedents.length === 0 ? (
             <div className="p-8 text-center text-slate-500 text-xs space-y-2">
-              <Scale className="w-8 h-8 mx-auto text-[#c5a059] opacity-40" />
               <p>No matching judgments found.</p>
             </div>
           ) : (
@@ -438,7 +436,6 @@ export default function PrecedentsBrowser() {
           </div>
         ) : (
           <div className="flex-1 flex flex-col justify-center items-center text-slate-500 text-sm space-y-4">
-            <Scale className="w-16 h-16 text-[#c5a059] opacity-40 animate-pulse" />
             <p className="text-xs uppercase tracking-widest text-slate-400">Select a case from the catalog to view its Executive Canvas.</p>
           </div>
         )}
