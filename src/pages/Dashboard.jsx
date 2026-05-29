@@ -81,7 +81,6 @@ const PulseBar = ({ label, count, max, total }) => {
           style={{ width: `${pct}%` }} />
       </div>
       <span className="text-[10px] text-slate-500 font-mono w-6 text-right shrink-0">{count}</span>
-      {showWizard && <OnboardingWizard onDismiss={() => setShowWizard(false)} />}
     </div>
   )
 }
@@ -365,6 +364,7 @@ export default function Dashboard() {
 
         </div>
       </div>
+      {showWizard && <OnboardingWizard onDismiss={() => setShowWizard(false)} />}
     </div>
   )
 }
