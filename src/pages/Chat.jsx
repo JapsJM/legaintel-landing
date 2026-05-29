@@ -14,7 +14,7 @@ import {
 // Dynamic API Host Resolver: Forces Port 5000 locally, resolves relatively in production
 const API_HOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:5000'
-  : '';
+  : (import.meta.env.VITE_API_URL || '');
 
 export default function Chat() {
   const { user } = useAuth();
