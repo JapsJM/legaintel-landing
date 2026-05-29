@@ -13,6 +13,10 @@ export default function Admin() {
   const [loading, setLoading] = useState(true);
   const [updatingUserId, setUpdatingUserId] = useState(null);
   const [savingConfig, setSavingConfig] = useState(false);
+  const [broadcastMsg, setBroadcastMsg] = useState('');
+  const [broadcastPreview, setBroadcastPreview] = useState(null);
+  const [broadcasting, setBroadcasting] = useState(false);
+  const [broadcastResult, setBroadcastResult] = useState(null);
 
   useEffect(() => {
     fetchStats();
@@ -120,6 +124,34 @@ export default function Admin() {
   };
 
   const totalPages = Math.ceil(totalUsers / 5);
+
+  const handleBroadcastPreview = async () => {
+    if (!broadcastMsg.trim()) return;
+    setBroadcasting(true);
+    try {
+      const res = await api.post('/admin/broadcast', { message: broadcastMsg, preview: true }, {
+        headers: { 'X-Admin-Secret': import.meta.env.VITE_ADMIN_SECRET || 'legaintel-internal-2026' }
+      });
+      setBroadcastPreview(res.data);
+    } catch (err) {
+      setBroadcastResult({ error: err.response?.data?.error || 'Preview failed' });
+    } finally { setBroadcasting(false); }
+  };
+
+  const handleBroadcastSend = async () => {
+    if (!broadcastPreview) return;
+    setBroadcasting(true);
+    try {
+      const res = await api.post('/admin/broadcast', { message: broadcastMsg }, {
+        headers: { 'X-Admin-Secret': import.meta.env.VITE_ADMIN_SECRET || 'legaintel-internal-2026' }
+      });
+      setBroadcastResult(res.data);
+      setBroadcastPreview(null);
+      setBroadcastMsg('');
+    } catch (err) {
+      setBroadcastResult({ error: err.response?.data?.error || 'Broadcast failed' });
+    } finally { setBroadcasting(false); }
+  };
 
   return (
     <div className="space-y-10 pb-12 font-sans">
@@ -375,6 +407,57 @@ export default function Admin() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+      </div>
+
+      {/* Telegram Broadcast Panel */}
+      <div className="bg-[#0a0c10] border border-white/5 rounded-sm p-6 space-y-5">
+        <div>
+          <h2 className="text-sm font-bold uppercase tracking-widest text-slate-300 flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#229ED9"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+            Telegram Broadcast
+          </h2>
+          <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold mt-1">Send a message to all active @LegAIntel_bot subscribers</p>
+        </div>
+
+        <textarea
+          value={broadcastMsg}
+          onChange={e => { setBroadcastMsg(e.target.value); setBroadcastPreview(null); setBroadcastResult(null); }}
+          placeholder="Write your broadcast message here... (max 4096 chars)"
+          rows={5}
+          className="w-full bg-black/40 border border-white/10 rounded-sm px-4 py-3 text-sm text-slate-200 font-sans focus:outline-none focus:border-[#c5a059]/50 resize-none placeholder-slate-600"
+        />
+
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] text-slate-600 font-mono">{broadcastMsg.length}/4096</span>
+          <div className="flex gap-3">
+            {!broadcastPreview ? (
+              <button onClick={handleBroadcastPreview} disabled={broadcasting || !broadcastMsg.trim()}
+                className="px-5 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-widest rounded-sm transition disabled:opacity-40">
+                {broadcasting ? 'Checking...' : 'Preview'}
+              </button>
+            ) : (
+              <button onClick={handleBroadcastSend} disabled={broadcasting}
+                className="px-5 py-2 bg-[#229ED9] hover:bg-[#1a8fc7] text-white text-xs font-bold uppercase tracking-widest rounded-sm transition disabled:opacity-40">
+                {broadcasting ? 'Sending...' : `Send to ${broadcastPreview.subscriber_count} subscribers`}
+              </button>
+            )}
+          </div>
+        </div>
+
+        {broadcastPreview && (
+          <div className="p-4 bg-[#229ED9]/5 border border-[#229ED9]/20 rounded-sm">
+            <p className="text-[10px] text-[#229ED9] uppercase tracking-widest font-bold mb-2">Preview — {broadcastPreview.subscriber_count} active subscribers</p>
+            <p className="text-sm text-slate-300 font-sans whitespace-pre-wrap">{broadcastPreview.message}</p>
+          </div>
+        )}
+
+        {broadcastResult && (
+          <div className={`p-4 rounded-sm border ${broadcastResult.error ? 'bg-red-950/10 border-red-900/30 text-red-400' : 'bg-emerald-950/10 border-emerald-900/30 text-emerald-400'}`}>
+            <p className="text-xs font-bold font-sans">
+              {broadcastResult.error || `✓ Sent to ${broadcastResult.sent} of ${broadcastResult.total} subscribers. Failed: ${broadcastResult.failed}`}
+            </p>
           </div>
         )}
       </div>

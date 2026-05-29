@@ -14,6 +14,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import NotFound from './pages/NotFound'
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -125,7 +126,7 @@ export default function App() {
         {/* Secure Admin Dashboard Route */}
         <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
 
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )

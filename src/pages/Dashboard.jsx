@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { listConversations } from '../services/chat'
 import { getBriefing } from '../services/briefing'
 import { getJurisdictionPulse, getActiveMatters } from '../services/dashboard'
+import OnboardingWizard, { hasSeenWizard } from '../components/OnboardingWizard'
 import {
   FileText, MessageSquare, Zap, PlusCircle,
   AlertTriangle, CheckCircle, Clock, ArrowUpRight, ListChecks
@@ -80,6 +81,7 @@ const PulseBar = ({ label, count, max, total }) => {
           style={{ width: `${pct}%` }} />
       </div>
       <span className="text-[10px] text-slate-500 font-mono w-6 text-right shrink-0">{count}</span>
+      {showWizard && <OnboardingWizard onDismiss={() => setShowWizard(false)} />}
     </div>
   )
 }
@@ -96,6 +98,7 @@ export default function Dashboard() {
   const [priorities,   setPriorities]   = useState([])
   const [convCount,    setConvCount]    = useState(0)
   const [loading,      setLoading]      = useState(true)
+  const [showWizard,   setShowWizard]   = useState(false)
 
   useEffect(() => {
     Promise.allSettled([
@@ -111,7 +114,11 @@ export default function Dashboard() {
         setPriorities(mattersRes.value?.priorities || [])
       }
       if (convRes.status === 'fulfilled') setConvCount((convRes.value || []).length)
-    }).finally(() => setLoading(false))
+    }).finally(() => {
+      setLoading(false)
+      // Show wizard on first visit if no documents
+      if (!hasSeenWizard()) setShowWizard(true)
+    })
   }, [])
 
   const readyCount    = matters.filter(m => m.status === 'ready').length
@@ -183,8 +190,19 @@ export default function Dashboard() {
             </div>
             <div className="p-5">
               {loading ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 animate-pulse">
-                  {[1,2,3].map(i => <div key={i} className="h-20 bg-white/5 rounded-sm" />)}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {[1,2,3,4,5,6].map(i => (
+                    <div key={i} className="p-4 rounded-sm border border-white/5 animate-pulse space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/10 shrink-0" />
+                        <div className="h-2.5 bg-white/10 rounded w-3/4" />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="h-4 bg-white/10 rounded-full w-14" />
+                        <div className="h-2 bg-white/5 rounded w-10" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ) : matters.length > 0 ? (
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -250,8 +268,15 @@ export default function Dashboard() {
               </div>
               <div className="p-6">
                 {loading ? (
-                  <div className="space-y-2.5 animate-pulse">
-                    {[1,2,3].map(i => <div key={i} className={`h-3 bg-white/5 rounded ${i === 2 ? 'w-2/3' : i === 1 ? 'w-3/4' : 'w-full'}`} />)}
+                  <div className="space-y-3 animate-pulse">
+                    <div className="h-3 bg-white/10 rounded w-full" />
+                    <div className="h-3 bg-white/10 rounded w-5/6" />
+                    <div className="h-3 bg-white/10 rounded w-3/4" />
+                    <div className="h-3 bg-white/10 rounded w-2/3" />
+                    <div className="flex gap-2 pt-2">
+                      <div className="h-5 bg-white/5 rounded w-20" />
+                      <div className="h-5 bg-white/5 rounded w-24" />
+                    </div>
                   </div>
                 ) : briefing?.summary && !briefingStale ? (
                   <div className="space-y-4">
@@ -302,8 +327,14 @@ export default function Dashboard() {
             </div>
             <div className="p-5 space-y-3.5">
               {loading ? (
-                <div className="space-y-3 animate-pulse">
-                  {[1,2,3].map(i => <div key={i} className="h-4 bg-white/5 rounded" />)}
+                <div className="space-y-3.5">
+                  {[1,2,3].map(i => (
+                    <div key={i} className="flex items-center gap-3 animate-pulse">
+                      <div className="h-2 bg-white/10 rounded w-28 shrink-0" />
+                      <div className="flex-1 h-1.5 bg-white/5 rounded-full" />
+                      <div className="h-2 bg-white/10 rounded w-4" />
+                    </div>
+                  ))}
                 </div>
               ) : pulse?.pulse?.length > 0 ? (
                 <>

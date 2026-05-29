@@ -119,6 +119,104 @@ function AssistantMessage({ msg, msgIndex, messages, logOutput }) {
 }
 
 // ─── MessageThread (main export) ────────────────────────────────
+
+// ── Agent Communication Animation ────────────────────────────────────────────
+
+const AGENT_STEPS = [
+  { label: 'Query Analyst',    desc: 'Parsing legal intent and extracting key provisions...' },
+  { label: 'Document Retriever', desc: 'Scanning indexed matter chunks for relevance...' },
+  { label: 'Precedent Mapper', desc: 'Cross-referencing judgments and citations...' },
+  { label: 'Synthesis Engine', desc: 'Composing grounded legal response...' },
+]
+
+function AgentThinking() {
+  const [activeStep, setActiveStep] = React.useState(0)
+  const [dots, setDots] = React.useState('')
+
+  React.useEffect(() => {
+    const stepTimer = setInterval(() => {
+      setActiveStep(s => (s + 1) % AGENT_STEPS.length)
+    }, 2200)
+    const dotTimer = setInterval(() => {
+      setDots(d => d.length >= 3 ? '' : d + '.')
+    }, 400)
+    return () => { clearInterval(stepTimer); clearInterval(dotTimer) }
+  }, [])
+
+  return (
+    <div className="p-5 bg-[#0a0c10] border border-white/5 rounded-sm">
+      <div className="flex items-center gap-2 mb-4">
+        <div className="flex gap-1">
+          {[0,1,2].map(i => (
+            <div key={i} className="w-1 h-1 rounded-full bg-[#c5a059]"
+              style={{ animation: `bounce 1.2s ease-in-out ${i * 0.2}s infinite` }} />
+          ))}
+        </div>
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a059] font-sans">
+          Processing Query{dots}
+        </span>
+      </div>
+
+      <div className="space-y-2">
+        {AGENT_STEPS.map((step, i) => {
+          const isDone   = i < activeStep
+          const isActive = i === activeStep
+          return (
+            <div key={i} className={`flex items-start gap-3 py-2 px-3 rounded-sm transition-all duration-500
+              ${isActive ? 'bg-white/[0.04] border border-white/[0.08]' : 'border border-transparent'}`}>
+              {/* Status indicator */}
+              <div className={`w-4 h-4 rounded-full shrink-0 mt-0.5 flex items-center justify-center transition-all duration-500
+                ${isDone   ? 'bg-emerald-500/20 border border-emerald-500/40'
+                : isActive ? 'bg-[#c5a059]/20 border border-[#c5a059]/40'
+                :            'bg-white/5 border border-white/10'}`}>
+                {isDone ? (
+                  <svg className="w-2.5 h-2.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/>
+                  </svg>
+                ) : isActive ? (
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#c5a059]"
+                    style={{ animation: 'ping 1s cubic-bezier(0,0,0.2,1) infinite' }} />
+                ) : (
+                  <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                )}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <p className={`text-[10px] font-bold uppercase tracking-widest font-sans transition-colors
+                  ${isDone ? 'text-emerald-400' : isActive ? 'text-white' : 'text-slate-600'}`}>
+                  {step.label}
+                </p>
+                {isActive && (
+                  <p className="text-[10px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                    {step.desc}
+                  </p>
+                )}
+              </div>
+
+              {/* Connector line */}
+              {i < AGENT_STEPS.length - 1 && (
+                <div className={`absolute left-[26px] w-px transition-all duration-700
+                  ${isDone ? 'bg-emerald-500/30' : 'bg-white/5'}`}
+                  style={{ height: '16px', marginTop: '20px' }} />
+              )}
+            </div>
+          )
+        })}
+      </div>
+
+      <style>{`
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+        @keyframes ping {
+          75%, 100% { transform: scale(2); opacity: 0; }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 export default function MessageThread({ messages, thinking }) {
   const bottomRef = useRef(null);
   const { logOutput } = useAuditLog();
@@ -154,13 +252,7 @@ export default function MessageThread({ messages, thinking }) {
         </div>
       ))}
 
-      {thinking && (
-        <div className="p-6 bg-white/[0.02] border border-white/5 rounded animate-pulse">
-          <div className="h-3 w-2/3 bg-white/5 rounded mb-3" />
-          <div className="h-3 w-1/2 bg-white/5 rounded mb-3" />
-          <div className="h-3 w-3/4 bg-white/5 rounded" />
-        </div>
-      )}
+      {thinking && <AgentThinking />}
 
       <div ref={bottomRef} />
     </div>
