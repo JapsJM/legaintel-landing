@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import ConversationSidebar from '../components/ConversationSidebar';
 import MessageThread from '../components/MessageThread';
@@ -11,9 +11,6 @@ import {Archive, Tag, Eye, EyeOff, Sparkles, X, Loader2, Play,
 } from 'lucide-react';
 
 // Dynamic API Host Resolver: Forces Port 5000 locally, resolves relatively in production
-const API_HOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:5000'
-  : (import.meta.env.VITE_API_URL || '');
 
 export default function Chat() {
   const { user } = useAuth();
@@ -144,7 +141,7 @@ export default function Chat() {
       const activeSession = sessions.find(s => s.id === activeSessionId);
       const currentlyArchived = activeSession ? activeSession.is_archived : false;
       
-      await axios.post(`${API_HOST}/api/conversations/${activeSessionId}/archive`, {
+      await api.post(`/conversations/${activeSessionId}/archive`, {
         is_archived: !currentlyArchived
       }, getHeaders());
 
@@ -164,7 +161,7 @@ export default function Chat() {
     if (!activeSessionId) return;
     setSessionCategory(cat);
     try {
-      await axios.post(`${API_HOST}/api/conversations/${activeSessionId}/category`, {
+      await api.post(`/conversations/${activeSessionId}/category`, {
         category: cat
       }, getHeaders());
 
@@ -190,7 +187,7 @@ export default function Chat() {
     if (!bridgeInputText.trim()) return;
     setBridgeLoading(true);
     try {
-      const res = await axios.post(`${API_HOST}/api/transition/map-text`, {
+      const res = await api.post(`/transition/map-text`, {
         text: bridgeInputText
       }, getHeaders());
 
@@ -209,7 +206,7 @@ export default function Chat() {
     setLookupResult(null);
     setLookupNotFound(false);
     try {
-      const res = await axios.get(`${API_HOST}/api/transition/lookup`, {
+      const res = await api.get(`/transition/lookup`, {
         ...getHeaders(),
         params: { act: lookupAct, section: lookupSection.trim(), direction: 'auto' }
       });
