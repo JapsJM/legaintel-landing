@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { authAPI, billingAPI } from '../services/api';
 import { CreditCard, Check, Sparkles, Shield, User, Trash2, ShieldAlert, Mail, Phone, X, AlertTriangle } from 'lucide-react';
@@ -35,7 +35,7 @@ export default function Profile() {
       setMessage({ type: 'success', text: 'Profile updated successfully.' });
       setIsEditing(false);
     } catch (err) {
-      setMessage({ type: 'error', text: err.response?.data?.error || 'Update failed' });
+      setMessage({ type: 'error', text: String(err.response?.data?.error || 'Update failed') });
     }
   };
 
@@ -53,7 +53,7 @@ export default function Profile() {
       setMessage({ type: 'success', text: 'Password changed successfully.' });
       setPasswords({ current_password: '', new_password: '', confirm_password: '' });
     } catch (err) {
-      setMessage({ type: 'error', text: err.response?.data?.error || 'Password change failed' });
+      setMessage({ type: 'error', text: String(err.response?.data?.error || 'Password change failed') });
     }
   };
 
@@ -66,7 +66,7 @@ export default function Profile() {
       await authAPI.uploadAvatar(fd);
       setMessage({ type: 'success', text: 'Avatar updated. Refresh page to apply.' });
     } catch (err) {
-      setMessage({ type: 'error', text: err.response?.data?.error || 'Avatar upload failed' });
+      setMessage({ type: 'error', text: String(err.response?.data?.error || 'Avatar upload failed') });
     }
   };
 
@@ -77,7 +77,7 @@ export default function Profile() {
       const response = await billingAPI.checkout(tierChoice);
       window.location.href = response.data.url;
     } catch (err) {
-      setMessage({ type: 'error', text: err.response?.data?.error || 'Failed to initiate checkout.' });
+      setMessage({ type: 'error', text: String(err.response?.data?.error || 'Failed to initiate checkout.') });
       setBillingLoading(false);
     }
   };
@@ -87,12 +87,12 @@ export default function Profile() {
     setRequestingDelete(true);
     setMessage({ type: '', text: '' });
     try {
-      await axios.post('/api/auth/delete/request-otp', {}, getHeaders());
+      await api.post('/auth/delete/request-otp', {}, getHeaders());
       setShowDeleteModal(true);
     } catch (err) {
       setMessage({
         type: 'error',
-        text: err.response?.data?.error || 'Failed to request security deletion codes. Verify contact details.'
+        text: String(err.response?.data?.error || 'Failed to request security deletion codes. Verify contact details.')
       });
     } finally {
       setRequestingDelete(false);
@@ -104,7 +104,7 @@ export default function Profile() {
     e.preventDefault();
     setDeletingAccount(true);
     try {
-      await axios.post('/api/auth/delete/verify-otp', {
+      await api.post('/auth/delete/verify-otp', {
         email_otp: deleteOtps.email_otp,
         sms_otp: deleteOtps.sms_otp
       }, getHeaders());
@@ -115,7 +115,7 @@ export default function Profile() {
     } catch (err) {
       setMessage({
         type: 'error',
-        text: err.response?.data?.error || 'Verification failed. Destruction sequence aborted.'
+        text: String(err.response?.data?.error || 'Verification failed. Destruction sequence aborted.')
       });
       setShowDeleteModal(false);
     } finally {
