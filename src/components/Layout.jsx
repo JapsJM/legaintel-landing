@@ -115,7 +115,7 @@ export default function Layout({ children }) {
               <Link to="/profile" className={`flex items-center gap-4 px-3 py-2.5 text-sm transition-all rounded-md hover:bg-white/5 ${location.pathname === '/profile' ? 'text-white bg-white/5 border-l-2 border-[#c5a059]' : 'text-slate-500 hover:text-white'}`}>
                 <User className="w-4 h-4 text-slate-600" /> My Profile
               </Link>
-              <button onClick={() => { logout(); navigate('/login'); }} className="w-full flex items-center gap-4 px-3 py-2.5 text-sm text-slate-500 hover:text-red-400 transition-all rounded-md hover:bg-white/5">
+              <button onClick={() => { logout(); navigate('/'); }} className="w-full flex items-center gap-4 px-3 py-2.5 text-sm text-slate-500 hover:text-red-400 transition-all rounded-md hover:bg-white/5">
                 <LogOut className="w-4 h-4 text-slate-600" /> Sign Out
               </button>
             </div>

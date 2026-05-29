@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import { 
   Sparkles, FileText, Loader2, ArrowLeft, Search, Printer, 
   Scale, Info, ShieldAlert, Calendar, Filter, Landmark, Copy, PlusCircle, CheckCircle,
@@ -8,9 +8,7 @@ import {
 } from 'lucide-react';
 
 // Dynamic API Host Resolver
-const API_HOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:5000'
-  : '';
+
 
 export default function CaseBriefsPage() {
   const navigate = useNavigate();
@@ -57,7 +55,7 @@ export default function CaseBriefsPage() {
     setLoading(true);
     setBriefError(null);
     try {
-      const res = await axios.get(`${API_HOST}/api/documents/list`, getHeaders());
+      const res = await api.get('/documents/list', getHeaders());
       const docs = res.data.documents || res.data || [];
       setUploadedDocs(docs);
       if (docs.length > 0 && activeTab === 'private' && !selectedDocId) {
@@ -78,7 +76,7 @@ export default function CaseBriefsPage() {
     setLoading(true);
     setBriefError(null);
     try {
-      const res = await axios.get(`${API_HOST}/api/documents/public`, {
+      const res = await api.get('/documents/public', {
         params: {
           page: publicPage,
           limit: publicLimit,
@@ -135,7 +133,7 @@ export default function CaseBriefsPage() {
     setBriefError(null);
     setBriefData(null);
     try {
-      const res = await axios.get(`${API_HOST}/api/briefs/${docId}`, getHeaders());
+      const res = await api.get(`/briefs/${docId}`, getHeaders());
       setBriefData(res.data.data);
     } catch (err) {
       if (err.response && err.response.status === 404) {
@@ -154,7 +152,7 @@ export default function CaseBriefsPage() {
     setBriefLoading(true);
     setBriefError(null);
     try {
-      const res = await axios.post(`${API_HOST}/api/briefs/${selectedDocId}/regenerate`, {}, getHeaders());
+      const res = await api.post(`/briefs/${selectedDocId}/regenerate`, {}, getHeaders());
       setBriefData(res.data.data);
       
       // Update public list dynamically if we are in public tab
@@ -176,7 +174,7 @@ export default function CaseBriefsPage() {
     setSuccessMsg(null);
     setBriefError(null);
     try {
-      const res = await axios.post(`${API_HOST}/api/documents/${docId}/link`, {}, getHeaders());
+      const res = await api.post(`/documents/${docId}/link`, {}, getHeaders());
       setSuccessMsg(res.data.message);
       
       // Update public items to show added check

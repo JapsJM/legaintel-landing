@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { 
   Search, Calendar, Filter, Copy, PlusCircle, CheckCircle, 
   ChevronLeft, ChevronRight, Loader2, Scale, Info, Landmark 
 } from 'lucide-react';
 
 // Dynamic API Host Resolver
-const API_HOST = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:5000'
-  : '';
+
 
 export default function PrecedentsBrowser() {
   const [loading, setLoading] = useState(false);
@@ -42,7 +40,7 @@ export default function PrecedentsBrowser() {
     setLoading(true);
     setErrorMsg(null);
     try {
-      const res = await axios.get(`${API_HOST}/api/documents/public`, {
+      const res = await api.get('/documents/public', {
         params: {
           page,
           limit,
@@ -95,7 +93,7 @@ export default function PrecedentsBrowser() {
     setSuccessMsg(null);
     setErrorMsg(null);
     try {
-      const res = await axios.post(`${API_HOST}/api/documents/${docId}/link`, {}, getHeaders());
+      const res = await api.post(`/documents/${docId}/link`, {}, getHeaders());
       setSuccessMsg(res.data.message);
       
       // Update local state to show case is linked

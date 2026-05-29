@@ -79,6 +79,25 @@ export default function Landing() {
         </p>
       </div>
 
+      {/* Fixed Left QR Code — xl screens only */}
+      <div className="hidden xl:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-2">
+        <div className="p-2.5 bg-white rounded-xl shadow-[0_0_20px_rgba(197,160,89,0.15)] border border-[#c5a059]/10">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://t.me/LegAIntel_bot%3Fstart%3Dsub&color=000000&bgcolor=ffffff&margin=2"
+            alt="Scan to open @LegAIntel_bot on Telegram"
+            width="110"
+            height="110"
+            className="block"
+          />
+        </div>
+        <p className="text-[9px] text-slate-500 text-center uppercase tracking-widest font-sans leading-tight">
+          Scan for<br/>Judgment Alerts
+        </p>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#229ED9" className="opacity-70">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+        </svg>
+      </div>
+
       {/* Hero Section */}
       <header className="max-w-5xl mx-auto px-6 pt-28 pb-24 text-center flex flex-col justify-center items-center relative min-h-[90vh]">
         
@@ -484,72 +503,13 @@ export default function Landing() {
           {/* Right — QR Code */}
           <div className="flex flex-col items-center gap-4 shrink-0">
             <div className="p-4 bg-white rounded-xl shadow-[0_0_30px_rgba(197,160,89,0.1)]">
-              {/* QR Code for https://t.me/LegAIntel_bot?start=sub */}
-              <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" shapeRendering="crispEdges">
-                <rect width="160" height="160" fill="white"/>
-                {/* Finder pattern top-left */}
-                <rect x="10" y="10" width="49" height="49" fill="black"/>
-                <rect x="17" y="17" width="35" height="35" fill="white"/>
-                <rect x="24" y="24" width="21" height="21" fill="black"/>
-                {/* Finder pattern top-right */}
-                <rect x="101" y="10" width="49" height="49" fill="black"/>
-                <rect x="108" y="17" width="35" height="35" fill="white"/>
-                <rect x="115" y="24" width="21" height="21" fill="black"/>
-                {/* Finder pattern bottom-left */}
-                <rect x="10" y="101" width="49" height="49" fill="black"/>
-                <rect x="17" y="108" width="35" height="35" fill="white"/>
-                <rect x="24" y="115" width="21" height="21" fill="black"/>
-                {/* Center logo area */}
-                <rect x="62" y="62" width="36" height="36" fill="white"/>
-                <rect x="66" y="66" width="28" height="28" fill="#c5a059" rx="4"/>
-                <text x="80" y="85" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="serif">⚖</text>
-                {/* Data modules - horizontal timing */}
-                <rect x="66" y="66" width="7" height="7" fill="black" opacity="0"/>
-                {/* Data pattern rows */}
-                <rect x="66" y="10" width="7" height="7" fill="black"/>
-                <rect x="80" y="10" width="7" height="7" fill="black"/>
-                <rect x="94" y="10" width="7" height="7" fill="black"/>
-                <rect x="66" y="24" width="7" height="7" fill="black"/>
-                <rect x="73" y="17" width="7" height="7" fill="black"/>
-                <rect x="87" y="17" width="7" height="7" fill="black"/>
-                <rect x="73" y="31" width="7" height="7" fill="black"/>
-                <rect x="87" y="31" width="7" height="7" fill="black"/>
-                <rect x="10" y="66" width="7" height="7" fill="black"/>
-                <rect x="24" y="66" width="7" height="7" fill="black"/>
-                <rect x="38" y="66" width="7" height="7" fill="black"/>
-                <rect x="10" y="80" width="7" height="7" fill="black"/>
-                <rect x="31" y="73" width="7" height="7" fill="black"/>
-                <rect x="17" y="87" width="7" height="7" fill="black"/>
-                <rect x="38" y="80" width="7" height="7" fill="black"/>
-                <rect x="101" y="66" width="7" height="7" fill="black"/>
-                <rect x="115" y="66" width="7" height="7" fill="black"/>
-                <rect x="129" y="66" width="7" height="7" fill="black"/>
-                <rect x="143" y="66" width="7" height="7" fill="black"/>
-                <rect x="108" y="73" width="7" height="7" fill="black"/>
-                <rect x="129" y="80" width="7" height="7" fill="black"/>
-                <rect x="143" y="73" width="7" height="7" fill="black"/>
-                <rect x="108" y="87" width="7" height="7" fill="black"/>
-                <rect x="122" y="87" width="7" height="7" fill="black"/>
-                <rect x="66" y="101" width="7" height="7" fill="black"/>
-                <rect x="80" y="101" width="7" height="7" fill="black"/>
-                <rect x="94" y="101" width="7" height="7" fill="black"/>
-                <rect x="108" y="101" width="7" height="7" fill="black"/>
-                <rect x="122" y="108" width="7" height="7" fill="black"/>
-                <rect x="143" y="101" width="7" height="7" fill="black"/>
-                <rect x="66" y="115" width="7" height="7" fill="black"/>
-                <rect x="87" y="108" width="7" height="7" fill="black"/>
-                <rect x="101" y="115" width="7" height="7" fill="black"/>
-                <rect x="136" y="108" width="7" height="7" fill="black"/>
-                <rect x="73" y="122" width="7" height="7" fill="black"/>
-                <rect x="94" y="122" width="7" height="7" fill="black"/>
-                <rect x="115" y="122" width="7" height="7" fill="black"/>
-                <rect x="136" y="122" width="7" height="7" fill="black"/>
-                <rect x="66" y="129" width="7" height="7" fill="black"/>
-                <rect x="87" y="136" width="7" height="7" fill="black"/>
-                <rect x="108" y="129" width="7" height="7" fill="black"/>
-                <rect x="129" y="136" width="7" height="7" fill="black"/>
-                <rect x="143" y="129" width="7" height="7" fill="black"/>
-              </svg>
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://t.me/LegAIntel_bot%3Fstart%3Dsub&color=000000&bgcolor=ffffff&margin=2"
+                alt="Scan to open @LegAIntel_bot on Telegram"
+                width="160"
+                height="160"
+                className="block"
+              />
             </div>
             <p className="text-xs text-slate-500 text-center font-sans">Scan to open<br/>@LegAIntel_bot</p>
           </div>
