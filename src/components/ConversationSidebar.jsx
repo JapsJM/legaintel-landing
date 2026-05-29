@@ -16,14 +16,7 @@ export default function ConversationSidebar({ sessions, activeId, onSelect, onNe
           New Research
         </button>
 
-        {/* Judge Analytics Button - Secondary Outline */}
-        <Link
-          to="/analytics"
-          className="w-full flex items-center justify-center gap-2 bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 text-slate-300 py-2.5 rounded-sm text-[10px] font-bold uppercase tracking-[0.15em] transition-all"
-        >
-          <BarChart3 className="w-3.5 h-3.5 text-[#c5a059]" />
-          Judge Analytics
-        </Link>
+
       </div>
 
       {/* Search Bar */}
