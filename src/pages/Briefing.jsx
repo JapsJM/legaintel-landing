@@ -118,11 +118,6 @@ const Briefing = () => {
           </button>
           <div>
             <h1 className="text-base font-bold text-white uppercase tracking-widest font-sans flex items-center gap-2">
-              <svg className="w-4 h-4" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="9" width="20" height="3.5" rx="1.75" fill="#c5a059"/>
-                <rect x="12" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-                <rect x="21" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-              </svg>
               Counsel's Digest
             </h1>
             <p className="text-xs text-slate-400 font-sans">Personalised Daily Intelligence · {new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })}</p>

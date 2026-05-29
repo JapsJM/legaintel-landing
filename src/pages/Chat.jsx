@@ -281,11 +281,6 @@ export default function Chat() {
       <div className="flex-1 flex flex-col bg-[#050505] min-w-0 font-sans relative">
         <header className="h-14 border-b border-white/5 flex items-center justify-between px-8 bg-black/20 shrink-0">
           <div className="flex items-center gap-3">
-            <svg className="w-4 h-4" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="9" width="20" height="3.5" rx="1.75" fill="#c5a059"/>
-                <rect x="12" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-                <rect x="21" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-              </svg>
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-300">Research Workspace</h2>
           </div>
 

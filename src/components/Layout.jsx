@@ -25,16 +25,7 @@ export default function Layout({ children }) {
       {/* Sidebar */}
       <div className="w-64 bg-[#0a0c10] border-r border-white/5 flex flex-col shrink-0">
         <div className="p-8">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 shrink-0">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="9" width="20" height="3.5" rx="1.75" fill="#c5a059"/>
-                <rect x="12" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-                <rect x="21" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-                <rect x="13.5" y="14.5" width="4" height="1.5" rx="0.75" fill="#050505" opacity="0.25"/>
-                <rect x="22.5" y="14.5" width="4" height="1.5" rx="0.75" fill="#050505" opacity="0.25"/>
-              </svg>
-            </div>
+          <div className="flex items-center">
             <h1 className="text-xl font-serif tracking-tight text-white">
               leg<span className="text-[#c5a059] font-bold">AI</span>ntel
             </h1>

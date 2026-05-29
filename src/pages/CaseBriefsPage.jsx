@@ -239,12 +239,7 @@ export default function CaseBriefsPage() {
             <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
-            <h1 className="text-xs font-bold uppercase tracking-[0.2em] text-white flex items-center gap-2">
-              <svg className="w-4 h-4" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="9" width="20" height="3.5" rx="1.75" fill="#c5a059"/>
-                <rect x="12" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-                <rect x="21" y="12.5" width="7" height="15" rx="1.5" fill="#c5a059" opacity="0.9"/>
-              </svg> Case Brief Workspace
+            <h1 className="text-xs font-bold uppercase tracking-[0.2em] text-white flex items-center gap-2"> Case Brief Workspace
             </h1>
             <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5">Sovereign 10-Point VIP Analysis Canvas</p>
           </div>

@@ -15,25 +15,6 @@ import {
 } from 'lucide-react';
 
 // Custom Advocate's Neckband / Collar Tabs Icon (Watermark)
-const AdvocateBands = ({ className }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="1.25" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    {/* Collar neckband structure */}
-    <path d="M5 5h14a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
-    {/* Left Advocate Tab (Neckband) */}
-    <path d="M8 8v10h3.5V8" fill="currentColor" fillOpacity="0.1" />
-    {/* Right Advocate Tab (Neckband) */}
-    <path d="M12.5 8v10h3.5V8" fill="currentColor" fillOpacity="0.1" />
-  </svg>
-);
-
 export default function Landing() {
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-[#c5a059] selection:text-black scroll-smooth">
@@ -101,7 +82,7 @@ export default function Landing() {
       <header className="max-w-5xl mx-auto px-6 pt-28 pb-24 text-center flex flex-col justify-center items-center relative min-h-[90vh]">
         
         {/* Huge background watermark with 50% opacity and pointer-events disabled */}
-        <AdvocateBands className="absolute w-[350px] h-[350px] md:w-[480px] md:h-[480px] text-[#c5a059] opacity-50 -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
         
         {/* Subtle blur behind the symbol */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#c5a059]/5 rounded-full blur-3xl -z-20 pointer-events-none" />
