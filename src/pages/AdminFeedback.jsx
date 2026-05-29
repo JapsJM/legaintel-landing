@@ -44,11 +44,12 @@ function NotesModal({ entry, onClose, onSave }) {
   const [notes, setNotes] = useState(entry.admin_notes || '');
   const [status, setStatus] = useState(entry.status || 'pending');
   const [saving, setSaving] = useState(false);
+  const [replyMsg, setReplyMsg] = useState('');
 
   const handleSave = async () => {
     setSaving(true);
     try {
-      await onSave(entry.id, { status, admin_notes: notes });
+      await onSave(entry.id, { status, admin_notes: notes, reply_message: replyMsg });
       onClose();
     } finally {
       setSaving(false);
@@ -101,6 +102,23 @@ function NotesModal({ entry, onClose, onSave }) {
                 ))}
               </div>
             </div>
+
+            {/* Reply to user (shown when resolved) */}
+            {status === 'resolved' && (
+              <div>
+                <p className="text-xs text-slate-500 uppercase tracking-widest mb-2 font-semibold flex items-center gap-2">
+                  Reply to User
+                  <span className="text-[9px] text-emerald-400 border border-emerald-400/30 px-1.5 py-0.5 rounded-full">Email will be sent</span>
+                </p>
+                <textarea
+                  value={replyMsg}
+                  onChange={e => setReplyMsg(e.target.value)}
+                  placeholder="Write your reply to the user here. This will be sent to their registered email..."
+                  rows={3}
+                  className="w-full bg-black/30 border border-emerald-500/20 rounded-lg px-3 py-2.5 text-xs text-slate-200 font-sans focus:outline-none focus:border-emerald-500/40 resize-none placeholder-slate-600"
+                />
+              </div>
+            )}
 
             {/* Admin notes */}
             <div>
