@@ -16,7 +16,7 @@ export default function Layout({ children }) {
     { name: 'Legal Chat', href: '/chat', icon: MessageSquare },
     { name: 'Case Documents', href: '/documents', icon: FileText },
     { name: 'Media Library', href: '/media', icon: Library },
-    { name: 'Morning Briefing', href: '/briefing', icon: Zap },
+    { name: "Counsel's Digest", href: '/briefing', icon: Zap },
     { name: 'Case Briefs', href: '/briefs', icon: BookOpen },
   ];
 
