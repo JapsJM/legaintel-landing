@@ -46,8 +46,6 @@ function DeepDiveWorkspace() {
     }
   }
 
-  if (!loading && linked.length === 0) return null
-
   return (
     <section>
       <button onClick={() => setOpen(o => !o)}
@@ -70,6 +68,11 @@ function DeepDiveWorkspace() {
           {loading ? (
             <div className="space-y-2 animate-pulse">
               {[1,2].map(i => <div key={i} className="h-14 bg-white/5 rounded-sm" />)}
+            </div>
+          ) : linked.length === 0 ? (
+            <div className="py-6 text-center border border-dashed border-white/10 rounded-sm">
+              <p className="text-xs text-slate-500 font-sans">No judgments added yet.</p>
+              <p className="text-[10px] text-slate-600 font-sans mt-1">Browse the Public Catalogue and click "Add to Workspace".</p>
             </div>
           ) : linked.map(doc => (
             <div key={doc.id}
