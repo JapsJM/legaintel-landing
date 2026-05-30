@@ -1,4 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { 
   LayoutDashboard, MessageSquare, FileText, Library, 
@@ -8,6 +10,12 @@ import {
 
 export default function Layout({ children }) {
   const { user, logout } = useAuth();
+  const [docCount, setDocCount] = useState(null);
+  useEffect(() => {
+    if (user) {
+      api.get('/documents/list').then(r => setDocCount(r.data?.documents?.length || 0)).catch(() => {});
+    }
+  }, [user]);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -51,6 +59,11 @@ export default function Layout({ children }) {
                   >
                     <item.icon className={`w-4 h-4 ${isActive ? 'text-[#c5a059]' : 'text-slate-600 group-hover:text-slate-300'}`} />
                     {item.name}
+                    {item.href === '/documents' && docCount !== null && (
+                      <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[#c5a059]/10 border border-[#c5a059]/20 text-[#c5a059] font-sans">
+                        {docCount}
+                      </span>
+                    )}
                   </Link>
                 );
               })}
