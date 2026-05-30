@@ -235,7 +235,7 @@ export default function Chat() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-80px)] -m-10 overflow-hidden bg-[#050505]">
+    <div className="flex h-[calc(100vh-64px)] -mx-10 -mt-10 overflow-hidden bg-[#050505]">
       
       {/* LEFT SIDEBAR */}
       <div className="w-72 border-r border-white/5 bg-[#0a0c10] shrink-0 flex flex-col">
@@ -329,7 +329,7 @@ export default function Chat() {
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-8">
+        <div className="flex-1 overflow-y-auto p-6 pb-2">
           <div className="max-w-3xl mx-auto">
             {error && (
               <div className="mb-4 p-3 bg-red-950/20 border border-red-900/30 rounded text-xs text-red-300">
