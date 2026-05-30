@@ -59,7 +59,7 @@ function ProtectedRoute({ children }) {
   const [ackDone, setAckDone] = useState(hasAcknowledged())
 
   if (loading) return <div className="bg-gray-950 h-screen" />
-  if (!user) return <Navigate to="/login" replace />
+  if (!user) return <Navigate to="/" replace />
 
   // User is authenticated but has not acknowledged yet
   if (!ackDone) {
@@ -79,7 +79,7 @@ function ProtectedRoute({ children }) {
 function AdminRoute({ children }) {
   const { user, loading } = useAuth()
   if (loading) return <div className="bg-gray-950 h-screen" />
-  if (!user) return <Navigate to="/login" replace />
+  if (!user) return <Navigate to="/" replace />
   if (user.role !== 'admin') return <Navigate to="/dashboard" replace />
   return <Layout>{children}</Layout>
 }
