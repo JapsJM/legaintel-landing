@@ -110,6 +110,26 @@ export default function PrecedentsBrowser() {
     }
   };
 
+  const handleUnlinkFromWorkspace = async (docId) => {
+    setLinkingId(docId);
+    setSuccessMsg(null);
+    setErrorMsg(null);
+    try {
+      await api.delete(`/documents/${docId}/workspace`, getHeaders());
+      setSuccessMsg('Removed from workspace.');
+      setPrecedents(prev => prev.map(p =>
+        p.id === docId ? { ...p, is_deep_dived: false } : p
+      ));
+      if (selectedCase && selectedCase.id === docId) {
+        setSelectedCase(prev => ({ ...prev, is_deep_dived: false }));
+      }
+    } catch (err) {
+      setErrorMsg(err.response?.data?.error || 'Failed to remove from workspace.');
+    } finally {
+      setLinkingId(null);
+    }
+  };
+
   const formatFileSize = (bytes) => {
     if (!bytes) return "N/A";
     const kb = bytes / 1024;
@@ -297,9 +317,15 @@ export default function PrecedentsBrowser() {
                 </button>
 
                 <button
-                  onClick={() => handleLinkToWorkspace(selectedCase.id)}
-                  disabled={linkingId === selectedCase.id || selectedCase.is_deep_dived}
-                  className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-all ${selectedCase.is_deep_dived ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-[#c5a059] hover:bg-[#b38f48] text-black disabled:opacity-50'}`}
+                  onClick={() => selectedCase.is_deep_dived
+                    ? handleUnlinkFromWorkspace(selectedCase.id)
+                    : handleLinkToWorkspace(selectedCase.id)
+                  }
+                  disabled={linkingId === selectedCase.id}
+                  className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-all disabled:opacity-50
+                    ${selectedCase.is_deep_dived
+                      ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/20'
+                      : 'bg-[#c5a059] hover:bg-[#b38f48] text-black'}`}
                 >
                   {linkingId === selectedCase.id ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -308,7 +334,11 @@ export default function PrecedentsBrowser() {
                   ) : (
                     <PlusCircle className="w-3.5 h-3.5" />
                   )}
-                  {selectedCase.is_deep_dived ? "Added for Deep Dive" : "Add to Workspace"}
+                  {linkingId === selectedCase.id
+                    ? 'Processing...'
+                    : selectedCase.is_deep_dived
+                    ? 'Added — Click to Remove'
+                    : 'Add to Workspace'}
                 </button>
               </div>
             </div>
