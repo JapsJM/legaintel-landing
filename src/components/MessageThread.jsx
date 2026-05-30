@@ -14,7 +14,7 @@
  * ─────────────────────────────────────────────────────────────────
  */
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ShieldCheck, AlertCircle, ChevronDown, ChevronUp, FileText, AlertTriangle } from 'lucide-react';
 import useAuditLog from '../hooks/useAuditLog';
 
