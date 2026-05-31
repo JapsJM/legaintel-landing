@@ -38,7 +38,21 @@ export default {
       },
       boxShadow: {
         'glow': '0 0 20px rgba(14, 165, 233, 0.4)',
-      }
+      },
+      keyframes: {
+        fadeSlideUp: {
+          '0%':   { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          '0%':   { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        fadeSlideUp: 'fadeSlideUp 0.35s ease forwards',
+        fadeIn:      'fadeIn 0.25s ease forwards',
+      },
     },
   },
   plugins: [],

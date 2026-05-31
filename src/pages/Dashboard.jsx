@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { listConversations } from '../services/chat'
 import { getBriefing } from '../services/briefing'
+import FeatureBlueprint from '../components/FeatureBlueprint'
 import { getJurisdictionPulse, getActiveMatters } from '../services/dashboard'
 import OnboardingWizard, { hasSeenWizard } from '../components/OnboardingWizard'
 import {
