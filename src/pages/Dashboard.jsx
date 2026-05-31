@@ -365,6 +365,9 @@ export default function Dashboard() {
 
         </div>
       </div>
+      {/* Platform Guide */}
+      <FeatureBlueprint />
+
       {showWizard && <OnboardingWizard onDismiss={() => setShowWizard(false)} />}
     </div>
   )
