@@ -53,6 +53,14 @@ export default function Landing() {
         </div>
       </nav>
 
+      {/* ── BETA DISCLAIMER BANNER ── */}
+      <div className="w-full bg-amber-950/40 border-b border-amber-500/20 px-6 py-2.5 text-center">
+        <p className="text-xs text-amber-400/90 tracking-wide" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
+          <span className="font-bold uppercase tracking-widest mr-2">Beta</span>
+          LegAIntel is an experimental legal research platform. AI outputs are for research purposes only and do not constitute legal advice. Always consult a qualified advocate for legal matters.
+        </p>
+      </div>
+
       {/* ── PRIVATE ACCESS BANNER ── */}
       <div className="w-full bg-[#0d0e12] border-b border-[#c5a059]/15 px-6 py-3 text-center">
         <p className="text-[11px] text-slate-400 tracking-wide" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
@@ -333,24 +341,29 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1">
+          <div className="border border-white/5">
             {[
-              { d: "Constitutional Law", n: "01" },
-              { d: "Civil Law", n: "02" },
-              { d: "Criminal Law", n: "03" },
-              { d: "Corporate Law", n: "04" },
-              { d: "Taxation", n: "05" },
-              { d: "Revenue Law", n: "06" },
-              { d: "Labour & Employment", n: "07" },
-              { d: "Environmental Law", n: "08" },
-              { d: "Intellectual Property", n: "09" },
-              { d: "Arbitration", n: "10" },
-              { d: "Regulatory & Compliance", n: "11" },
-              { d: "Public Administration", n: "12" },
-            ].map(({ d, n }) => (
-              <div key={n} className="p-6 border border-white/5 hover:border-[#c5a059]/30 bg-[#080910] hover:bg-[#0d0e12] transition-all group cursor-default">
-                <span className="text-[10px] font-bold tracking-[0.2em] text-[#c5a059]/40 block mb-3 group-hover:text-[#c5a059]/70 transition-colors" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{n}</span>
-                <span className="text-sm font-bold text-slate-300 group-hover:text-white transition-colors leading-tight block" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{d}</span>
+              { n: "01", d: "Constitutional Law",      desc: "Fundamental rights, writ jurisdiction, constitutional validity, legislative competence" },
+              { n: "02", d: "Civil Law",               desc: "Property disputes, contracts, torts, injunctions, civil procedure and execution" },
+              { n: "03", d: "Criminal Law",            desc: "IPC, CrPC, BNSS, bail jurisprudence, evidence, sentencing and appellate practice" },
+              { n: "04", d: "Corporate Law",           desc: "Companies Act, SEBI regulations, M&A, insolvency, corporate governance and compliance" },
+              { n: "05", d: "Taxation",                desc: "Direct and indirect taxation, GST, income tax, customs, transfer pricing and disputes" },
+              { n: "06", d: "Revenue Law",             desc: "Land revenue, tenancy legislation, state revenue codes and agrarian reform statutes" },
+              { n: "07", d: "Labour & Employment",     desc: "Industrial relations, labour codes, service matters, employment contracts and tribunals" },
+              { n: "08", d: "Environmental Law",       desc: "Environmental clearances, pollution control, NGT jurisprudence, climate regulation" },
+              { n: "09", d: "Intellectual Property",   desc: "Patents, trademarks, copyright, trade secrets, IP litigation and licensing frameworks" },
+              { n: "10", d: "Arbitration",             desc: "Domestic and international arbitration, enforcement, seat jurisdiction and interim relief" },
+              { n: "11", d: "Regulatory & Compliance", desc: "Sector regulators, licensing frameworks, compliance architecture and enforcement actions" },
+              { n: "12", d: "Public Administration",   desc: "Administrative law, judicial review, public procurement, government contracts and policy" },
+            ].map(({ n, d, desc }, i) => (
+              <div key={n}
+                className={`flex items-start gap-8 px-8 py-5 hover:bg-[#0d0e12] transition-colors group cursor-default ${i < 11 ? 'border-b border-white/5' : ''}`}>
+                <span className="text-[11px] font-bold text-[#c5a059]/30 group-hover:text-[#c5a059]/60 transition-colors shrink-0 w-6 pt-0.5" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{n}</span>
+                <div className="w-52 shrink-0">
+                  <span className="text-sm font-bold text-white group-hover:text-[#c5a059] transition-colors" style={{ fontFamily: 'Georgia, serif' }}>{d}</span>
+                </div>
+                <div className="hidden sm:block h-4 w-[1px] bg-white/8 shrink-0 mt-0.5" />
+                <p className="hidden sm:block text-xs text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
               </div>
             ))}
           </div>
