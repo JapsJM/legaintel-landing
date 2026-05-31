@@ -486,7 +486,7 @@ export default function Landing() {
                 <span className="text-[#c5a059]">at National Scale</span>
               </h2>
               <div className="space-y-6">
-                <p className="text-base text-slate-300 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif' }}>
+                <p className="text-base text-slate-300 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
                   India has one of the world's most complex legal systems — spanning 25 High Courts, a Supreme Court, hundreds of tribunals, and thousands of regulatory authorities. The volume of legal knowledge generated annually is unmeasurable by human capacity alone.
                 </p>
                 <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
