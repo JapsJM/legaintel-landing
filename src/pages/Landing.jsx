@@ -1,670 +1,566 @@
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight,
-  Check,
-  X,
-  Lock,
-  Shield,
-  Globe,
-  Layers,
-  Database,
-  Scale,
-  Building2,
-  BookOpen,
-  Landmark,
-  ChevronRight,
-  Network,
+import { 
+  ShieldCheck, 
+  Zap, 
+  ArrowRight, 
   FileText,
-  Cpu,
-  Activity
+  Check, 
+  X, 
+  Lock, 
+  Layers, 
+  Database, 
+  Activity, 
+  Users, 
+  FileCheck
 } from 'lucide-react';
 
+// Custom Advocate's Neckband / Collar Tabs Icon (Watermark)
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-[#050507] text-white flex flex-col selection:bg-[#c5a059] selection:text-black scroll-smooth" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-
-      {/* ── NAVIGATION ── */}
-      <nav className="border-b border-white/5 bg-[#050507]/95 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-[#c5a059] selection:text-black scroll-smooth">
+      
+      {/* Navigation */}
+      <nav className="border-b border-white/5 bg-[#0a0c10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-5">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-
-          <Link to="/" className="flex items-baseline select-none gap-[1px]">
-            <span className="text-2xl md:text-3xl font-bold tracking-tight text-white" style={{ fontFamily: 'Georgia, serif' }}>leg</span>
-            <span className="text-3xl md:text-4xl font-black text-[#c5a059] leading-none" style={{ fontFamily: 'Georgia, serif' }}>AI</span>
-            <span className="text-2xl md:text-3xl font-bold tracking-tight text-white" style={{ fontFamily: 'Georgia, serif' }}>ntel</span>
+          
+          {/* Logo with larger, accented AI */}
+          <Link to="/" className="flex items-baseline select-none">
+            <span className="text-2xl md:text-3xl font-bold font-serif tracking-tight text-white">leg</span>
+            <span className="text-3xl md:text-4xl font-black text-[#c5a059] mx-[1px] leading-none">AI</span>
+            <span className="text-2xl md:text-3xl font-bold font-serif tracking-tight text-white">ntel</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-[0.2em]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-            <a href="#infrastructure" className="text-slate-400 hover:text-[#c5a059] transition-colors">Infrastructure</a>
-            <a href="#architecture" className="text-slate-400 hover:text-[#c5a059] transition-colors">Architecture</a>
-            <a href="#domains" className="text-slate-400 hover:text-[#c5a059] transition-colors">Domains</a>
-            <a href="#aetherius" className="text-slate-400 hover:text-[#c5a059] transition-colors">Aetherius</a>
-            <a href="#governance" className="text-slate-400 hover:text-[#c5a059] transition-colors">Governance</a>
-            <a href="#vision" className="text-slate-400 hover:text-[#c5a059] transition-colors">Vision</a>
+          {/* Navigation Menu (Pricing updated to smooth scroll anchor) */}
+          <div className="hidden md:flex items-center gap-10 text-sm font-bold uppercase tracking-widest text-slate-200">
+            <a href="#intelligence" className="hover:text-[#c5a059] transition-colors">Intelligence</a>
+            <a href="#capabilities" className="hover:text-[#c5a059] transition-colors">Capabilities</a>
+            <a href="#chambers" className="hover:text-[#c5a059] transition-colors">Chambers</a>
+            <a href="#security" className="hover:text-[#c5a059] transition-colors">Security</a>
+            <a href="#alerts" className="hover:text-[#c5a059] transition-colors">Alerts</a>
+            <a href="#enterprise" className="hover:text-[#c5a059] transition-colors">Enterprise</a>
           </div>
 
-          <div className="flex items-center gap-5">
-            <Link to="/login" className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-white transition-colors" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
+          <div className="flex items-center gap-6">
+            <Link to="/login" className="text-sm font-bold uppercase tracking-widest text-slate-200 hover:text-white transition-colors">
               Sign In
             </Link>
-            <Link to="/register" className="px-5 py-2.5 bg-[#c5a059] hover:bg-[#b38f48] text-black text-[11px] font-bold uppercase tracking-[0.2em] transition-all" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Request Access
+            <Link to="/register" className="px-5 py-2.5 bg-[#c5a059] hover:bg-[#b38f48] text-black text-xs md:text-sm font-bold uppercase tracking-widest rounded-sm transition-all shadow-[0_0_15px_rgba(197,160,89,0.15)]">
+              Establish Chamber
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* ── BETA DISCLAIMER BANNER ── */}
+      {/* Beta Disclaimer Banner */}
       <div className="w-full bg-amber-950/40 border-b border-amber-500/20 px-6 py-2.5 text-center">
-        <p className="text-xs text-amber-400/90 tracking-wide" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
+        <p className="text-xs text-amber-400/90 font-sans tracking-wide">
           <span className="font-bold uppercase tracking-widest mr-2">Beta</span>
           LegAIntel is an experimental legal research platform. AI outputs are for research purposes only and do not constitute legal advice. Always consult a qualified advocate for legal matters.
         </p>
       </div>
 
-      {/* ── PRIVATE ACCESS BANNER ── */}
-      <div className="w-full bg-[#0d0e12] border-b border-[#c5a059]/15 px-6 py-3 text-center">
-        <p className="text-[11px] text-slate-400 tracking-wide" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-          <span className="font-bold uppercase tracking-[0.2em] text-[#c5a059] mr-3">Private Access Preview</span>
-          LegAIntel is currently available through controlled access while the platform expands its legal intelligence infrastructure and governance capabilities.
-        </p>
-      </div>
-
-      {/* ── FIXED LEFT QR ── */}
+      {/* Fixed Left QR Code — xl screens only */}
       <div className="hidden xl:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-2">
-        <div className="p-2.5 bg-white rounded-sm border border-[#c5a059]/10">
+        <div className="p-2.5 bg-white rounded-xl shadow-[0_0_20px_rgba(197,160,89,0.15)] border border-[#c5a059]/10">
           <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://t.me/LegAIntel_bot%3Fstart%3Dsub&color=000000&bgcolor=ffffff&margin=2"
-            alt="Scan to open @LegAIntel_bot"
-            width="100" height="100"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://t.me/LegAIntel_bot%3Fstart%3Dsub&color=000000&bgcolor=ffffff&margin=2"
+            alt="Scan to open @LegAIntel_bot on Telegram"
+            width="110"
+            height="110"
             className="block"
           />
         </div>
-        <p className="text-[9px] text-slate-600 text-center uppercase tracking-widest leading-tight" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-          Intelligence<br/>Alerts
+        <p className="text-[9px] text-slate-500 text-center uppercase tracking-widest font-sans leading-tight">
+          Scan for<br/>Judgment Alerts
         </p>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#229ED9" className="opacity-70">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+        </svg>
       </div>
 
-      {/* ════════════════════════════════════════════
-          HERO
-      ════════════════════════════════════════════ */}
-      <header className="relative min-h-screen flex flex-col justify-center items-center px-6 py-32 overflow-hidden">
+      {/* Hero Section */}
+      <header className="max-w-5xl mx-auto px-6 pt-28 pb-24 text-center flex flex-col justify-center items-center relative min-h-[90vh]">
+        
+        {/* Huge background watermark with 50% opacity and pointer-events disabled */}
 
-        {/* Grid texture */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(rgba(197,160,89,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(197,160,89,0.6) 1px, transparent 1px)',
-          backgroundSize: '80px 80px'
-        }} />
+        
+        {/* Subtle blur behind the symbol */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#c5a059]/5 rounded-full blur-3xl -z-20 pointer-events-none" />
+        
+        {/* Badge font scaled 2 points */}
+        <span className="relative z-10 px-5 py-2 border border-[#c5a059]/30 rounded-full text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-[#c5a059] bg-[#c5a059]/5 mb-8">
+          PRIVATE LEGAL INTELLIGENCE INFRASTRUCTURE
+        </span>
+        
+        <h1 className="relative z-10 text-4xl md:text-6.5xl font-bold font-serif tracking-tight text-white max-w-4xl leading-[1.12] mb-8">
+          Next-Generation Litigation Intelligence for <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c5a059] to-[#e0c286]">Modern Counsel</span>
+        </h1>
+        
+        {/* Body fonts scaled 2 points, changed to lighter slate for crisp readability */}
+        <p className="relative z-10 text-base md:text-lg text-slate-200 max-w-3xl leading-relaxed font-sans mb-5">
+          Transform massive litigation records into structured strategic intelligence using multi-agent legal reasoning, relational precedent analysis, knowledge graphs, and citation-verified AI synthesis.
+        </p>
 
-        {/* Radial glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full blur-[120px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse, rgba(197,160,89,0.04) 0%, transparent 70%)' }} />
+        <p className="relative z-10 text-sm md:text-base text-[#c5a059] max-w-2xl leading-relaxed font-sans font-medium mb-12">
+          LegAIntel is engineered for advocates, chambers, firms, and institutional litigation teams handling high-stakes legal complexity.
+        </p>
 
-        {/* Horizontal rule top */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059]/20 to-transparent" />
-
-        <div className="relative z-10 text-center max-w-6xl mx-auto">
-
-          {/* Eyebrow */}
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <div className="h-[1px] w-16 bg-[#c5a059]/40" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Legal Intelligence Infrastructure · India
-            </span>
-            <div className="h-[1px] w-16 bg-[#c5a059]/40" />
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[0.95]" style={{ fontFamily: 'Georgia, serif', letterSpacing: '-0.02em' }}>
-            The Legal Intelligence<br />
-            <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(197,160,89,0.7)' }}>Infrastructure</span>
-            <span className="text-[#c5a059]"> of India</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-5" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif", fontWeight: 300 }}>
-            A unified intelligence layer connecting legal knowledge, legal reasoning, legal drafting,
-            legal governance, and institutional memory across every domain of law.
-          </p>
-
-          {/* Trust strip */}
-          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-14 text-[11px] uppercase tracking-[0.25em] text-slate-500 font-bold" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-            <span>Advocates</span><span className="text-[#c5a059]/50">•</span>
-            <span>Law Firms</span><span className="text-[#c5a059]/50">•</span>
-            <span>Enterprises</span><span className="text-[#c5a059]/50">•</span>
-            <span>Institutions</span><span className="text-[#c5a059]/50">•</span>
-            <span>Government Agencies</span><span className="text-[#c5a059]/50">•</span>
-            <span>Judicial Ecosystems</span>
-          </div>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/register"
-              className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#c5a059] hover:bg-[#b38f48] text-black text-[12px] font-bold uppercase tracking-[0.2em] transition-all group"
-              style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Request Access
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <a href="#architecture"
-              className="inline-flex items-center justify-center gap-3 px-10 py-4 border border-white/10 hover:border-[#c5a059]/30 text-slate-300 hover:text-white text-[12px] font-bold uppercase tracking-[0.2em] transition-all"
-              style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Explore Architecture
-            </a>
-          </div>
+        <div className="relative z-10 flex flex-col sm:flex-row gap-5 mb-16">
+          <Link to="/register" className="flex items-center justify-center gap-3 px-8 py-4 bg-[#c5a059] hover:bg-[#b38f48] text-black text-sm font-bold uppercase tracking-widest rounded-sm transition-all shadow-[0_0_20px_rgba(197,160,89,0.25)] group">
+            Establish Your Chamber
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link to="/login" className="px-8 py-4 border border-white/10 hover:border-white/20 text-slate-200 hover:text-white text-sm font-bold uppercase tracking-widest rounded-sm transition-all">
+            Access Secure Portal
+          </Link>
         </div>
 
-        {/* Bottom divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        {/* Trust Strip text size increased to 12px / xs */}
+        <div className="relative z-10 border-t border-b border-white/5 py-4 w-full max-w-4xl flex flex-wrap justify-center items-center gap-x-10 gap-y-3 text-xs uppercase tracking-[0.2em] text-slate-300 font-bold">
+          <span>Private</span>
+          <span className="text-[#c5a059]">•</span>
+          <span>Citation-Grounded</span>
+          <span className="text-[#c5a059]">•</span>
+          <span>Multi-Agent</span>
+          <span className="text-[#c5a059]">•</span>
+          <span>Sovereign</span>
+          <span className="text-[#c5a059]">•</span>
+          <span>Enterprise-Ready</span>
+        </div>
       </header>
 
-      {/* ════════════════════════════════════════════
-          1. LEGAL INTELLIGENCE CRISIS
-      ════════════════════════════════════════════ */}
-      <section id="infrastructure" className="py-32 px-6 bg-[#080910]">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-20">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>01 — The Intelligence Crisis</span>
-              <div className="flex-1 h-[1px] bg-white/5" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-              India's Legal System Operates<br />Without a Unified Intelligence Layer
+      {/* Section — The Problem */}
+      <section className="border-t border-white/5 bg-[#08090d]/60 py-28 px-6 relative">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">The Paradigm</span>
+            <h2 className="text-3xl md:text-4.5xl font-serif font-bold tracking-tight text-white mt-3">
+              Modern Litigation Is No Longer Human-Scalable
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-            {[
-              { n: "01", t: "Institutional Memory Does Not Persist", d: "Legal knowledge accumulated over decades exists in physical folders, individual memories, and disconnected systems. When counsel transitions, the intelligence is lost." },
-              { n: "02", t: "Precedent Is Unmapped at Scale", d: "Thousands of daily judgments across 25 High Courts and the Supreme Court remain unconnected. Authoritative relationships between cases are invisible to practitioners." },
-              { n: "03", t: "Legal Reasoning Cannot Be Verified", d: "There is no infrastructure to validate legal arguments against the full corpus of applicable law, regulation, and judicial precedent in real time." },
-              { n: "04", t: "Governance Has No Intelligence Foundation", d: "Policy formation, regulatory compliance, and institutional legal decision-making operate without access to unified legal intelligence infrastructure." },
-            ].map(({ n, t, d }) => (
-              <div key={n} className="p-10 border border-white/5 hover:border-[#c5a059]/20 transition-colors bg-[#050507] group">
-                <div className="flex items-start gap-6">
-                  <span className="text-4xl font-bold text-[#c5a059]/20 leading-none shrink-0 group-hover:text-[#c5a059]/40 transition-colors" style={{ fontFamily: 'Georgia, serif' }}>{n}</span>
-                  <div>
-                    <h3 className="text-base font-bold text-white uppercase tracking-wide mb-3" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{t}</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{d}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Grid text scaled up to base with high-contrast text */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-200 text-base leading-relaxed mb-16">
+            <div className="flex gap-5">
+              <span className="text-[#c5a059] text-xl font-serif font-bold">01.</span>
+              <p>Critical evidence remains deeply buried across thousands of pages of unindexed files.</p>
+            </div>
+            <div className="flex gap-5">
+              <span className="text-[#c5a059] text-xl font-serif font-bold">02.</span>
+              <p>Precedent chains and jurisdictional authority linkages remain fragmented and unmapped.</p>
+            </div>
+            <div className="flex gap-5">
+              <span className="text-[#c5a059] text-xl font-serif font-bold">03.</span>
+              <p>Core case strategy frequently depends on manual recall and fragile physical folders.</p>
+            </div>
+            <div className="flex gap-5">
+              <span className="text-[#c5a059] text-xl font-serif font-bold">04.</span>
+              <p>Contradictions hide silently inside disconnected pleadings, scanned records, exhibits, and procedural history.</p>
+            </div>
           </div>
 
-          <div className="mt-1 p-10 border border-[#c5a059]/15 bg-[#0d0e12]">
-            <p className="text-xl text-slate-200 leading-relaxed text-center" style={{ fontFamily: 'Georgia, serif' }}>
-              The legal system does not need another search tool.<br />
-              <span className="text-[#c5a059]">It needs intelligence infrastructure.</span>
+          <div className="border-t border-white/5 pt-10 text-center">
+            <p className="text-lg text-slate-200 font-medium">
+              Modern legal practice demands more than document search. <br/>
+              <span className="text-[#c5a059] block mt-2 font-serif text-xl">It demands intelligence continuity.</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          2. INFRASTRUCTURE DEFINITION
-      ════════════════════════════════════════════ */}
-      <section className="py-32 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>02 — Infrastructure Definition</span>
-            <div className="flex-1 h-[1px] bg-white/5" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-14 items-start">
-            <div className="md:col-span-5">
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8" style={{ fontFamily: 'Georgia, serif' }}>
-                LegAIntel is not a product.<br />
-                <span className="text-[#c5a059]">It is infrastructure.</span>
-              </h2>
-              <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-                Infrastructure is not a feature. Infrastructure is the foundation on which other capabilities, institutions, and systems are built. LegAIntel is designed to operate at that foundational level — connecting every domain of law, every institution, and every practitioner within a single unified intelligence architecture.
-              </p>
-            </div>
-
-            <div className="md:col-span-7 space-y-1">
-              {[
-                { label: "NOT", items: ["A legal chatbot", "A legal research search engine", "A document management system", "A litigation assistant", "A law firm software product"] },
-                { label: "IS", items: ["National-scale legal intelligence infrastructure", "Unified legal knowledge and reasoning layer", "Institutional memory architecture", "Legal governance intelligence foundation", "Cross-domain legal intelligence platform"] },
-              ].map(({ label, items }) => (
-                <div key={label} className={`p-8 border ${label === 'IS' ? 'border-[#c5a059]/20 bg-[#0d0e12]' : 'border-white/5 bg-[#080910]'}`}>
-                  <span className={`text-[10px] font-bold uppercase tracking-[0.3em] block mb-5 ${label === 'IS' ? 'text-[#c5a059]' : 'text-slate-600'}`} style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-                    LegAIntel {label === 'IS' ? 'IS' : 'IS NOT'}
-                  </span>
-                  <div className="space-y-3">
-                    {items.map(item => (
-                      <div key={item} className="flex items-center gap-3">
-                        {label === 'IS'
-                          ? <Check className="w-4 h-4 text-[#c5a059] shrink-0" />
-                          : <X className="w-4 h-4 text-slate-700 shrink-0" />
-                        }
-                        <span className={`text-sm ${label === 'IS' ? 'text-white font-medium' : 'text-slate-600'}`} style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          3. FOUR INFRASTRUCTURE LAYERS
-      ════════════════════════════════════════════ */}
-      <section id="architecture" className="py-32 px-6 bg-[#080910]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>03 — Infrastructure Layers</span>
-            <div className="flex-1 h-[1px] bg-white/5" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-            Four Layers. One Unified Infrastructure.
+      {/* Section — What LegAIntel Is */}
+      <section id="intelligence" className="py-28 px-6 max-w-5xl mx-auto">
+        <div className="bg-[#0a0c10]/40 border border-[#c5a059]/10 p-12 md:p-20 rounded-sm relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#c5a059]/2 rounded-full blur-3xl -z-10" />
+          
+          <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Infrastructure Definition</span>
+          <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3 mb-8">
+            A Legal Intelligence Operating System
           </h2>
-          <p className="text-sm text-slate-400 max-w-2xl mb-16 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-            LegAIntel is designed as a four-layer intelligence stack. Each layer is independently powerful. Together, they form the complete infrastructure for legal intelligence at national scale.
-          </p>
 
-          <div className="space-y-1">
-            {[
-              {
-                n: "Layer I",
-                icon: <Database className="w-5 h-5" />,
-                title: "Legal Knowledge Infrastructure",
-                subtitle: "The foundational corpus",
-                desc: "A continuously expanding, structured repository of statutes, regulations, notifications, circulars, judicial precedents, and authoritative legal texts across all domains of Indian law. Organized relationally — not as documents, but as interconnected legal knowledge."
-              },
-              {
-                n: "Layer II",
-                icon: <Cpu className="w-5 h-5" />,
-                title: "Legal Reasoning Infrastructure",
-                subtitle: "The intelligence engine",
-                desc: "Multi-agent reasoning architecture capable of decomposing legal questions, identifying applicable law, mapping precedent relationships, validating legal arguments, and generating citation-grounded analysis across any domain of law."
-              },
-              {
-                n: "Layer III",
-                icon: <FileText className="w-5 h-5" />,
-                title: "Legal Drafting Infrastructure",
-                subtitle: "The document layer",
-                desc: "Structured drafting capabilities for contracts, pleadings, opinions, regulatory submissions, policy documents, and institutional instruments — grounded in verified legal knowledge and jurisdictional accuracy."
-              },
-              {
-                n: "Layer IV",
-                icon: <Network className="w-5 h-5" />,
-                title: "Legal Governance & Institutional Memory",
-                subtitle: "The continuity layer",
-                desc: "Persistent intelligence architecture for institutions, law firms, regulatory bodies, and government agencies. Legal decisions, arguments, precedents, and institutional knowledge are preserved, connected, and made continuously accessible."
-              }
-            ].map(({ n, icon, title, subtitle, desc }, i) => (
-              <div key={n} className="flex gap-0 group">
-                {/* Left — number + line */}
-                <div className="w-20 shrink-0 flex flex-col items-center pt-10">
-                  <span className="text-[11px] font-bold tracking-[0.2em] text-[#c5a059]/50 mb-3 rotate-[-90deg] whitespace-nowrap" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{n}</span>
-                  {i < 3 && <div className="flex-1 w-[1px] bg-white/5 mt-2" />}
-                </div>
-                {/* Right — card */}
-                <div className="flex-1 p-10 border border-white/5 hover:border-[#c5a059]/25 transition-all bg-[#050507] mb-1">
-                  <div className="flex items-start gap-5">
-                    <div className="text-[#c5a059]/60 shrink-0 mt-1 group-hover:text-[#c5a059] transition-colors">{icon}</div>
-                    <div>
-                      <div className="flex items-baseline gap-4 mb-1 flex-wrap">
-                        <h3 className="text-lg font-bold text-white" style={{ fontFamily: 'Georgia, serif' }}>{title}</h3>
-                        <span className="text-[11px] uppercase tracking-[0.2em] text-slate-600" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{subtitle}</span>
-                      </div>
-                      <p className="text-sm text-slate-400 leading-relaxed max-w-3xl" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          4. DOMAINS OF LAW
-      ════════════════════════════════════════════ */}
-      <section id="domains" className="py-32 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>04 — Domains of Law</span>
-            <div className="flex-1 h-[1px] bg-white/5" />
-          </div>
-          <div className="grid md:grid-cols-2 gap-14 mb-16 items-end">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                Spanning Every<br />Domain of Indian Law
-              </h2>
-            </div>
-            <div>
-              <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-                LegAIntel's intelligence infrastructure operates across the complete spectrum of Indian law. A practitioner in any legal domain accesses the same depth of knowledge, reasoning, and precedent connectivity.
-              </p>
-            </div>
-          </div>
-
-          <div className="border border-white/5">
-            {[
-              { n: "01", d: "Constitutional Law",      desc: "Fundamental rights, writ jurisdiction, constitutional validity, legislative competence" },
-              { n: "02", d: "Civil Law",               desc: "Property disputes, contracts, torts, injunctions, civil procedure and execution" },
-              { n: "03", d: "Criminal Law",            desc: "IPC, CrPC, BNSS, bail jurisprudence, evidence, sentencing and appellate practice" },
-              { n: "04", d: "Corporate Law",           desc: "Companies Act, SEBI regulations, M&A, insolvency, corporate governance and compliance" },
-              { n: "05", d: "Taxation",                desc: "Direct and indirect taxation, GST, income tax, customs, transfer pricing and disputes" },
-              { n: "06", d: "Revenue Law",             desc: "Land revenue, tenancy legislation, state revenue codes and agrarian reform statutes" },
-              { n: "07", d: "Labour & Employment",     desc: "Industrial relations, labour codes, service matters, employment contracts and tribunals" },
-              { n: "08", d: "Environmental Law",       desc: "Environmental clearances, pollution control, NGT jurisprudence, climate regulation" },
-              { n: "09", d: "Intellectual Property",   desc: "Patents, trademarks, copyright, trade secrets, IP litigation and licensing frameworks" },
-              { n: "10", d: "Arbitration",             desc: "Domestic and international arbitration, enforcement, seat jurisdiction and interim relief" },
-              { n: "11", d: "Regulatory & Compliance", desc: "Sector regulators, licensing frameworks, compliance architecture and enforcement actions" },
-              { n: "12", d: "Public Administration",   desc: "Administrative law, judicial review, public procurement, government contracts and policy" },
-            ].map(({ n, d, desc }, i) => (
-              <div key={n}
-                className={`flex items-start gap-8 px-8 py-5 hover:bg-[#0d0e12] transition-colors group cursor-default ${i < 11 ? 'border-b border-white/5' : ''}`}>
-                <span className="text-[11px] font-bold text-[#c5a059]/30 group-hover:text-[#c5a059]/60 transition-colors shrink-0 w-6 pt-0.5" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{n}</span>
-                <div className="w-52 shrink-0">
-                  <span className="text-sm font-bold text-white group-hover:text-[#c5a059] transition-colors" style={{ fontFamily: 'Georgia, serif' }}>{d}</span>
-                </div>
-                <div className="hidden sm:block h-4 w-[1px] bg-white/8 shrink-0 mt-0.5" />
-                <p className="hidden sm:block text-xs text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-1 p-8 border border-white/5 bg-[#080910] text-center">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-slate-500" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Additional domains including Family Law, Media & Entertainment, Space & Technology, and Cross-border Transactions — in active development
+          <div className="space-y-8 text-white text-base md:text-lg leading-relaxed font-sans">
+            <p className="font-extrabold text-[#c5a059] text-xl md:text-2xl font-serif">LegAIntel is not a chatbot.</p>
+            
+            <p>
+              It is a sovereign legal intelligence infrastructure that continuously analyzes, connects, validates, and synthesizes litigation ecosystems.
+            </p>
+            
+            <p>
+              Every uploaded pleading, judgment, affidavit, exhibit, statute, transcript, scanned record, and legal note becomes part of a structured intelligence chamber designed for strategic legal reasoning.
+            </p>
+            
+            <p>
+              The system builds institutional memory for advocates and chambers — preserving relationships, legal context, citation integrity, and litigation knowledge across the entire lifecycle of a matter.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          5. AETHERIUS INTELLIGENCE ARCHITECTURE
-      ════════════════════════════════════════════ */}
-      <section id="aetherius" className="py-32 px-6 bg-[#080910] relative overflow-hidden">
-        {/* Architectural lines */}
-        <div className="absolute inset-0 opacity-[0.025]" style={{
-          backgroundImage: 'linear-gradient(rgba(197,160,89,1) 1px, transparent 1px)',
-          backgroundSize: '100% 60px'
-        }} />
-        <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#c5a059]/10 to-transparent" />
-
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>05 — Intelligence Architecture</span>
-            <div className="flex-1 h-[1px] bg-white/5" />
-          </div>
-
-          <div className="grid md:grid-cols-12 gap-14">
-            <div className="md:col-span-5">
-              <div className="mb-8">
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-[#c5a059]" style={{ fontFamily: 'Georgia, serif' }}>Aetherius</span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6" style={{ fontFamily: 'Georgia, serif' }}>
-                  The Reasoning Infrastructure Powering LegAIntel
-                </h2>
-                <p className="text-sm text-slate-400 leading-relaxed mb-8" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-                  Aetherius is the proprietary intelligence architecture underlying the LegAIntel platform. It is not visible to end users. It operates as the core reasoning engine — orchestrating legal analysis, validating citations, mapping precedent relationships, and maintaining institutional memory across all four infrastructure layers.
-                </p>
-                <div className="p-5 border border-[#c5a059]/20 bg-[#050507]">
-                  <p className="text-sm text-[#c5a059] font-medium leading-relaxed" style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
-                    "Aetherius Intelligence Architecture — The reasoning infrastructure powering LegAIntel."
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="md:col-span-7">
-              <div className="space-y-1">
-                {[
-                  { label: "Decomposition Engine", desc: "Legal queries are decomposed into structured constitutional, statutory, regulatory, and precedential components before analysis begins." },
-                  { label: "Multi-Agent Validation", desc: "Parallel intelligence agents cross-validate legal arguments, citation chains, and jurisdictional applicability simultaneously." },
-                  { label: "Precedent Graph Architecture", desc: "Judicial authorities are mapped as relational nodes — enabling discovery of citation relationships invisible to keyword-based systems." },
-                  { label: "Institutional Memory Layer", desc: "Legal intelligence is not ephemeral. Aetherius maintains persistent, structured knowledge continuity across organizations and time." },
-                  { label: "Hallucination Resistance Protocol", desc: "Every output is grounded in verifiable legal sources. Unverifiable assertions are blocked at the architecture level, not the output level." },
-                ].map(({ label, desc }) => (
-                  <div key={label} className="flex gap-5 p-6 border border-white/5 hover:border-[#c5a059]/20 transition-colors bg-[#050507]">
-                    <ChevronRight className="w-4 h-4 text-[#c5a059]/50 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-[12px] font-bold uppercase tracking-wide text-white mb-1.5" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{label}</h4>
-                      <p className="text-xs text-slate-500 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          6. GOVERNANCE & TRUST
-      ════════════════════════════════════════════ */}
-      <section id="governance" className="py-32 px-6">
+      {/* Section — Core Capabilities (Expanded Layout & Crisp White Fonts) */}
+      <section id="capabilities" className="border-t border-white/5 bg-[#08090d]/60 py-28 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>06 — Governance & Trust</span>
-            <div className="flex-1 h-[1px] bg-white/5" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-            Infrastructure Requires<br />Governance at Every Level
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-1 mb-1">
-            {[
-              { icon: <Lock className="w-5 h-5" />, title: "Data Sovereignty", desc: "All institutional data is processed within sovereign, isolated environments. No cross-contamination between organizational boundaries. Complete data sovereignty by architectural design." },
-              { icon: <Shield className="w-5 h-5" />, title: "Access Governance", desc: "Hierarchical access controls with role-based permissions, audit trails on all interactions, and institutional-grade authentication frameworks aligned with enterprise security standards." },
-              { icon: <Activity className="w-5 h-5" />, title: "Citation Integrity", desc: "Every analysis is traceable to its legal source. The system cannot generate analysis that cannot be attributed to a verifiable legal authority — by architecture, not policy." },
-            ].map(({ icon, title, desc }) => (
-              <div key={title} className="p-10 border border-white/5 hover:border-[#c5a059]/20 transition-colors bg-[#080910]">
-                <div className="text-[#c5a059]/50 mb-6">{icon}</div>
-                <h3 className="text-base font-bold text-white uppercase tracking-wide mb-4" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
-              </div>
-            ))}
+          <div className="text-center mb-20">
+            <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">System Architecture</span>
+            <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3">
+              Built for Real Litigation Complexity
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-            {[
-              { title: "Regulatory Compliance Architecture", desc: "Designed in alignment with Indian data protection law, professional privilege requirements, and institutional compliance obligations across public and private sector deployments." },
-              { title: "Judicial & Professional Standards", desc: "LegAIntel operates with awareness of Bar Council of India regulations, professional ethics requirements, and the evidentiary standards applicable to legal reasoning and document production." },
-            ].map(({ title, desc }) => (
-              <div key={title} className="p-10 border border-white/5 hover:border-[#c5a059]/20 transition-colors bg-[#080910]">
-                <h3 className="text-base font-bold text-white uppercase tracking-wide mb-4" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          7. NATIONAL VISION
-      ════════════════════════════════════════════ */}
-      <section id="vision" className="py-32 px-6 bg-[#080910] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'linear-gradient(45deg, rgba(197,160,89,0.8) 1px, transparent 1px), linear-gradient(-45deg, rgba(197,160,89,0.8) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }} />
-
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>07 — National Vision</span>
-            <div className="flex-1 h-[1px] bg-white/5" />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-14 items-start">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-8" style={{ fontFamily: 'Georgia, serif' }}>
-                A Foundation for Legal Intelligence<br />
-                <span className="text-[#c5a059]">at National Scale</span>
-              </h2>
-              <div className="space-y-6">
-                <p className="text-base text-slate-300 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-                  India has one of the world's most complex legal systems — spanning 25 High Courts, a Supreme Court, hundreds of tribunals, and thousands of regulatory authorities. The volume of legal knowledge generated annually is unmeasurable by human capacity alone.
-                </p>
-                <p className="text-sm text-slate-400 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-                  LegAIntel is designed to meet that complexity not by simplifying it, but by building the infrastructure required to navigate it at every level — from the individual practitioner to the institutional regulator.
-                </p>
-              </div>
+          {/* Grid columns with elevated padding & high-contrast text */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div className="p-10 bg-[#0a0c10] border border-white/5 rounded-sm hover:border-[#c5a059]/35 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 01</span>
+              <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Multi-Agent Legal Reasoning</h3>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Five specialized AI agents collaboratively classify, decompose, validate, synthesize, and verify every legal query before generating a response.
+              </p>
             </div>
 
-            <div className="space-y-1">
-              {[
-                { audience: "Law Firms", desc: "Enterprise-grade institutional memory, precedent connectivity, and collaborative legal intelligence infrastructure." },
-                { audience: "Enterprises & Corporate Legal", desc: "Continuous regulatory intelligence, compliance monitoring, and legal governance infrastructure." },
-                { audience: "Government & Regulatory Bodies", desc: "Policy intelligence, inter-departmental legal connectivity, and institutional knowledge continuity at scale." },
-                { audience: "Universities & Institutions", desc: "Legal research infrastructure, academic knowledge mapping, and educational intelligence platforms." },
-                { audience: "Advocates & Researchers", desc: "Individual access to national-scale legal intelligence, precedent analysis, and cross-domain legal reasoning." },
-              ].map(({ audience, desc }) => (
-                <div key={audience} className="flex items-start gap-4 p-5 border border-white/5 hover:border-[#c5a059]/20 transition-colors bg-[#050507] group">
-                  <div className="w-1 h-1 rounded-full bg-[#c5a059]/40 shrink-0 mt-2 group-hover:bg-[#c5a059] transition-colors" />
-                  <div>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c5a059]/70 block mb-1" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{audience}</span>
-                    <p className="text-xs text-slate-500 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{desc}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="p-10 bg-[#0a0c10] border border-white/5 rounded-sm hover:border-[#c5a059]/35 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 02</span>
+              <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Relational Precedent Analysis</h3>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Identify hidden legal relationships, authority chains, entity connections, procedural dependencies, and cross-document intelligence through integrated legal graph architecture.
+              </p>
+            </div>
+
+            <div className="p-10 bg-[#0a0c10] border border-white/5 rounded-sm hover:border-[#c5a059]/35 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 03</span>
+              <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Citation-Verified Synthesis</h3>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Every response is grounded in retrievable evidence with strict citation validation and hallucination-resistant reasoning controls.
+              </p>
+            </div>
+
+            <div className="p-10 bg-[#0a0c10] border border-white/5 rounded-sm hover:border-[#c5a059]/35 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 04</span>
+              <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Scanned Document & Evidence</h3>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Extract intelligence from scanned records, images, handwritten annotations, tables, seals, and evidentiary material using advanced vision processing.
+              </p>
+            </div>
+
+            <div className="p-10 bg-[#0a0c10] border border-white/5 rounded-sm hover:border-[#c5a059]/35 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 05</span>
+              <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Chamber Memory System</h3>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Build persistent institutional intelligence across matters, arguments, precedents, litigation strategies, and historical case analysis.
+              </p>
+            </div>
+
+            <div className="p-10 bg-[#0a0c10] border border-white/5 rounded-sm hover:border-[#c5a059]/35 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 06</span>
+              <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Private Digital Chambers</h3>
+              <p className="text-sm text-slate-200 leading-relaxed">
+                Complete tenant-isolated architecture ensures every chamber operates within its own secured legal intelligence environment.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Section — How It Works */}
+      <section className="py-28 px-6 max-w-6xl mx-auto">
+        <div className="text-center mb-20">
+          <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Pipeline Sequence</span>
+          <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3">
+            From Documents to Strategic Intelligence
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 relative">
+          
+          <div className="relative">
+            <div className="flex items-center gap-4 mb-5">
+              <span className="w-10 h-10 rounded-full border border-[#c5a059]/30 flex items-center justify-center text-sm font-bold font-serif text-[#c5a059] bg-[#c5a059]/5">1</span>
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#c5a059]">Ingest</h3>
+            </div>
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Upload pleadings, judgments, statutes, exhibits, evidence files, scanned records, or research archives.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="flex items-center gap-4 mb-5">
+              <span className="w-10 h-10 rounded-full border border-[#c5a059]/30 flex items-center justify-center text-sm font-bold font-serif text-[#c5a059] bg-[#c5a059]/5">2</span>
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#c5a059]">Structure</h3>
+            </div>
+            <p className="text-sm text-slate-200 leading-relaxed">
+              LegAIntel processes, segments, indexes, relates, and validates every document through multi-layer retrieval and graph intelligence systems.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="flex items-center gap-4 mb-5">
+              <span className="w-10 h-10 rounded-full border border-[#c5a059]/30 flex items-center justify-center text-sm font-bold font-serif text-[#c5a059] bg-[#c5a059]/5">3</span>
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#c5a059]">Reason</h3>
+            </div>
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Multi-agent legal reasoning pipelines analyze factual, relational, comparative, and strategic legal queries.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="flex items-center gap-4 mb-5">
+              <span className="w-10 h-10 rounded-full border border-[#c5a059]/30 flex items-center justify-center text-sm font-bold font-serif text-[#c5a059] bg-[#c5a059]/5">4</span>
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#c5a059]">Synthesize</h3>
+            </div>
+            <p className="text-sm text-slate-200 leading-relaxed">
+              Receive structured legal analysis grounded in verifiable evidence, relational context, and citation-safe reasoning.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Section — Differentiator */}
+      <section className="border-t border-white/5 bg-[#08090d]/60 py-28 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Core Separation</span>
+            <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3">
+              Beyond Search. Beyond Chat.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            {/* Traditional Software */}
+            <div className="bg-[#0a0c10]/40 border border-white/5 p-10 rounded-sm">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 pb-3 border-b border-white/5">
+                Traditional Legal Software
+              </h3>
+              <ul className="space-y-5">
+                <li className="flex items-start gap-4 text-sm text-slate-300">
+                  <X className="w-5 h-5 text-red-500/80 shrink-0 mt-0.5" />
+                  <span>Static lookup and simple keyword-dependent searching</span>
+                </li>
+                <li className="flex items-start gap-4 text-sm text-slate-300">
+                  <X className="w-5 h-5 text-red-500/80 shrink-0 mt-0.5" />
+                  <span>Isolated query structures that ignore surrounding context</span>
+                </li>
+                <li className="flex items-start gap-4 text-sm text-slate-300">
+                  <X className="w-5 h-5 text-red-500/80 shrink-0 mt-0.5" />
+                  <span>Manual and fragmented precedent tracking processes</span>
+                </li>
+                <li className="flex items-start gap-4 text-sm text-slate-300">
+                  <X className="w-5 h-5 text-red-500/80 shrink-0 mt-0.5" />
+                  <span>No capacity to build institutional memory across matters</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* LegAIntel */}
+            <div className="bg-[#0a0c10] border border-[#c5a059]/20 p-10 rounded-sm shadow-[0_0_30px_rgba(197,160,89,0.02)]">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#c5a059] mb-8 pb-3 border-b border-[#c5a059]/10">
+                LegAIntel Infrastructure
+              </h3>
+              <ul className="space-y-5">
+                <li className="flex items-start gap-4 text-sm text-white font-semibold">
+                  <Check className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
+                  <span>Strategic legal synthesis of entire document ecosystems</span>
+                </li>
+                <li className="flex items-start gap-4 text-sm text-white font-semibold">
+                  <Check className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
+                  <span>Multi-agent legal validation and citation cross-auditing</span>
+                </li>
+                <li className="flex items-start gap-4 text-sm text-white font-semibold">
+                  <Check className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
+                  <span>Relational reasoning and connection mapping in graph databases</span>
+                </li>
+                <li className="flex items-start gap-4 text-sm text-white font-semibold">
+                  <Check className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
+                  <span>Enduring matter intelligence continuity and litigation memory</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* Section — Security */}
+      <section id="security" className="py-28 px-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-14 items-center">
+          
+          <div className="md:col-span-5">
+            <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Confidentiality Gate</span>
+            <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3 mb-8">
+              Engineered for Legal Confidentiality
+            </h2>
+            <p className="text-sm md:text-base text-slate-200 leading-relaxed mb-8 font-sans">
+              LegAIntel is designed with sovereign isolation architecture for legal professionals handling confidential litigation data.
+            </p>
+            <div className="flex items-center gap-3 text-xs uppercase tracking-widest font-bold text-[#c5a059]">
+              <Lock className="w-5 h-5" />
+              <span>SECURED VAULT TECHNOLOGY</span>
             </div>
           </div>
+
+          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Isolated Chambers</h4>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">Cryptographically separate datastores with zero leakage risks.</p>
+            </div>
+            <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Access Controls</h4>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">Hierarchical role assignment to secure internal workspaces.</p>
+            </div>
+            <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Citation Verification</h4>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">No external hallucinated elements can bypass the validator.</p>
+            </div>
+            <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Secure Lineage</h4>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">Audit trailing on all updates, edits, and file version changes.</p>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          8. ENTERPRISE CALL TO ACTION
-      ════════════════════════════════════════════ */}
-      <section id="enterprise" className="py-40 px-6 relative overflow-hidden border-t border-white/5">
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'linear-gradient(rgba(197,160,89,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(197,160,89,0.6) 1px, transparent 1px)',
-          backgroundSize: '80px 80px'
-        }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-[150px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse, rgba(197,160,89,0.04) 0%, transparent 70%)' }} />
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <div className="h-[1px] w-16 bg-[#c5a059]/40" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#c5a059]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>08 — Enterprise Access</span>
-            <div className="h-[1px] w-16 bg-[#c5a059]/40" />
-          </div>
-
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-            Build on the Foundation
+      {/* Section — Enterprise */}
+      <section id="enterprise" className="border-t border-white/5 bg-[#08090d]/60 py-28 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">User Alignment</span>
+          <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3 mb-8">
+            Built for the Future of Legal Practice
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-4 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif", fontWeight: 300 }}>
-            LegAIntel is currently available through controlled access to law firms, enterprises, government agencies, regulatory bodies, and institutions.
-          </p>
-          <p className="text-sm text-slate-500 max-w-xl mx-auto mb-14 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-            Access requests are reviewed individually. Enterprise deployment, institutional licensing, and government integration are available through dedicated onboarding.
+          <p className="text-sm md:text-base text-slate-200 leading-relaxed max-w-2xl mx-auto mb-12">
+            Whether managing a single constitutional matter or thousands of litigation records, LegAIntel scales into a continuously evolving legal intelligence environment.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-            <Link to="/register"
-              className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-[#c5a059] hover:bg-[#b38f48] text-black text-[12px] font-bold uppercase tracking-[0.25em] transition-all group"
-              style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Request Access
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link to="/contact"
-              className="inline-flex items-center justify-center gap-3 px-12 py-5 border border-white/10 hover:border-[#c5a059]/30 text-slate-300 hover:text-white text-[12px] font-bold uppercase tracking-[0.25em] transition-all"
-              style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Enterprise Inquiry
-            </Link>
-          </div>
-
-          {/* Audience grid */}
-          <div className="flex flex-wrap justify-center gap-1">
-            {["Law Firms", "Enterprises", "Government Agencies", "Regulatory Bodies", "Universities", "Judicial Institutions"].map(a => (
-              <span key={a} className="px-5 py-2.5 border border-white/5 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>{a}</span>
-            ))}
+          <div className="flex flex-wrap justify-center gap-4 text-xs sm:text-sm font-semibold text-slate-200">
+            <span className="px-5 py-2.5 border border-white/5 bg-[#0a0c10] rounded-sm">Senior Advocates</span>
+            <span className="px-5 py-2.5 border border-white/5 bg-[#0a0c10] rounded-sm">Litigation Chambers</span>
+            <span className="px-5 py-2.5 border border-white/5 bg-[#0a0c10] rounded-sm">Law Firms</span>
+            <span className="px-5 py-2.5 border border-white/5 bg-[#0a0c10] rounded-sm">Research Institutions</span>
+            <span className="px-5 py-2.5 border border-white/5 bg-[#0a0c10] rounded-sm">Corporate Legal Teams</span>
+            <span className="px-5 py-2.5 border border-white/5 bg-[#0a0c10] rounded-sm">Judicial Workflows</span>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          TELEGRAM — Public Intelligence Alerts
-      ════════════════════════════════════════════ */}
-      <section id="alerts" className="border-t border-white/5 py-24 px-6 bg-[#080910]">
+      {/* Free Telegram Precedent Alerts Section */}
+      <section id="alerts" className="border-t border-white/5 py-28 px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#c5a059]/3 rounded-full blur-3xl -z-10 pointer-events-none" />
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16">
-          <div className="flex-1">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>Public Intelligence Services</span>
-              <div className="flex-1 h-[1px] bg-white/5" />
+
+          {/* Left — Text */}
+          <div className="flex-1 text-left">
+            <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Free · No Account Required</span>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-white mt-4 mb-5">
+              Real-Time Judgment Alerts<br />on Telegram
+            </h2>
+            <p className="text-sm md:text-base text-slate-300 leading-relaxed mb-4 max-w-lg">
+              Get instant 4-line micro-summaries of Supreme Court and High Court judgments delivered directly to your Telegram — free, no signup needed.
+            </p>
+            <p className="text-xs text-slate-500 leading-relaxed mb-8 max-w-lg">
+              Each alert includes the case title, court &amp; date, key holding, and a link to the full analysis. Pro subscribers receive additional filtered alerts by court and practice area.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <a
+                href="https://t.me/LegAIntel_bot?start=sub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#229ED9] hover:bg-[#1a8fc7] text-white text-sm font-bold uppercase tracking-widest rounded-sm transition-all shadow-[0_0_20px_rgba(34,158,217,0.2)]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+                </svg>
+                Subscribe on Telegram
+              </a>
+              <span className="text-xs text-slate-500 font-sans">or scan the QR code →</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Georgia, serif' }}>
-              Free Legal Intelligence Alerts
-            </h3>
-            <p className="text-sm text-slate-400 leading-relaxed mb-6 max-w-lg" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Receive AI-generated summaries of significant judgments from the Supreme Court and High Courts delivered directly on Telegram. No account required.
-            </p>
-            <p className="text-xs text-slate-600 leading-relaxed mb-8 max-w-lg" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              Each alert includes case title, court, date, key holding, and a link to full analysis. A public intelligence service from LegAIntel — free and open to all legal professionals.
-            </p>
-            <a href="https://t.me/LegAIntel_bot?start=sub" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#229ED9] hover:bg-[#1a8fc7] text-white text-[11px] font-bold uppercase tracking-[0.2em] transition-all"
-              style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
-              </svg>
-              Subscribe on Telegram
-            </a>
           </div>
 
+          {/* Right — QR Code */}
           <div className="flex flex-col items-center gap-4 shrink-0">
-            <div className="p-4 bg-white border border-[#c5a059]/10">
+            <div className="p-4 bg-white rounded-xl shadow-[0_0_30px_rgba(197,160,89,0.1)]">
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://t.me/LegAIntel_bot%3Fstart%3Dsub&color=000000&bgcolor=ffffff&margin=2"
-                alt="Scan to open @LegAIntel_bot"
-                width="150" height="150"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://t.me/LegAIntel_bot%3Fstart%3Dsub&color=000000&bgcolor=ffffff&margin=2"
+                alt="Scan to open @LegAIntel_bot on Telegram"
+                width="160"
+                height="160"
                 className="block"
               />
             </div>
-            <p className="text-[10px] text-slate-600 text-center uppercase tracking-widest" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>@LegAIntel_bot</p>
+            <p className="text-xs text-slate-500 text-center font-sans">Scan to open<br/>@LegAIntel_bot</p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section id="chambers" className="border-t border-white/5 py-36 px-6 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#c5a059]/2 rounded-full blur-3xl -z-10 pointer-events-none" />
+        
+        <div className="max-w-3xl mx-auto">
+          <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Instant Mobilization</span>
+          <h2 className="text-4.5xl font-serif font-bold tracking-tight text-white mt-4 mb-8">
+            Build Your Legal Intelligence Chamber
+          </h2>
+          <p className="text-base text-slate-200 leading-relaxed mb-12 max-w-xl mx-auto">
+            Replace fragmented legal workflows with a continuously evolving litigation intelligence system designed for modern counsel.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-5">
+            <Link to="/register" className="px-10 py-5 bg-[#c5a059] hover:bg-[#b38f48] text-black text-sm font-bold uppercase tracking-widest rounded-sm transition-all shadow-[0_0_20px_rgba(197,160,89,0.25)]">
+              Establish Your Chamber
+            </Link>
+            <Link to="/login" className="px-10 py-5 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white text-sm font-bold uppercase tracking-widest rounded-sm transition-all">
+              Request Enterprise Access
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          FOOTER
-      ════════════════════════════════════════════ */}
-      <footer className="border-t border-white/5 bg-[#030406] py-20 px-6">
+      {/* Footer */}
+      <footer className="border-t border-white/5 bg-[#030406] py-20 px-6 font-sans">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-14 pb-14 border-b border-white/5">
-
+          
           <div className="space-y-5 max-w-sm">
-            <Link to="/" className="flex items-baseline select-none gap-[1px]">
-              <span className="text-2xl font-bold tracking-tight text-white" style={{ fontFamily: 'Georgia, serif' }}>leg</span>
-              <span className="text-3xl font-black text-[#c5a059] leading-none" style={{ fontFamily: 'Georgia, serif' }}>AI</span>
-              <span className="text-2xl font-bold tracking-tight text-white" style={{ fontFamily: 'Georgia, serif' }}>ntel</span>
+            <Link to="/" className="flex items-baseline select-none">
+              <span className="text-2xl font-bold font-serif tracking-tight text-white">leg</span>
+              <span className="text-3xl font-black text-[#c5a059] mx-[1px] leading-none">AI</span>
+              <span className="text-2xl font-bold font-serif tracking-tight text-white">ntel</span>
             </Link>
-            <p className="text-xs text-slate-500 leading-relaxed" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-              The Legal Intelligence Infrastructure of India. Connecting legal knowledge, legal reasoning, legal drafting, legal governance, and institutional memory across every domain of law.
+            <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
+              Sovereign Legal Intelligence Infrastructure. Built for high-stakes litigation analysis, relational precedent discovery, and private chamber knowledge continuity.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 text-xs font-bold uppercase tracking-[0.18em]" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 text-xs md:text-sm font-bold uppercase tracking-widest">
             <div className="flex flex-col gap-4">
-              <span className="text-[#c5a059] text-[10px] tracking-[0.25em] font-extrabold block mb-1">Infrastructure</span>
-              <a href="#infrastructure" className="text-slate-500 hover:text-white transition-colors">Intelligence Crisis</a>
-              <a href="#architecture" className="text-slate-500 hover:text-white transition-colors">Four Layers</a>
-              <a href="#domains" className="text-slate-500 hover:text-white transition-colors">Domains of Law</a>
+              <span className="text-[#c5a059] text-xs tracking-[0.2em] font-extrabold block mb-1">Platform</span>
+              <a href="#intelligence" className="text-slate-400 hover:text-white transition-colors">Intelligence</a>
+              <a href="#capabilities" className="text-slate-400 hover:text-white transition-colors">Capabilities</a>
+              <a href="#chambers" className="text-slate-400 hover:text-white transition-colors">Chambers</a>
             </div>
             <div className="flex flex-col gap-4">
-              <span className="text-[#c5a059] text-[10px] tracking-[0.25em] font-extrabold block mb-1">Platform</span>
-              <a href="#aetherius" className="text-slate-500 hover:text-white transition-colors">Aetherius</a>
-              <a href="#governance" className="text-slate-500 hover:text-white transition-colors">Governance</a>
-              <a href="#vision" className="text-slate-500 hover:text-white transition-colors">National Vision</a>
+              <span className="text-[#c5a059] text-xs tracking-[0.2em] font-extrabold block mb-1">Security</span>
+              <a href="#security" className="text-slate-400 hover:text-white transition-colors">Architecture</a>
+              <a href="#security" className="text-slate-400 hover:text-white transition-colors">Vault Tech</a>
+              <a href="#security" className="text-slate-400 hover:text-white transition-colors">Isolation</a>
             </div>
             <div className="flex flex-col gap-4">
-              <span className="text-[#c5a059] text-[10px] tracking-[0.25em] font-extrabold block mb-1">Resources</span>
-              <Link to="/contact" className="text-slate-500 hover:text-white transition-colors">Contact</Link>
-              <Link to="/register" className="text-slate-500 hover:text-white transition-colors">Request Access</Link>
-              <a href="#alerts" className="text-slate-500 hover:text-white transition-colors">Intelligence Alerts</a>
+              <span className="text-[#c5a059] text-xs tracking-[0.2em] font-extrabold block mb-1">Resources</span>
+              <a href="#" className="text-slate-400 hover:text-white transition-colors">Documentation</a>
+              <Link to="/contact" className="text-slate-400 hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
+
         </div>
 
-        <div className="max-w-7xl mx-auto pt-10 flex flex-col sm:flex-row justify-between items-center gap-5 text-xs text-slate-600" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif" }}>
-          <p>© {new Date().getFullYear()} LegAIntel. All rights reserved.</p>
-          <p className="uppercase tracking-[0.2em] text-[11px] text-[#c5a059]/60 font-bold">Building the Foundation for Legal Intelligence in India</p>
+        <div className="max-w-7xl mx-auto pt-10 flex flex-col sm:flex-row justify-between items-center gap-5 text-xs md:text-sm text-slate-400 font-sans">
+          <p>© {new Date().getFullYear()} LegAIntel. All professional rights reserved.</p>
+          <p className="uppercase tracking-widest text-xs text-[#c5a059] font-bold">Built for Modern Litigation Intelligence</p>
           <div className="flex gap-5">
             <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
             <span className="text-slate-800">•</span>
