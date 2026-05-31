@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { 
   Search, Calendar, Filter, Copy, PlusCircle, CheckCircle, 
@@ -9,6 +10,8 @@ import {
 
 
 export default function PrecedentsBrowser() {
+  const { user } = useAuth();
+  const isPremium = user?.tier === 'pro' || user?.tier === 'enterprise';
   const [loading, setLoading] = useState(false);
   const [linkingId, setLinkingId] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
@@ -59,11 +62,7 @@ export default function PrecedentsBrowser() {
         setSelectedCase(res.data.results[0]);
       }
     } catch (err) {
-      if (err.response && err.response.status === 402) {
-        setErrorMsg("This page is reserved for Pro and Enterprise subscribers. Please upgrade your tier in your profile.");
-      } else {
-        setErrorMsg("Failed to load public precedents.");
-      }
+      setErrorMsg("Failed to load public precedents.");
     } finally {
       setLoading(false);
     }
@@ -316,30 +315,37 @@ export default function PrecedentsBrowser() {
                   {citationCopied ? "Citation Copied" : "Copy Citation"}
                 </button>
 
-                <button
-                  onClick={() => selectedCase.is_deep_dived
-                    ? handleUnlinkFromWorkspace(selectedCase.id)
-                    : handleLinkToWorkspace(selectedCase.id)
-                  }
-                  disabled={linkingId === selectedCase.id}
-                  className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-all disabled:opacity-50
-                    ${selectedCase.is_deep_dived
-                      ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/20'
-                      : 'bg-[#c5a059] hover:bg-[#b38f48] text-black'}`}
-                >
-                  {linkingId === selectedCase.id ? (
-                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                  ) : selectedCase.is_deep_dived ? (
-                    <CheckCircle className="w-3.5 h-3.5" />
-                  ) : (
+                {isPremium ? (
+                  <button
+                    onClick={() => selectedCase.is_deep_dived
+                      ? handleUnlinkFromWorkspace(selectedCase.id)
+                      : handleLinkToWorkspace(selectedCase.id)
+                    }
+                    disabled={linkingId === selectedCase.id}
+                    className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-widest flex items-center gap-2 transition-all disabled:opacity-50
+                      ${selectedCase.is_deep_dived
+                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/20'
+                        : 'bg-[#c5a059] hover:bg-[#b38f48] text-black'}`}
+                  >
+                    {linkingId === selectedCase.id ? (
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    ) : selectedCase.is_deep_dived ? (
+                      <CheckCircle className="w-3.5 h-3.5" />
+                    ) : (
+                      <PlusCircle className="w-3.5 h-3.5" />
+                    )}
+                    {linkingId === selectedCase.id
+                      ? 'Processing...'
+                      : selectedCase.is_deep_dived
+                      ? 'Added — Click to Remove'
+                      : 'Add to Workspace'}
+                  </button>
+                ) : (
+                  <div className="px-4 py-2 rounded text-xs font-bold uppercase tracking-widest text-slate-500 border border-white/10 bg-white/5 cursor-not-allowed flex items-center gap-2">
                     <PlusCircle className="w-3.5 h-3.5" />
-                  )}
-                  {linkingId === selectedCase.id
-                    ? 'Processing...'
-                    : selectedCase.is_deep_dived
-                    ? 'Added — Click to Remove'
-                    : 'Add to Workspace'}
-                </button>
+                    Upgrade to Add
+                  </div>
+                )}
               </div>
             </div>
 

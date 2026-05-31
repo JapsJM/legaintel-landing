@@ -97,7 +97,7 @@ export default function CaseBriefsPage() {
       }
     } catch (err) {
       if (err.response && err.response.status === 402) {
-        setBriefError("Public precedents are reserved for Pro and Enterprise subscribers. Please upgrade your tier.");
+        setBriefError("Adding judgments to workspace requires a Pro or Enterprise subscription.");
       } else {
         setBriefError("Failed to load public precedents.");
       }
