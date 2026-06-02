@@ -14,7 +14,6 @@ import {
   FileCheck
 } from 'lucide-react';
 
-// Custom Advocate's Neckband / Collar Tabs Icon (Watermark)
 export default function Landing() {
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-[#c5a059] selection:text-black scroll-smooth">
@@ -30,7 +29,7 @@ export default function Landing() {
             <span className="text-2xl md:text-3xl font-bold font-serif tracking-tight text-white">ntel</span>
           </Link>
 
-          {/* Navigation Menu (Pricing updated to smooth scroll anchor) */}
+          {/* Navigation Menu */}
           <div className="hidden md:flex items-center gap-10 text-sm font-bold uppercase tracking-widest text-slate-200">
             <a href="#intelligence" className="hover:text-[#c5a059] transition-colors">Intelligence</a>
             <a href="#capabilities" className="hover:text-[#c5a059] transition-colors">Capabilities</a>
@@ -81,20 +80,17 @@ export default function Landing() {
       {/* Hero Section */}
       <header className="max-w-5xl mx-auto px-6 pt-28 pb-24 text-center flex flex-col justify-center items-center relative min-h-[90vh]">
         
-        {/* Huge background watermark with 50% opacity and pointer-events disabled */}
-
-        
         {/* Subtle blur behind the symbol */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#c5a059]/5 rounded-full blur-3xl -z-20 pointer-events-none" />
         
         {/* Badge font scaled 2 points */}
         <span className="relative z-10 px-5 py-2 border border-[#c5a059]/30 rounded-full text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-[#c5a059] bg-[#c5a059]/5 mb-8">
-          PRIVATE LEGAL INTELLIGENCE INFRASTRUCTURE
+          MULTI-AGENT LEGAL INTELLIGENCE PLATFORM
         </span>
         
         <h1 className="relative z-10 text-4xl md:text-6.5xl font-bold font-serif tracking-tight text-white max-w-4xl leading-[1.12] mb-8">
-          Next-Generation Litigation Intelligence for <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c5a059] to-[#e0c286]">Modern Counsel</span>
+          Multi-Agent Legal Intelligence for <br/>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c5a059] to-[#e0c286]">Modern Litigation</span>
         </h1>
         
         {/* Body fonts scaled 2 points, changed to lighter slate for crisp readability */}
@@ -124,7 +120,7 @@ export default function Landing() {
           <span className="text-[#c5a059]">•</span>
           <span>Multi-Agent</span>
           <span className="text-[#c5a059]">•</span>
-          <span>Sovereign</span>
+          <span>Tenant-Isolated</span>
           <span className="text-[#c5a059]">•</span>
           <span>Enterprise-Ready</span>
         </div>
@@ -174,7 +170,7 @@ export default function Landing() {
         <div className="bg-[#0a0c10]/40 border border-[#c5a059]/10 p-12 md:p-20 rounded-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#c5a059]/2 rounded-full blur-3xl -z-10" />
           
-          <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Infrastructure Definition</span>
+          <span className="text-[#c5a059] text-xs font-bold tracking-[0.25em] uppercase">Platform Definition</span>
           <h2 className="text-3.5xl font-serif font-bold tracking-tight text-white mt-3 mb-8">
             A Legal Intelligence Operating System
           </h2>
@@ -183,7 +179,7 @@ export default function Landing() {
             <p className="font-extrabold text-[#c5a059] text-xl md:text-2xl font-serif">LegAIntel is not a chatbot.</p>
             
             <p>
-              It is a sovereign legal intelligence infrastructure that continuously analyzes, connects, validates, and synthesizes litigation ecosystems.
+              It is a legal intelligence platform designed to analyze, connect, validate and synthesize litigation records through retrieval, graph analysis and multi-agent reasoning.
             </p>
             
             <p>
@@ -197,7 +193,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Section — Core Capabilities (Expanded Layout & Crisp White Fonts) */}
+      {/* Section — Core Capabilities */}
       <section id="capabilities" className="border-t border-white/5 bg-[#08090d]/60 py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
@@ -246,7 +242,7 @@ export default function Landing() {
               <span className="text-xs font-serif font-extrabold text-[#c5a059] tracking-widest block mb-5">CAPABILITY 05</span>
               <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-4">Chamber Memory System</h3>
               <p className="text-sm text-slate-200 leading-relaxed">
-                Build persistent institutional intelligence across matters, arguments, precedents, litigation strategies, and historical case analysis.
+                Build persistent chamber knowledge across matters, documents, precedents, and legal research.
               </p>
             </div>
 
@@ -356,7 +352,7 @@ export default function Landing() {
             {/* LegAIntel */}
             <div className="bg-[#0a0c10] border border-[#c5a059]/20 p-10 rounded-sm shadow-[0_0_30px_rgba(197,160,89,0.02)]">
               <h3 className="text-sm font-bold uppercase tracking-widest text-[#c5a059] mb-8 pb-3 border-b border-[#c5a059]/10">
-                LegAIntel Infrastructure
+                LegAIntel Platform
               </h3>
               <ul className="space-y-5">
                 <li className="flex items-start gap-4 text-sm text-white font-semibold">
@@ -373,7 +369,7 @@ export default function Landing() {
                 </li>
                 <li className="flex items-start gap-4 text-sm text-white font-semibold">
                   <Check className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
-                  <span>Enduring matter intelligence continuity and litigation memory</span>
+                  <span>Persistent matter context and chamber memory</span>
                 </li>
               </ul>
             </div>
@@ -381,8 +377,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
-
 
       {/* Section — Security */}
       <section id="security" className="py-28 px-6 max-w-5xl mx-auto">
@@ -394,7 +388,7 @@ export default function Landing() {
               Engineered for Legal Confidentiality
             </h2>
             <p className="text-sm md:text-base text-slate-200 leading-relaxed mb-8 font-sans">
-              LegAIntel is designed with sovereign isolation architecture for legal professionals handling confidential litigation data.
+              LegAIntel is designed with tenant-isolated architecture for legal professionals handling confidential litigation data.
             </p>
             <div className="flex items-center gap-3 text-xs uppercase tracking-widest font-bold text-[#c5a059]">
               <Lock className="w-5 h-5" />
@@ -405,7 +399,7 @@ export default function Landing() {
           <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Isolated Chambers</h4>
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">Cryptographically separate datastores with zero leakage risks.</p>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">Tenant-isolated data architecture designed to prevent cross-chamber data access.</p>
             </div>
             <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Access Controls</h4>
@@ -413,7 +407,7 @@ export default function Landing() {
             </div>
             <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Citation Verification</h4>
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">No external hallucinated elements can bypass the validator.</p>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">Validator systems are designed to reduce unsupported outputs through citation verification and response auditing.</p>
             </div>
             <div className="p-6 border border-white/5 bg-[#0a0c10]/40 rounded-sm">
               <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">Secure Lineage</h4>
@@ -532,7 +526,7 @@ export default function Landing() {
               <span className="text-2xl font-bold font-serif tracking-tight text-white">ntel</span>
             </Link>
             <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
-              Sovereign Legal Intelligence Infrastructure. Built for high-stakes litigation analysis, relational precedent discovery, and private chamber knowledge continuity.
+              Private Legal Intelligence Platform. Built for high-stakes litigation analysis, relational precedent discovery, and private chamber knowledge continuity.
             </p>
           </div>
 
