@@ -26,7 +26,7 @@ const CATEGORIES = [
       {
         icon: BookOpen,
         title: 'Browse public catalog',
-        sub: 'SCI & GHC judgments, pre-indexed',
+        sub: 'SCI judgments, pre-indexed',
         detail: 'Access the full catalog of Supreme Court of India and Gujarat High Court judgments — all pre-indexed and ready to query. Browse by court, date, or keyword. Free users can search and read the entire catalog without uploading anything.',
         steps: ['Open the catalog from the sidebar', 'Filter by court, year, or keyword', 'Click any judgment to preview', 'Add it to your workspace for deeper querying'],
       },
