@@ -39,6 +39,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import Prompts from './pages/Prompts'
 import ResetPassword from './pages/ResetPassword'
 import MediaLibrary from './pages/MediaLibrary'
+import OrdersLibrary from './pages/OrdersLibrary'
 import Admin from './pages/Admin'
 import Pricing from './pages/Pricing'
 import Analytics from './pages/Analytics'
@@ -113,6 +114,7 @@ export default function App() {
         <Route path="/documents" element={<ProtectedRoute><Documents /></ProtectedRoute>} />
         <Route path="/chat"      element={<ProtectedRoute><Chat /></ProtectedRoute>} />
         <Route path="/media"     element={<ProtectedRoute><MediaLibrary /></ProtectedRoute>} />
+        <Route path="/orders"    element={<ProtectedRoute><OrdersLibrary /></ProtectedRoute>} />
         <Route path="/briefing"  element={<ProtectedRoute><Briefing /></ProtectedRoute>} />
         <Route path="/feedback"  element={<ProtectedRoute><Feedback /></ProtectedRoute>} />
         <Route path="/submit-feedback" element={<ProtectedRoute><SubmitFeedback /></ProtectedRoute>} />
