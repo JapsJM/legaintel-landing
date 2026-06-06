@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { listConversations } from '../services/chat'
 import { getBriefing } from '../services/briefing'
 import FeatureBlueprint from '../components/FeatureBlueprint'
+import PlatformGuide from '../components/PlatformGuide'
 import { getJurisdictionPulse, getActiveMatters } from '../services/dashboard'
 import OnboardingWizard, { hasSeenWizard } from '../components/OnboardingWizard'
 import {
@@ -171,6 +172,9 @@ export default function Dashboard() {
           </button>
         </div>
       </div>
+
+      {/* Platform Guide — collapsible, top of page */}
+      <PlatformGuide navigate={navigate} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
@@ -365,9 +369,6 @@ export default function Dashboard() {
 
         </div>
       </div>
-      {/* Platform Guide */}
-      <FeatureBlueprint />
-
       {showWizard && <OnboardingWizard onDismiss={() => setShowWizard(false)} />}
     </div>
   )
