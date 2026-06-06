@@ -48,7 +48,6 @@ export default function ImageViewer({ media, onClose, onDelete, onReprocess }) {
 
   const handleDownload = async () => {
     try {
-      // Secure download via API proxy
       const response = await api.get(`/media/${media.id}/file`, {
         responseType: 'blob'
       });
@@ -57,8 +56,47 @@ export default function ImageViewer({ media, onClose, onDelete, onReprocess }) {
       a.href = url; a.download = media.filename;
       document.body.appendChild(a); a.click();
       window.URL.revokeObjectURL(url);
-    } catch { 
-      alert('Failed to download file.'); 
+      document.body.removeChild(a);
+    } catch {
+      alert('Failed to download image.');
+    }
+  };
+
+  const handleDownloadAnalysis = () => {
+    try {
+      const analysis = media.analysis || {};
+      const lines = [
+        `AETHERIUS — IMAGE ANALYSIS REPORT`,
+        `=====================================`,
+        `File: ${media.filename}`,
+        `Analysed: ${media.processed_at ? new Date(media.processed_at).toLocaleString() : '—'}`,
+        `Confidence: ${analysis.confidence !== undefined ? (analysis.confidence * 100).toFixed(0) + '%' : '—'}`,
+        `Document Type: ${analysis.document_type || '—'}`,
+        ``,
+        `EXTRACTED TEXT`,
+        `--------------`,
+        analysis.text_content || 'No text extracted.',
+        ``,
+        `DETECTIONS`,
+        `----------`,
+        `Stamps / Seals: ${analysis.has_stamp ? 'Yes' : 'No'}`,
+        analysis.stamps?.length > 0 ? analysis.stamps.map(s => `  - ${s.type} at ${s.location}`).join('\n') : '',
+        `Handwriting: ${analysis.has_handwriting ? 'Yes' : 'No'}`,
+        analysis.handwriting_notes ? `  Notes: ${analysis.handwriting_notes}` : '',
+        `Tables: ${analysis.has_tables ? 'Yes' : 'No'}`,
+        analysis.tables?.length > 0 ? analysis.tables.map(t => `  - ${t.description}`).join('\n') : '',
+      ].filter(l => l !== undefined).join('\n');
+
+      const blob = new Blob([lines], { type: 'text/plain' });
+      const url  = window.URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      const safeName = media.filename.replace(/\.[^/.]+$/, '');
+      a.href = url; a.download = `${safeName}_analysis.txt`;
+      document.body.appendChild(a); a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch {
+      alert('Failed to download analysis.');
     }
   };
 
@@ -110,28 +148,38 @@ export default function ImageViewer({ media, onClose, onDelete, onReprocess }) {
 
           {/* Preview */}
           {activeTab === 'preview' && (
-            <div className="flex justify-center items-center min-h-48">
-              {media.status === 'ready' && imageUrl ? (
-                <img src={imageUrl} alt={media.filename} className="max-w-full max-h-[60vh] object-contain rounded" />
-              ) : media.status === 'processing' ? (
-                <div className="text-center py-12">
-                  <svg className="w-8 h-8 animate-spin text-[#c5a059] mx-auto mb-3" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
-                  </svg>
-                  <p className="text-slate-400 text-sm font-sans">Processing image...</p>
-                </div>
-              ) : media.status === 'failed' ? (
-                <div className="text-center py-12">
-                  <p className="text-red-400 text-sm font-semibold font-sans mb-2">Processing Failed</p>
-                  <p className="text-slate-500 text-xs font-sans mb-4">{media.error || 'Unknown error'}</p>
-                  <button onClick={() => onReprocess(media.id)}
-                    className="px-4 py-2 bg-[#c5a059] hover:bg-[#c5a059]/80 text-black text-xs font-semibold rounded transition font-sans">
-                    Retry Processing
+            <div className="space-y-4">
+              <div className="flex justify-center items-center min-h-48">
+                {media.status === 'ready' && imageUrl ? (
+                  <img src={imageUrl} alt={media.filename} className="max-w-full max-h-[60vh] object-contain rounded" />
+                ) : media.status === 'processing' ? (
+                  <div className="text-center py-12">
+                    <svg className="w-8 h-8 animate-spin text-[#c5a059] mx-auto mb-3" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                    </svg>
+                    <p className="text-slate-400 text-sm font-sans">Processing image...</p>
+                  </div>
+                ) : media.status === 'failed' ? (
+                  <div className="text-center py-12">
+                    <p className="text-red-400 text-sm font-semibold font-sans mb-2">Processing Failed</p>
+                    <p className="text-slate-500 text-xs font-sans mb-4">{media.error || 'Unknown error'}</p>
+                    <button onClick={() => onReprocess(media.id)}
+                      className="px-4 py-2 bg-[#c5a059] hover:bg-[#c5a059]/80 text-black text-xs font-semibold rounded transition font-sans">
+                      Retry Processing
+                    </button>
+                  </div>
+                ) : (
+                  <p className="text-slate-500 text-sm font-sans">Uploading...</p>
+                )}
+              </div>
+              {media.status === 'ready' && (
+                <div className="flex justify-center">
+                  <button onClick={handleDownload}
+                    className="flex items-center gap-2 px-4 py-2 border border-white/10 text-slate-300 text-xs rounded hover:bg-white/5 transition font-sans">
+                    <Download className="w-3.5 h-3.5" /> Download Image
                   </button>
                 </div>
-              ) : (
-                <p className="text-slate-500 text-sm font-sans">Uploading...</p>
               )}
             </div>
           )}
@@ -180,6 +228,14 @@ export default function ImageViewer({ media, onClose, onDelete, onReprocess }) {
                       </div>
                     </div>
                   )}
+
+                  {/* Download Analysis */}
+                  <div className="flex justify-end">
+                    <button onClick={handleDownloadAnalysis}
+                      className="flex items-center gap-2 px-4 py-2 border border-white/10 text-slate-300 text-xs rounded hover:bg-white/5 transition font-sans">
+                      <Download className="w-3.5 h-3.5" /> Download Analysis
+                    </button>
+                  </div>
                 </>
               )}
             </div>
@@ -231,12 +287,6 @@ export default function ImageViewer({ media, onClose, onDelete, onReprocess }) {
             <Trash2 className="w-3.5 h-3.5" /> Delete
           </button>
           <div className="flex gap-2">
-            {media.status === 'ready' && (
-              <button onClick={handleDownload}
-                className="flex items-center gap-2 px-3 py-1.5 border border-white/10 text-slate-300 text-xs rounded hover:bg-white/5 transition font-sans">
-                <Download className="w-3.5 h-3.5" /> Download
-              </button>
-            )}
             {(media.status === 'failed' || media.status === 'ready') && (
               <button onClick={() => onReprocess(media.id)}
                 className="flex items-center gap-2 px-3 py-1.5 bg-[#c5a059] hover:bg-[#c5a059]/80 text-black text-xs font-semibold rounded transition font-sans">
