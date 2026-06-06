@@ -90,10 +90,11 @@ export default function CaseBriefsPage() {
       setPublicTotalCount(res.data.total || 0);
 
       if (res.data.results && res.data.results.length > 0 && activeTab === 'public') {
-        const firstPublic = res.data.results[0];
-        setSelectedDocId(firstPublic.id);
-        setSelectedFilename(firstPublic.filename);
-        setBriefData(firstPublic.brief);
+        // Auto-select first result that has a generated brief — skip orders with brief: null
+        const firstWithBrief = res.data.results.find(r => r.brief !== null) || res.data.results[0];
+        setSelectedDocId(firstWithBrief.id);
+        setSelectedFilename(firstWithBrief.filename);
+        setBriefData(firstWithBrief.brief);
       }
     } catch (err) {
       if (err.response && err.response.status === 402) {
@@ -221,7 +222,7 @@ export default function CaseBriefsPage() {
   const p7_respondent    = briefMap["7_respondents_defense"]     || briefMap["12_respondent_arguments"];
   const p8_ratio         = briefMap["8_ratio_decidendi_core_rule"] || briefMap["16_ratio_decidendi"];
   const p9_holding       = briefMap["9_holding_and_final_order"] || briefMap["18_final_holding_order"];
-  const p10_advisory     = briefMap["10_strategic_litigation_advisory"] || briefMap["20_strategic_litigation_advisory"];
+  const p10_advisory     = briefMap["10_ai_case_brief"] || briefMap["10_strategic_litigation_advisory"] || briefMap["20_strategic_litigation_advisory"];
 
   // Detect if the loaded brief is missing crucial data (due to previous rate limits or failed generation)
   const isBriefEmpty = !briefData || (!p3_statutes && !p4_question_law && !p8_ratio);
@@ -332,7 +333,6 @@ export default function CaseBriefsPage() {
                 >
                   <option value="">All Courts</option>
                   <option value="SCI">SCI</option>
-                  <option value="GHC">GHC</option>
                 </select>
                 <select
                   value={categoryFilter}
@@ -640,14 +640,45 @@ export default function CaseBriefsPage() {
                         </div>
                       )}
 
-                      {/* Point 10: Strategic Litigation Advisory */}
+                      {/* Point 10: AI Case Brief */}
                       {p10_advisory && (
-                        <div className="space-y-2 font-sans">
+                        <div className="space-y-3 font-sans">
                           <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#c5a059] print:text-black">
-                            10. Strategic Advisory
-                        </h3>
-                          <div className="p-5 bg-[#c5a059]/[0.03] border border-[#c5a059]/10 rounded-sm font-sans text-sm leading-relaxed text-slate-300 print:text-black print:border-black/10">
-                            {p10_advisory}
+                            10. AI Case Brief
+                          </h3>
+                          <div className="p-5 bg-[#c5a059]/[0.03] border border-[#c5a059]/10 rounded-sm space-y-4">
+
+                            {/* Render flat string (legacy) or structured object (new) */}
+                            {typeof p10_advisory === "string" ? (
+                              <p className="text-[12px] leading-relaxed text-slate-300 print:text-black">{p10_advisory}</p>
+                            ) : (
+                              <>
+                                {[
+                                  { key: "case_summary",                    label: "Case Summary" },
+                                  { key: "key_legal_principles",            label: "Key Legal Principles" },
+                                  { key: "legislative_provisions_interpreted", label: "Legislative Provisions Interpreted" },
+                                  { key: "precedents_overruled_or_followed",label: "Precedents Overruled / Followed" },
+                                  { key: "jurisdiction_and_applicability",  label: "Jurisdiction & Applicability" },
+                                  { key: "distinguishing_factors",          label: "Distinguishing Factors" },
+                                  { key: "use_this_judgment_when",          label: "Use This Judgment When" },
+                                  { key: "avoid_using_this_judgment_when",  label: "Avoid Using This Judgment When" },
+                                  { key: "opposing_counsel_may_argue",      label: "Opposing Counsel May Argue" },
+                                  { key: "best_supporting_authorities",     label: "Best Supporting Authorities" },
+                                ].map(({ key, label }) =>
+                                  p10_advisory[key] ? (
+                                    <div key={key} className="space-y-1">
+                                      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#c5a059]/80 print:text-black">
+                                        {label}
+                                      </p>
+                                      <p className="text-[12px] leading-relaxed text-slate-300 print:text-black">
+                                        {p10_advisory[key]}
+                                      </p>
+                                    </div>
+                                  ) : null
+                                )}
+                              </>
+                            )}
+
                           </div>
                         </div>
                       )}
