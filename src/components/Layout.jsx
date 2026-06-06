@@ -23,7 +23,7 @@ export default function Layout({ children }) {
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Legal Chat', href: '/chat', icon: MessageSquare },
     { name: 'Case Documents', href: '/documents', icon: FileText },
-    { name: 'Media Library', href: '/media', icon: Library },
+    { name: 'Orders Library', href: '/media', icon: Library },
     { name: "Counsel's Digest", href: '/briefing', icon: Zap },
     { name: 'Case Briefs', href: '/briefs', icon: BookOpen },
   ];
