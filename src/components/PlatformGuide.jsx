@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react'
 import { ChevronDown, ChevronUp, X } from 'lucide-react'
 
-// Free Lottie animations from LottieFiles CDN (Lottie Simple License — free for commercial use)
+// Free Lottie animations from LottieFiles CDN (Lottie Simple License)
 const STEPS = [
   {
     step: '01',
-    title: 'Upload Your Matter',
-    desc: 'Upload case documents, scanned images, or PDFs. AI extracts, chunks, and indexes all content automatically into your private workspace.',
+    title: 'Upload Case Documents',
+    desc: 'Upload PDFs, scanned images, or text files. AI chunks, embeds, and indexes everything into your private workspace instantly.',
     lottie: 'https://assets9.lottiefiles.com/packages/lf20_iorpbol0.json',
     color: '#c5a059',
     path: '/documents',
-    cta: 'Upload Now'
+    cta: 'Go to Documents'
   },
   {
     step: '02',
-    title: 'AI Legal Research',
-    desc: 'Ask questions grounded in your uploaded documents and SC precedents. GraphRAG + Knowledge Graph delivers cited, structured answers.',
+    title: 'Research with Legal Chat',
+    desc: 'Ask legal questions grounded in your documents and SC precedents. GraphRAG + Neo4j Knowledge Graph delivers cited answers.',
     lottie: 'https://assets4.lottiefiles.com/packages/lf20_l3sfdi9x.json',
     color: '#7c6fcd',
     path: '/chat',
-    cta: 'Start Chat'
+    cta: 'Open Chat'
   },
   {
     step: '03',
     title: "Counsel's Digest",
-    desc: 'Get a daily AI-compiled briefing — priorities, contradiction alerts, and matter intelligence surfaced automatically every morning.',
+    desc: 'Daily AI briefing — matter priorities, contradiction alerts, and upcoming deadlines compiled automatically every morning.',
     lottie: 'https://assets3.lottiefiles.com/packages/lf20_qm8eqzse.json',
     color: '#4ade80',
     path: '/briefing',
@@ -32,28 +32,52 @@ const STEPS = [
   },
   {
     step: '04',
-    title: 'AI Case Brief',
-    desc: 'Generate a 10-point structured brief for any SC judgment — ratio, provisions, use cases, opposing arguments, and best authorities.',
+    title: 'Public SC Judgements',
+    desc: 'Browse Supreme Court judgements indexed daily. Each judgment includes an AI-generated 10-point Case Brief automatically.',
     lottie: 'https://assets1.lottiefiles.com/packages/lf20_w51pcehl.json',
-    color: '#38bdf8',
-    path: '/briefs',
-    cta: 'Generate Brief'
+    color: '#c5a059',
+    path: '/precedents',
+    cta: 'Browse Judgements'
   },
 ]
 
 const FEATURES = [
-  { icon: '⚖️', title: 'Public Precedents',    desc: 'Browse SC judgements with AI 10-point briefs, indexed daily.',                  path: '/precedents'  },
-  { icon: '📖', title: 'Statutory Bridge',      desc: 'Maps provisions across IPC→BNS, CrPC→BNSS, Evidence Act→BSA.',                 path: '/chat'        },
-  { icon: '🖼️', title: 'Image Analysis',        desc: 'Gemini Vision extracts text, stamps, handwriting from scanned documents.',      path: '/media'       },
-  { icon: '📋', title: 'Orders Library',         desc: 'All SC orders ingested daily — searchable in Legal Chat.',                     path: '/orders'      },
-  { icon: '🔗', title: 'Document Lineage',       desc: 'Track version history, amendments and provenance of any uploaded document.',   path: '/documents'   },
-  { icon: '🧬', title: 'Knowledge Graph',        desc: 'Neo4j entity graph links cases, statutes, judges and citations across matters.',path: '/chat'        },
-  { icon: '🎯', title: 'Prompt Tuning',          desc: 'Customise AI behaviour — adjust research style, citation depth, verbosity.',   path: '/prompts'     },
-  { icon: '🔔', title: 'Telegram Alerts',        desc: 'Instant Telegram notifications when new SC judgements are indexed.',           path: '/profile'     },
-  { icon: '📊', title: 'Matter Intelligence',    desc: 'Track active matters with status, alerts and AI-generated priorities.',        path: '/documents'   },
-  { icon: '💬', title: 'Research History',       desc: 'All your past legal queries saved — revisit, continue, or export anytime.',   path: '/chat'        },
-  { icon: '⭐', title: 'Feedback & Ratings',     desc: 'Rate AI responses to improve research quality over time.',                    path: '/feedback'    },
-  { icon: '👤', title: 'Profile & Account',      desc: 'Manage subscription, notifications, Telegram linking and account settings.',  path: '/profile'     },
+  {
+    icon: '⚖️',
+    title: 'Public Precedents',
+    desc: 'Daily-indexed SC judgements. Click any judgment to view the AI 10-point Case Brief — ratio, provisions, how to use it in court.',
+    path: '/precedents'
+  },
+  {
+    icon: '📖',
+    title: 'Statutory Bridge',
+    desc: 'Inside Legal Chat — maps IPC → BNS, CrPC → BNSS, Evidence Act → BSA. Ask about any section and get cross-referenced answers.',
+    path: '/chat'
+  },
+  {
+    icon: '🖼️',
+    title: 'Image Analysis',
+    desc: 'Upload scanned court documents. Gemini Vision extracts text, stamps, handwriting and tables. Analysis is queryable in Legal Chat.',
+    path: '/media'
+  },
+  {
+    icon: '📋',
+    title: 'Orders Library',
+    desc: 'SC orders and final orders ingested daily. Browse by type, search by case number, preview PDF inline.',
+    path: '/orders'
+  },
+  {
+    icon: '🔔',
+    title: 'Telegram Alerts',
+    desc: 'Link your Telegram account from Profile settings. Get instant alerts when new SC judgements are indexed to the platform.',
+    path: '/profile'
+  },
+  {
+    icon: '👤',
+    title: 'Profile & Settings',
+    desc: 'Manage your subscription tier, Telegram linking, and account details.',
+    path: '/profile'
+  },
 ]
 
 // Load Lottie player web component once
@@ -129,7 +153,7 @@ export default function PlatformGuide({ navigate }) {
                   )}
 
                   {/* Step number */}
-                  <p className="text-[10px] font-bold tracking-widest mb-3" style={{ color: s.color }}>
+                  <p className="text-[10px] font-bold tracking-widest mb-3 text-[#c5a059]">
                     STEP {s.step}
                   </p>
 
@@ -152,10 +176,7 @@ export default function PlatformGuide({ navigate }) {
                   {/* CTA */}
                   <button
                     onClick={() => navigate(s.path)}
-                    className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm border transition"
-                    style={{ borderColor: `${s.color}30`, color: s.color }}
-                    onMouseEnter={e => e.currentTarget.style.backgroundColor = `${s.color}10`}
-                    onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}>
+                    className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm border border-[#c5a059]/30 text-[#c5a059] hover:bg-[#c5a059]/10 transition font-sans">
                     {s.cta} →
                   </button>
                 </div>
