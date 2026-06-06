@@ -217,6 +217,23 @@ export default function ImageViewer({ media, onClose, onDelete, onReprocess }) {
                     <DetectionCard label="Searchable" detected={media.embedded} count={0} color="emerald" />
                   </div>
 
+                  {/* Legal Chat availability note */}
+                  {media.embedded ? (
+                    <div className="flex items-start gap-2 p-3 bg-emerald-950/20 border border-emerald-900/30 rounded font-sans">
+                      <span className="text-emerald-400 text-xs mt-0.5">✓</span>
+                      <p className="text-xs text-emerald-300 leading-relaxed">
+                        This image's extracted content is indexed and available in <strong>Legal Chat</strong>. You can now query it directly — ask questions about this document in your chat session.
+                      </p>
+                    </div>
+                  ) : media.status === 'ready' ? (
+                    <div className="flex items-start gap-2 p-3 bg-amber-950/20 border border-amber-900/30 rounded font-sans">
+                      <span className="text-amber-400 text-xs mt-0.5">⏳</span>
+                      <p className="text-xs text-amber-300 leading-relaxed">
+                        Indexing in progress — this image will be available in <strong>Legal Chat</strong> shortly.
+                      </p>
+                    </div>
+                  ) : null}
+
                   {/* Extracted text */}
                   {media.analysis?.text_content && (
                     <div className="bg-white/[0.02] border border-white/5 rounded p-4">
