@@ -6,36 +6,36 @@ const STEPS = [
   {
     step: '01',
     title: 'Upload Case Documents',
-    desc: 'Upload PDFs, scanned images, or text files. AI chunks, embeds, and indexes everything into your private workspace instantly.',
+    what: 'Your private AI-powered document workspace.',
+    how: 'Upload any PDF, scanned image, or text file. AI automatically extracts, chunks, and embeds content into your private ChromaDB index. Every document becomes instantly searchable in Legal Chat.',
     lottie: 'https://assets9.lottiefiles.com/packages/lf20_iorpbol0.json',
-    color: '#c5a059',
     path: '/documents',
     cta: 'Go to Documents'
   },
   {
     step: '02',
     title: 'Research with Legal Chat',
-    desc: 'Ask legal questions grounded in your documents and SC precedents. GraphRAG + Neo4j Knowledge Graph delivers cited answers.',
+    what: 'GraphRAG + Neo4j Knowledge Graph powered legal research.',
+    how: 'Ask any legal question in plain English. The system searches your uploaded documents and SC precedents simultaneously, returning cited, structured answers with case references. Use jurisdiction filter to restrict to specific courts.',
     lottie: 'https://assets4.lottiefiles.com/packages/lf20_l3sfdi9x.json',
-    color: '#7c6fcd',
     path: '/chat',
     cta: 'Open Chat'
   },
   {
     step: '03',
     title: "Counsel's Digest",
-    desc: 'Daily AI briefing — matter priorities, contradiction alerts, and upcoming deadlines compiled automatically every morning.',
+    what: 'Your daily AI-compiled matter intelligence briefing.',
+    how: "Opens automatically with today's brief. Shows active matter priorities, contradiction alerts between your documents and recent SC rulings, and deadlines. Refreshes every morning — no manual input required.",
     lottie: 'https://assets3.lottiefiles.com/packages/lf20_qm8eqzse.json',
-    color: '#4ade80',
     path: '/briefing',
     cta: 'View Digest'
   },
   {
     step: '04',
     title: 'Public SC Judgements',
-    desc: 'Browse Supreme Court judgements indexed daily. Each judgment includes an AI-generated 10-point Case Brief automatically.',
+    what: 'Daily-indexed Supreme Court judgements with AI 10-point Case Briefs.',
+    how: 'Browse the public catalog. Click any judgment to instantly view its AI Case Brief — ratio decidendi, legislative provisions, when to use it in court, opposing arguments, and best supporting authorities. Filter by court, category, or date.',
     lottie: 'https://assets1.lottiefiles.com/packages/lf20_w51pcehl.json',
-    color: '#c5a059',
     path: '/precedents',
     cta: 'Browse Judgements'
   },
@@ -43,27 +43,39 @@ const STEPS = [
 
 const FEATURES = [
   {
+    num: '05',
     icon: '📖',
     title: 'Statutory Bridge',
-    desc: 'Inside Legal Chat — maps IPC → BNS, CrPC → BNSS, Evidence Act → BSA. Ask about any section and get cross-referenced answers.',
+    what: 'Cross-reference old and new legislation in seconds.',
+    how: 'Inside Legal Chat, ask about any IPC section and get its BNS equivalent automatically. Works for IPC → BNS, CrPC → BNSS, and Evidence Act → BSA. Type "Section 302 IPC equivalent in BNS" to try it.',
+    lottie: 'https://assets5.lottiefiles.com/packages/lf20_obhph3sh.json',
     path: '/chat'
   },
   {
+    num: '06',
     icon: '🖼️',
     title: 'Image Analysis',
-    desc: 'Upload scanned court documents. Gemini Vision extracts text, stamps, handwriting and tables. Analysis is queryable in Legal Chat.',
+    what: 'AI-powered analysis of scanned legal documents.',
+    how: 'Upload any scanned court document, affidavit, or exhibit. Gemini Vision extracts all text, detects stamps and seals, identifies handwritten annotations, and recognises table structures. Once analysed, the document is queryable in Legal Chat.',
+    lottie: 'https://assets3.lottiefiles.com/packages/lf20_twijbubv.json',
     path: '/media'
   },
   {
+    num: '07',
     icon: '📋',
     title: 'Orders Library',
-    desc: 'SC orders and final orders ingested daily. Browse by type, search by case number, preview PDF inline.',
+    what: 'All SC orders and final orders — ingested daily.',
+    how: 'Browse by order type (Order / Final Order), search by case number or party name. Click any row to preview the full PDF inline without leaving the page. New orders appear within hours of SC publishing them.',
+    lottie: 'https://assets9.lottiefiles.com/packages/lf20_qm8eqzse.json',
     path: '/orders'
   },
   {
+    num: '08',
     icon: '👤',
     title: 'Profile & Settings',
-    desc: 'Manage your subscription tier and account details.',
+    what: 'Account management and subscription controls.',
+    how: 'View your current subscription tier and resource quotas. Update personal information and change your password. Use the Platform Guide restore button if you dismissed this guide and want it back.',
+    lottie: 'https://assets10.lottiefiles.com/packages/lf20_xvrofzfk.json',
     path: '/profile'
   },
 ]
@@ -166,9 +178,16 @@ export default function PlatformGuide({ navigate }) {
                     />
                   </div>
 
-                  {/* Content */}
+                  {/* Title */}
                   <p className="text-[12px] font-semibold text-slate-200 mb-2">{s.title}</p>
-                  <p className="text-[12px] text-slate-500 leading-relaxed mb-4">{s.desc}</p>
+
+                  {/* What */}
+                  <p className="text-[11px] font-semibold text-[#c5a059]/70 mb-1">What it is</p>
+                  <p className="text-[12px] text-slate-400 leading-relaxed mb-3">{s.what}</p>
+
+                  {/* How */}
+                  <p className="text-[11px] font-semibold text-[#c5a059]/70 mb-1">How to use it</p>
+                  <p className="text-[12px] text-slate-500 leading-relaxed mb-4">{s.how}</p>
 
                   {/* CTA */}
                   <button
@@ -187,17 +206,48 @@ export default function PlatformGuide({ navigate }) {
           {/* Feature cards */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-5">
-              All Features
+              Additional Features — 05 to 08
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {FEATURES.map(f => (
-                <button key={f.title}
-                  onClick={() => handleNav(f.path)}
-                  className="text-left p-3 bg-[#050505] border border-white/5 rounded-sm hover:border-[#c5a059]/20 transition group">
-                  <span className="text-lg mb-2 block">{f.icon}</span>
-                  <p className="text-[12px] font-semibold text-slate-300 mb-1 group-hover:text-[#c5a059] transition">{f.title}</p>
-                  <p className="text-[12px] text-slate-600 leading-relaxed">{f.desc}</p>
-                </button>
+                <div key={f.title}
+                  className="bg-[#050505] border border-white/5 rounded-sm p-4 hover:border-white/10 transition group">
+
+                  {/* Feature number */}
+                  <p className="text-[10px] font-bold tracking-widest mb-3 text-[#c5a059]">
+                    FEATURE {f.num}
+                  </p>
+
+                  {/* Lottie animation */}
+                  <div className="flex justify-center mb-3">
+                    <lottie-player
+                      src={f.lottie}
+                      background="transparent"
+                      speed="1"
+                      style={{ width: '80px', height: '80px' }}
+                      loop
+                      autoplay
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <p className="text-[12px] font-semibold text-slate-200 mb-2">{f.icon} {f.title}</p>
+
+                  {/* What */}
+                  <p className="text-[11px] font-semibold text-[#c5a059]/70 mb-1">What it is</p>
+                  <p className="text-[12px] text-slate-400 leading-relaxed mb-3">{f.what}</p>
+
+                  {/* How */}
+                  <p className="text-[11px] font-semibold text-[#c5a059]/70 mb-1">How to use it</p>
+                  <p className="text-[12px] text-slate-500 leading-relaxed mb-4">{f.how}</p>
+
+                  {/* CTA */}
+                  <button
+                    onClick={() => handleNav(f.path)}
+                    className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm border border-[#c5a059]/30 text-[#c5a059] hover:bg-[#c5a059]/10 transition font-sans">
+                    Open →
+                  </button>
+                </div>
               ))}
             </div>
           </div>
