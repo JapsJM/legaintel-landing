@@ -61,12 +61,6 @@ const FEATURES = [
     path: '/orders'
   },
   {
-    icon: '🔔',
-    title: 'Telegram Alerts',
-    desc: 'Link your Telegram from your Profile page to receive instant alerts when new SC judgements are indexed.',
-    path: '/profile'
-  },
-  {
     icon: '👤',
     title: 'Profile & Settings',
     desc: 'Manage your subscription tier and account details.',
