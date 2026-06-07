@@ -43,12 +43,6 @@ const STEPS = [
 
 const FEATURES = [
   {
-    icon: '⚖️',
-    title: 'Public Precedents',
-    desc: 'Daily-indexed SC judgements. Click any judgment to view the AI 10-point Case Brief — ratio, provisions, how to use it in court.',
-    path: '/precedents'
-  },
-  {
     icon: '📖',
     title: 'Statutory Bridge',
     desc: 'Inside Legal Chat — maps IPC → BNS, CrPC → BNSS, Evidence Act → BSA. Ask about any section and get cross-referenced answers.',
@@ -69,13 +63,13 @@ const FEATURES = [
   {
     icon: '🔔',
     title: 'Telegram Alerts',
-    desc: 'Link your Telegram account from Profile settings. Get instant alerts when new SC judgements are indexed to the platform.',
-    path: '/profile'
+    desc: 'Scan the QR code on the landing page to link your Telegram. Get instant alerts when new SC judgements are indexed.',
+    path: '/#alerts'
   },
   {
     icon: '👤',
     title: 'Profile & Settings',
-    desc: 'Manage your subscription tier, Telegram linking, and account details.',
+    desc: 'Manage your subscription tier and account details.',
     path: '/profile'
   },
 ]
@@ -102,6 +96,15 @@ export default function PlatformGuide({ navigate }) {
   const handleDismiss = () => {
     try { localStorage.setItem('platform_guide_dismissed', 'true') } catch {}
     setDismissed(true)
+  }
+
+  const handleNav = (path) => {
+    if (path.startsWith('/#')) {
+      // Hash link to landing page section — use window.location
+      window.location.href = path
+    } else {
+      navigate(path)
+    }
   }
 
   if (dismissed) return null
@@ -175,7 +178,7 @@ export default function PlatformGuide({ navigate }) {
 
                   {/* CTA */}
                   <button
-                    onClick={() => navigate(s.path)}
+                    onClick={() => handleNav(s.path)}
                     className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-sm border border-[#c5a059]/30 text-[#c5a059] hover:bg-[#c5a059]/10 transition font-sans">
                     {s.cta} →
                   </button>
@@ -195,7 +198,7 @@ export default function PlatformGuide({ navigate }) {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {FEATURES.map(f => (
                 <button key={f.title}
-                  onClick={() => navigate(f.path)}
+                  onClick={() => handleNav(f.path)}
                   className="text-left p-3 bg-[#050505] border border-white/5 rounded-sm hover:border-[#c5a059]/20 transition group">
                   <span className="text-lg mb-2 block">{f.icon}</span>
                   <p className="text-[12px] font-semibold text-slate-300 mb-1 group-hover:text-[#c5a059] transition">{f.title}</p>
