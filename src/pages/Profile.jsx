@@ -315,6 +315,24 @@ export default function Profile() {
           </form>
         </div>
 
+        {/* Platform Guide Reset */}
+        <div className={cardCls}>
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-semibold text-slate-200 uppercase tracking-wider font-sans mb-1">Platform Guide</h3>
+              <p className="text-[12px] text-slate-500 font-sans">Restore the platform guide banner on your dashboard if you dismissed it.</p>
+            </div>
+            <button
+              onClick={() => {
+                localStorage.removeItem('platform_guide_dismissed')
+                alert('Platform Guide restored. Visit your dashboard to see it.')
+              }}
+              className="flex-shrink-0 ml-6 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-semibold rounded transition font-sans">
+              Restore Guide
+            </button>
+          </div>
+        </div>
+
         {/* --- ADDED: Task — Three-Layer Secure Account Erasure (Red Zone) --- */}
         <div className="bg-red-950/5 border border-red-950/40 rounded p-6">
           <div className="flex items-center gap-2 mb-3">
