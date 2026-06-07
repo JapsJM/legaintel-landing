@@ -324,7 +324,8 @@ export default function Profile() {
             </div>
             <button
               onClick={() => {
-                localStorage.removeItem('platform_guide_dismissed')
+                const userId = user?.id || user?._id || ''
+                localStorage.removeItem(`platform_guide_dismissed_${userId}`)
                 alert('Platform Guide restored. Visit your dashboard to see it.')
               }}
               className="flex-shrink-0 ml-6 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-semibold rounded transition font-sans">

@@ -174,7 +174,7 @@ export default function Dashboard() {
       </div>
 
       {/* Platform Guide — collapsible, top of page */}
-      <PlatformGuide navigate={navigate} />
+      <PlatformGuide navigate={navigate} userId={user?.id || user?._id || ''} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 

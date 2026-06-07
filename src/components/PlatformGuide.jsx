@@ -91,22 +91,23 @@ function ensureLottiePlayer() {
   lottieLoaded = true
 }
 
-export default function PlatformGuide({ navigate }) {
+export default function PlatformGuide({ navigate, userId = '' }) {
+  const storageKey = `platform_guide_dismissed_${userId}`
+
   const [collapsed, setCollapsed] = useState(false)
   const [dismissed, setDismissed] = useState(() => {
-    try { return localStorage.getItem('platform_guide_dismissed') === 'true' } catch { return false }
+    try { return localStorage.getItem(storageKey) === 'true' } catch { return false }
   })
 
   useEffect(() => { ensureLottiePlayer() }, [])
 
   const handleDismiss = () => {
-    try { localStorage.setItem('platform_guide_dismissed', 'true') } catch {}
+    try { localStorage.setItem(storageKey, 'true') } catch {}
     setDismissed(true)
   }
 
   const handleNav = (path) => {
     if (path.startsWith('external:')) {
-      // Full page navigation — bypasses React Router entirely
       window.location.href = path.replace('external:', '')
     } else {
       navigate(path)
