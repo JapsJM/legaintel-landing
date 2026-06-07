@@ -64,7 +64,7 @@ const FEATURES = [
     icon: '🔔',
     title: 'Telegram Alerts',
     desc: 'Scan the QR code on the landing page to link your Telegram. Get instant alerts when new SC judgements are indexed.',
-    path: '/#alerts'
+    path: 'external:/#alerts'
   },
   {
     icon: '👤',
@@ -99,9 +99,9 @@ export default function PlatformGuide({ navigate }) {
   }
 
   const handleNav = (path) => {
-    if (path.startsWith('/#')) {
-      // Hash link to landing page section — use window.location
-      window.location.href = path
+    if (path.startsWith('external:')) {
+      // Full page navigation — bypasses React Router entirely
+      window.location.href = path.replace('external:', '')
     } else {
       navigate(path)
     }
