@@ -63,8 +63,8 @@ const FEATURES = [
   {
     icon: '🔔',
     title: 'Telegram Alerts',
-    desc: 'Scan the QR code on the landing page to link your Telegram. Get instant alerts when new SC judgements are indexed.',
-    path: 'external:/#alerts'
+    desc: 'Link your Telegram from your Profile page to receive instant alerts when new SC judgements are indexed.',
+    path: '/profile'
   },
   {
     icon: '👤',
