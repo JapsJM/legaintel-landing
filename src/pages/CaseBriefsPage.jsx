@@ -227,6 +227,21 @@ export default function CaseBriefsPage() {
   // Detect if the loaded brief is missing crucial data (due to previous rate limits or failed generation)
   const isBriefEmpty = !briefData || (!p3_statutes && !p4_question_law && !p8_ratio);
 
+  // Guard: Gemini occasionally returns nested objects for fields that should be strings.
+  // This helper flattens them safely so React never tries to render a plain object.
+  const renderValue = (val) => {
+    if (val === null || val === undefined) return null;
+    if (typeof val === 'string') return val;
+    if (typeof val === 'number' || typeof val === 'boolean') return String(val);
+    if (Array.isArray(val)) return val.map((v, i) => <span key={i}>{renderValue(v)}{i < val.length - 1 ? ', ' : ''}</span>);
+    if (typeof val === 'object') {
+      return Object.entries(val).map(([k, v]) => (
+        <span key={k} className="block"><span className="text-slate-500 capitalize">{k.replace(/_/g, ' ')}: </span>{renderValue(v)}</span>
+      ));
+    }
+    return String(val);
+  };
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 font-sans selection:bg-[#c5a059] selection:text-black flex flex-col print:bg-white print:text-black">
       
@@ -671,7 +686,7 @@ export default function CaseBriefsPage() {
                                         {label}
                                       </p>
                                       <p className="text-[12px] leading-relaxed text-slate-300 print:text-black">
-                                        {p10_advisory[key]}
+                                        {renderValue(p10_advisory[key])}
                                       </p>
                                     </div>
                                   ) : null
