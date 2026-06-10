@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import api from '../services/api';
-import { FileText, ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
+import { FileText, ChevronLeft, ChevronRight, Search, X, Zap } from 'lucide-react';
 
 const docTypeBadge = (type) => {
   const styles = {
@@ -27,6 +27,10 @@ export default function OrdersLibrary() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [pdfUrl, setPdfUrl]               = useState(null);
   const [pdfLoading, setPdfLoading]       = useState(false);
+  const [activeTab, setActiveTab]         = useState('pdf');      // 'pdf' | 'card'
+  const [card, setCard]                   = useState(null);
+  const [cardLoading, setCardLoading]     = useState(false);
+  const [cardError, setCardError]         = useState(null);
   const LIMIT = 20;
 
   const fetchOrders = useCallback(async () => {
@@ -60,6 +64,9 @@ export default function OrdersLibrary() {
 
   const handleSelectOrder = async (order) => {
     setSelectedOrder(order);
+    setActiveTab('pdf');
+    setCard(null);
+    setCardError(null);
     setPdfUrl(null);
     setPdfLoading(true);
     try {
@@ -77,6 +84,27 @@ export default function OrdersLibrary() {
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     setSelectedOrder(null);
     setPdfUrl(null);
+    setCard(null);
+    setCardError(null);
+    setActiveTab('pdf');
+  };
+
+  const handleGenerateCard = async () => {
+    if (!selectedOrder) return;
+    // Return cached card if already loaded
+    if (card) { setActiveTab('card'); return; }
+    setCardLoading(true);
+    setCardError(null);
+    setActiveTab('card');
+    try {
+      const res = await api.post(`/orders/${selectedOrder.id}/card/generate`);
+      setCard(res.data?.data?.card || null);
+    } catch (err) {
+      const msg = err?.response?.data?.error || 'Failed to generate Order Intelligence Card.';
+      setCardError(msg);
+    } finally {
+      setCardLoading(false);
+    }
   };
 
   const totalPages = Math.ceil(total / LIMIT);
@@ -205,8 +233,25 @@ export default function OrdersLibrary() {
                   </button>
                 </div>
 
+                {/* Tab Bar */}
+                <div className="flex items-center gap-1 px-4 py-2 border-b border-white/5 bg-white/[0.02]">
+                  <button
+                    onClick={() => setActiveTab('pdf')}
+                    className={`px-3 py-1 rounded text-xs font-sans transition ${activeTab === 'pdf' ? 'bg-white/10 text-slate-200' : 'text-slate-500 hover:text-slate-300'}`}
+                  >
+                    PDF
+                  </button>
+                  <button
+                    onClick={handleGenerateCard}
+                    className={`flex items-center gap-1 px-3 py-1 rounded text-xs font-sans transition ${activeTab === 'card' ? 'bg-[#c5a059]/20 text-[#c5a059]' : 'text-slate-500 hover:text-[#c5a059]'}`}
+                  >
+                    <Zap className="w-3 h-3" />
+                    Order Intelligence
+                  </button>
+                </div>
+
                 {/* PDF Viewer */}
-                <div className="flex-1" style={{ minHeight: '70vh' }}>
+                <div className="flex-1" style={{ minHeight: '70vh', display: activeTab === 'pdf' ? 'block' : 'none' }}>
                   {pdfLoading ? (
                     <div className="flex items-center justify-center h-full">
                       <svg className="w-5 h-5 animate-spin text-[#c5a059]" fill="none" viewBox="0 0 24 24">
@@ -225,6 +270,59 @@ export default function OrdersLibrary() {
                     </div>
                   )}
                 </div>
+
+                {/* Order Intelligence Card Panel */}
+                {activeTab === 'card' && (
+                  <div className="flex-1 overflow-y-auto p-4" style={{ minHeight: '70vh' }}>
+                    {cardLoading && (
+                      <div className="flex items-center justify-center h-48 gap-2 text-slate-400">
+                        <svg className="w-5 h-5 animate-spin text-[#c5a059]" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                        </svg>
+                        <span className="text-xs font-sans">Generating Order Intelligence Card...</span>
+                      </div>
+                    )}
+                    {cardError && !cardLoading && (
+                      <div className="flex flex-col items-center justify-center h-48 text-center px-6">
+                        <p className="text-red-400 text-sm font-sans">{cardError}</p>
+                      </div>
+                    )}
+                    {card && !cardLoading && (
+                      <div className="space-y-3">
+                        {/* Disposal Type Badge */}
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-0.5 rounded text-xs font-semibold bg-[#c5a059]/20 text-[#c5a059] font-sans">
+                            {card.disposal_type || '—'}
+                          </span>
+                        </div>
+                        {/* Parties */}
+                        <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                          <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-2 font-sans">Parties</p>
+                          <div className="flex flex-col gap-1">
+                            <p className="text-xs text-slate-300 font-sans"><span className="text-slate-500">Appellant: </span>{card.parties?.appellant || '—'}</p>
+                            <p className="text-xs text-slate-300 font-sans"><span className="text-slate-500">Respondent: </span>{card.parties?.respondent || '—'}</p>
+                          </div>
+                        </div>
+                        {/* Relief Sought */}
+                        <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                          <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1 font-sans">Relief Sought</p>
+                          <p className="text-xs text-slate-300 leading-relaxed font-sans">{card.relief_sought || '—'}</p>
+                        </div>
+                        {/* Court Direction */}
+                        <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                          <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1 font-sans">Court Direction</p>
+                          <p className="text-xs text-slate-300 leading-relaxed font-sans">{card.court_direction || '—'}</p>
+                        </div>
+                        {/* Next Date */}
+                        <div className="rounded-lg bg-white/[0.03] border border-white/5 p-3">
+                          <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1 font-sans">Next Date / Status</p>
+                          <p className="text-xs text-[#c5a059] font-semibold font-sans">{card.next_date || '—'}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
 
               </div>
             </div>
