@@ -662,14 +662,59 @@ export default function CaseBriefsPage() {
                         </div>
                       )}
 
-                      {/* Point 8: Ratio Decidendi */}
-                      {p8_ratio && (
+                      {/* Point 8: Ratio Decidendi — structured sub-fields */}
+                      {(p8_ratio || briefMap["8A_interim_findings"] || briefMap["8B_prima_facie_observations"] || briefMap["8C_obiter_dicta"] || briefMap["8D_issues_left_open"]) && (
                         <div className="space-y-2">
                           <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#c5a059] print:text-black">
-                            8. Ratio Decidendi (Core Principle)
+                            8. Ratio Decidendi & Judicial Analysis
                           </h3>
-                          <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans text-sm leading-relaxed text-slate-300 print:text-black print:border-black/10">
-                            {renderStructured(p8_ratio)}
+                          <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans space-y-4 print:text-black print:border-black/10">
+                            {p8_ratio && (
+                              <div>
+                                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#c5a059]/80 mb-1">Core Rule / Ratio</p>
+                                {renderStructured(p8_ratio)}
+                              </div>
+                            )}
+                            {briefMap["8A_interim_findings"]?.length > 0 && (
+                              <div className="border-t border-white/5 pt-3">
+                                <p className="text-[10px] font-semibold uppercase tracking-wider text-blue-400/80 mb-2">8A — Interim Findings</p>
+                                <ol className="space-y-1 list-decimal list-inside">
+                                  {briefMap["8A_interim_findings"].map((item, i) => (
+                                    <li key={i} className="text-sm text-slate-300">{item?.proposition || String(item)}</li>
+                                  ))}
+                                </ol>
+                              </div>
+                            )}
+                            {briefMap["8B_prima_facie_observations"]?.length > 0 && (
+                              <div className="border-t border-white/5 pt-3">
+                                <p className="text-[10px] font-semibold uppercase tracking-wider text-yellow-400/80 mb-2">8B — Prima Facie Observations</p>
+                                <ol className="space-y-1 list-decimal list-inside">
+                                  {briefMap["8B_prima_facie_observations"].map((item, i) => (
+                                    <li key={i} className="text-sm text-slate-300">{item?.proposition || String(item)}</li>
+                                  ))}
+                                </ol>
+                              </div>
+                            )}
+                            {briefMap["8C_obiter_dicta"]?.length > 0 && (
+                              <div className="border-t border-white/5 pt-3">
+                                <p className="text-[10px] font-semibold uppercase tracking-wider text-purple-400/80 mb-2">8C — Obiter Dicta</p>
+                                <ol className="space-y-1 list-decimal list-inside">
+                                  {briefMap["8C_obiter_dicta"].map((item, i) => (
+                                    <li key={i} className="text-sm text-slate-300">{item?.proposition || String(item)}</li>
+                                  ))}
+                                </ol>
+                              </div>
+                            )}
+                            {briefMap["8D_issues_left_open"]?.length > 0 && (
+                              <div className="border-t border-white/5 pt-3">
+                                <p className="text-[10px] font-semibold uppercase tracking-wider text-red-400/80 mb-2">8D — Issues Left Open</p>
+                                <ol className="space-y-1 list-decimal list-inside">
+                                  {briefMap["8D_issues_left_open"].map((item, i) => (
+                                    <li key={i} className="text-sm text-slate-300">{item?.proposition || String(item)}</li>
+                                  ))}
+                                </ol>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
