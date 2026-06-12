@@ -228,7 +228,8 @@ export default function CaseBriefsPage() {
   const isBriefEmpty = !briefData || (!p3_statutes && !p4_question_law && !p8_ratio);
 
   // Guard: Gemini occasionally returns nested objects for fields that should be strings.
-  // This helper flattens them safely so React never tries to render a plain object.
+  // renderValue: generic flattener for any field.
+  // renderStructured: smart formatter for p8/p9 — renders objects as labelled sections, arrays as numbered list.
   const renderValue = (val) => {
     if (val === null || val === undefined) return null;
     if (typeof val === 'string') return val;
@@ -240,6 +241,36 @@ export default function CaseBriefsPage() {
       ));
     }
     return String(val);
+  };
+
+  const renderStructured = (val) => {
+    if (val === null || val === undefined) return null;
+    if (typeof val === 'string') return <p className="text-sm leading-relaxed text-slate-300 print:text-black">{val}</p>;
+    if (typeof val === 'number' || typeof val === 'boolean') return <p className="text-sm leading-relaxed text-slate-300">{String(val)}</p>;
+    if (Array.isArray(val)) return (
+      <ol className="list-decimal list-inside space-y-1">
+        {val.map((item, i) => (
+          <li key={i} className="text-sm leading-relaxed text-slate-300 print:text-black">
+            {typeof item === 'object' ? renderStructured(item) : String(item)}
+          </li>
+        ))}
+      </ol>
+    );
+    if (typeof val === 'object') return (
+      <div className="space-y-3">
+        {Object.entries(val).map(([k, v]) => (
+          <div key={k}>
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-[#c5a059]/70 mb-0.5 print:text-black">
+              {k.replace(/_/g, ' ')}
+            </p>
+            <p className="text-sm leading-relaxed text-slate-300 print:text-black">
+              {typeof v === 'object' ? JSON.stringify(v, null, 2) : String(v ?? '—')}
+            </p>
+          </div>
+        ))}
+      </div>
+    );
+    return <p className="text-sm leading-relaxed text-slate-300">{String(val)}</p>;
   };
 
   return (
@@ -562,7 +593,7 @@ export default function CaseBriefsPage() {
                             2. Subject Area & Classification
                           </h3>
                           <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans text-sm leading-relaxed text-slate-300 print:text-black print:border-black/10">
-                            {p2_subject_area}
+                            {renderValue(p2_subject_area)}
                           </div>
                         </div>
                       )}
@@ -574,7 +605,7 @@ export default function CaseBriefsPage() {
                             3. Statutory Focus
                           </h3>
                           <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans text-sm leading-relaxed text-slate-300 print:text-black print:border-black/10">
-                            {p3_statutes}
+                            {renderValue(p3_statutes)}
                           </div>
                         </div>
                       )}
@@ -586,7 +617,7 @@ export default function CaseBriefsPage() {
                             5. Factual Matrix
                           </h3>
                           <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans text-sm leading-relaxed text-slate-300 print:text-black print:border-black/10">
-                            {p5_factual_matrix}
+                            {renderValue(p5_factual_matrix)}
                           </div>
                         </div>
                       )}
@@ -601,13 +632,13 @@ export default function CaseBriefsPage() {
                             {p6_appellant && (
                               <div>
                                 <span className="text-[10px] font-bold text-red-400 uppercase tracking-wider block">Appellant / Petitioner:</span>
-                                <p className="mt-1.5">{p6_appellant}</p>
+                                <p className="mt-1.5">{renderValue(p6_appellant)}</p>
                               </div>
                             )}
                             {p7_respondent && (
                               <div className="border-t border-white/5 pt-4 print:border-black/10">
                                 <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">Respondent / State:</span>
-                                <p className="mt-1.5">{p7_respondent}</p>
+                                <p className="mt-1.5">{renderValue(p7_respondent)}</p>
                               </div>
                             )}
                           </div>
@@ -626,7 +657,7 @@ export default function CaseBriefsPage() {
                             4. Question of Law (Issue)
                           </h3>
                           <div className="p-5 bg-[#c5a059]/[0.02] border border-[#c5a059]/10 rounded-sm font-sans text-sm leading-relaxed text-[#c5a059] font-bold italic print:text-black print:border-black/10">
-                            {p4_question_law}
+                            {renderValue(p4_question_law)}
                           </div>
                         </div>
                       )}
@@ -638,7 +669,7 @@ export default function CaseBriefsPage() {
                             8. Ratio Decidendi (Core Principle)
                           </h3>
                           <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans text-sm leading-relaxed text-slate-300 print:text-black print:border-black/10">
-                            {p8_ratio}
+                            {renderStructured(p8_ratio)}
                           </div>
                         </div>
                       )}
@@ -650,7 +681,7 @@ export default function CaseBriefsPage() {
                             9. Holding & Final Order
                           </h3>
                           <div className="p-5 bg-white/[0.01] border border-white/5 rounded-sm font-sans text-sm leading-relaxed text-slate-300 font-bold print:text-black print:border-black/10">
-                            {p9_holding}
+                            {renderStructured(p9_holding)}
                           </div>
                         </div>
                       )}
